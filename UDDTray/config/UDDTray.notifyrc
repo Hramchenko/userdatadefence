@@ -1,0 +1,12 @@
+[Global]
+IconName=UDDTray
+Icon=file:///usr/share/icons/hicolor/48x48/apps/UDDTray.png
+Comment=User Data Defence
+[Event/alert]
+Comment=User Data Defence
+Name=Alert
+Action=Popup|Taskbar
+Execute=
+KTTS=
+Logfile=
+Icon=file:///usr/share/icons/hicolor/48x48/apps/UDDTray.png

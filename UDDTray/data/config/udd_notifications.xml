@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- User Data Defence Notification Config -->
+<notification_config>
+    <default_settings show_unknown_messages="1" message="%RAW_MESSAGE%" image="/usr/share/UDDTray/images/alert.png" caption="UDD Alert!" level="0"/>
+    <multiple_events message="Received %alerts_count% messages. Max security level %max_level%." image="/usr/share/UDDTray/images/UDD.png" caption="UDD Alert!" level="0"/>
+    <event type="AVC" message="Access %seperms% of program %comm% with pid = %pid% was blocked on %name%" image="/usr/share/UDDTray/images/policy.png" caption="UDD Alert!" level="0"/>
+    <event_pattern regexp="secret" message="%RAW_MESSAGE%" image="/usr/share/UDDTray/images/policy.png" caption="UDD Alert!" level="1"/>
+</notification_config>

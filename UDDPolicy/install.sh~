@@ -1,0 +1,5 @@
+#!/bin/bash
+make clean && make && semodule -i ./engineer.pp
+restorecon /bin/cad.sh /secret_data
+echo "" > /var/log/audit/audit.log
+ 

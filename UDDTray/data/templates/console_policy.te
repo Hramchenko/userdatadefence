@@ -1,0 +1,12 @@
+policy_module(POLICYNAME,1.0.0) 
+
+require{
+  type sysadm_t;
+  role system_r; 
+}
+
+udd_application_create(POLICYNAME)
+udd_application_user_role(system_r, audisp_t, POLICYNAME)
+
+udd_application_dbus_access(POLICYNAME, staff_t)
+ 

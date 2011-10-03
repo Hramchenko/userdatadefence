@@ -1,0 +1,1109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>User Data Defence</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="images.qrc">
+    <normaloff>:/images/icon.png</normaloff>:/images/icon.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="MainTab" name="mainTab">
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="tabShape">
+       <enum>QTabWidget::Rounded</enum>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>22</width>
+        <height>22</height>
+       </size>
+      </property>
+      <property name="elideMode">
+       <enum>Qt::ElideMiddle</enum>
+      </property>
+      <property name="documentMode">
+       <bool>true</bool>
+      </property>
+      <property name="tabsClosable">
+       <bool>false</bool>
+      </property>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>Alerts</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>Filter:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEdit"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="AlertsListViewer" name="alertsListLV">
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="RawMessageViewer" name="rawMessageTE">
+          <property name="textInteractionFlags">
+           <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Audit messages</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="RawMessagesTextEdit" name="auditMessagesTE">
+          <property name="lineWrapMode">
+           <enum>QTextEdit::WidgetWidth</enum>
+          </property>
+          <property name="textInteractionFlags">
+           <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_4">
+       <attribute name="title">
+        <string>Alerts editor</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="AlertsEditor" name="alertsEditorTE"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_5">
+       <attribute name="title">
+        <string>System messages</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <item>
+         <widget class="SystemMessagesViewer" name="systemMessagesTE">
+          <property name="textInteractionFlags">
+           <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>SELinux policy</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="GeneratedPolicyTextEdit" name="generatedPolicyTE"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionNewFile"/>
+    <addaction name="actionNewPolicy"/>
+    <addaction name="actionOpenFile"/>
+    <addaction name="separator"/>
+    <addaction name="actionSaveFile"/>
+    <addaction name="actionSaveFileAs"/>
+    <addaction name="actionSaveAll"/>
+    <addaction name="separator"/>
+    <addaction name="actionCloseFile"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <widget class="QMenu" name="menuLog">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionEditUndo"/>
+    <addaction name="actionEditRedo"/>
+    <addaction name="separator"/>
+    <addaction name="actionEditCut"/>
+    <addaction name="actionEditCopy"/>
+    <addaction name="actionEditPaste"/>
+    <addaction name="actionEditDelete"/>
+    <addaction name="separator"/>
+    <addaction name="actionFind"/>
+    <addaction name="separator"/>
+    <addaction name="actionEditSelectAll"/>
+    <addaction name="actionClearSelection"/>
+    <addaction name="separator"/>
+    <addaction name="actionEditPreferences"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionHelpAbout"/>
+   </widget>
+   <widget class="QMenu" name="menuLog_2">
+    <property name="title">
+     <string>Log</string>
+    </property>
+    <addaction name="actionClearLog"/>
+   </widget>
+   <widget class="QMenu" name="menuPolicy">
+    <property name="title">
+     <string>Policy</string>
+    </property>
+    <addaction name="actionGeneratePolicyEditor"/>
+    <addaction name="actionGeneratePolicyAll"/>
+    <addaction name="actionGeneratePolicySys"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuLog"/>
+   <addaction name="menuPolicy"/>
+   <addaction name="menuLog_2"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>32</width>
+     <height>32</height>
+    </size>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionNewFile"/>
+   <addaction name="actionOpenFile"/>
+   <addaction name="actionSaveFile"/>
+   <addaction name="actionCloseFile"/>
+   <addaction name="separator"/>
+   <addaction name="actionGeneratePolicyEditor"/>
+   <addaction name="actionGeneratePolicyAll"/>
+   <addaction name="actionGeneratePolicySys"/>
+   <addaction name="separator"/>
+   <addaction name="actionAppendAlertToEditor"/>
+   <addaction name="separator"/>
+   <addaction name="actionClearLog"/>
+  </widget>
+  <action name="actionGeneratePolicyEditor">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/document-edit-decrypt.png</normaloff>:/images/document-edit-decrypt.png</iconset>
+   </property>
+   <property name="text">
+    <string>Generate Policy</string>
+   </property>
+   <property name="toolTip">
+    <string>Generate Policy</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+B</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/system-shutdown.png</normaloff>:/images/system-shutdown.png</iconset>
+   </property>
+   <property name="text">
+    <string>Quit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionClearLog">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/edit-clear-history.png</normaloff>:/images/edit-clear-history.png</iconset>
+   </property>
+   <property name="text">
+    <string>Clear</string>
+   </property>
+  </action>
+  <action name="actionOpenFile">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/document-open.png</normaloff>:/images/document-open.png</iconset>
+   </property>
+   <property name="text">
+    <string>Open</string>
+   </property>
+   <property name="toolTip">
+    <string>Open file</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionSaveFile">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/document-save.png</normaloff>:/images/document-save.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+   <property name="toolTip">
+    <string>Save file</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionSaveAll">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/document-save-all.png</normaloff>:/images/document-save-all.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save all</string>
+   </property>
+   <property name="toolTip">
+    <string>Save all files</string>
+   </property>
+   <property name="shortcut">
+    <string>Meta+Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionNewFile">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/document-new.png</normaloff>:/images/document-new.png</iconset>
+   </property>
+   <property name="text">
+    <string>New</string>
+   </property>
+   <property name="toolTip">
+    <string>Create new file</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionGeneratePolicyAll">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/document-edit-decrypt-all.png</normaloff>:/images/document-edit-decrypt-all.png</iconset>
+   </property>
+   <property name="text">
+    <string>Generate Policy For All Messages</string>
+   </property>
+   <property name="toolTip">
+    <string>Generate Policy For All Messages</string>
+   </property>
+   <property name="shortcut">
+    <string>Meta+Ctrl+B</string>
+   </property>
+  </action>
+  <action name="actionEditRedo">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/edit-undo.png</normaloff>:/images/edit-undo.png</iconset>
+   </property>
+   <property name="text">
+    <string>Redo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Y</string>
+   </property>
+  </action>
+  <action name="actionEditUndo">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/edit-redo.png</normaloff>:/images/edit-redo.png</iconset>
+   </property>
+   <property name="text">
+    <string>Undo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
+   </property>
+  </action>
+  <action name="actionEditCut">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/edit-cut.png</normaloff>:/images/edit-cut.png</iconset>
+   </property>
+   <property name="text">
+    <string>Cut</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="actionEditCopy">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/edit-copy.png</normaloff>:/images/edit-copy.png</iconset>
+   </property>
+   <property name="text">
+    <string>Copy</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="actionEditPaste">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/edit-paste.png</normaloff>:/images/edit-paste.png</iconset>
+   </property>
+   <property name="text">
+    <string>Paste</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
+   </property>
+  </action>
+  <action name="actionEditDelete">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/edit-delete.png</normaloff>:/images/edit-delete.png</iconset>
+   </property>
+   <property name="text">
+    <string>Delete</string>
+   </property>
+   <property name="shortcut">
+    <string>Del</string>
+   </property>
+  </action>
+  <action name="actionCloseFile">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/document-close.png</normaloff>:/images/document-close.png</iconset>
+   </property>
+   <property name="text">
+    <string>Close</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
+  </action>
+  <action name="actionEditSelectAll">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/edit-select-all.png</normaloff>:/images/edit-select-all.png</iconset>
+   </property>
+   <property name="text">
+    <string>Select All</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="actionAppendAlertToEditor">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/document-export-table.png</normaloff>:/images/document-export-table.png</iconset>
+   </property>
+   <property name="text">
+    <string>Append Alert To Editor</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+E</string>
+   </property>
+  </action>
+  <action name="actionGeneratePolicySys">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/document-edit-decrypt-sys.png</normaloff>:/images/document-edit-decrypt-sys.png</iconset>
+   </property>
+   <property name="text">
+    <string>Generate Policy For /var/log/messages</string>
+   </property>
+  </action>
+  <action name="actionHelpAbout">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/logo2.png</normaloff>:/images/logo2.png</iconset>
+   </property>
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionSaveFileAs">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/document-save-as.png</normaloff>:/images/document-save-as.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save As..</string>
+   </property>
+  </action>
+  <action name="actionEditPreferences">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/configure.png</normaloff>:/images/configure.png</iconset>
+   </property>
+   <property name="text">
+    <string>Preferences</string>
+   </property>
+  </action>
+  <action name="actionFind">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/edit-find.png</normaloff>:/images/edit-find.png</iconset>
+   </property>
+   <property name="text">
+    <string>Find</string>
+   </property>
+   <property name="toolTip">
+    <string>Find text</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
+   </property>
+  </action>
+  <action name="actionClearSelection">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/edit-clear-list.png</normaloff>:/images/edit-clear-list.png</iconset>
+   </property>
+   <property name="text">
+    <string>Clear selection</string>
+   </property>
+   <property name="shortcut">
+    <string>Meta+Ctrl+A</string>
+   </property>
+  </action>
+  <action name="actionNewPolicy">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/project-development-new-template.png</normaloff>:/images/project-development-new-template.png</iconset>
+   </property>
+   <property name="text">
+    <string>New Policy</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>RawMessagesTextEdit</class>
+   <extends>QTextEdit</extends>
+   <header>RawMessagesTextEdit.h</header>
+   <slots>
+    <slot>clearLogST()</slot>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>GeneratedPolicyTextEdit</class>
+   <extends>QTextEdit</extends>
+   <header>GeneratedPolicyTextEdit.h</header>
+   <slots>
+    <slot>clearLogST()</slot>
+    <slot>generatePolicyAllST()</slot>
+    <slot>generatePolicyEditorST()</slot>
+    <slot>generatePolicySystemST()</slot>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>AlertsListViewer</class>
+   <extends>QListView</extends>
+   <header>AlertsListViewer.h</header>
+   <slots>
+    <signal>messagesSelected(QModelIndexList)</signal>
+    <slot>filterChangedST(QString)</slot>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>RawMessageViewer</class>
+   <extends>QTextEdit</extends>
+   <header>RawMessageViewer.h</header>
+   <slots>
+    <signal>messageNeedAppending(QString)</signal>
+    <slot>clearLogST()</slot>
+    <slot>appendMessageST()</slot>
+    <slot>messagesSelectedST(QModelIndexList)</slot>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>AlertsEditor</class>
+   <extends>QTextEdit</extends>
+   <header>AlertsEditor.h</header>
+   <slots>
+    <slot>appendMessageST(QString)</slot>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>MainTab</class>
+   <extends>QTabWidget</extends>
+   <header>MainTab.h</header>
+   <container>1</container>
+   <slots>
+    <slot>newFileST()</slot>
+    <slot>openFileST()</slot>
+    <slot>saveFileST()</slot>
+    <slot>closeFileST()</slot>
+    <slot>saveAllFilesST()</slot>
+    <slot>saveFileAsST()</slot>
+    <slot>editUndoST()</slot>
+    <slot>editRedoST()</slot>
+    <slot>editCopyST()</slot>
+    <slot>editPasteST()</slot>
+    <slot>editDeleteST()</slot>
+    <slot>editSelectAllST()</slot>
+    <slot>editCutST()</slot>
+    <slot>showFindDialogST()</slot>
+    <slot>editClearSelectionST()</slot>
+    <slot>createPolicyST()</slot>
+    <slot>showAboutDialogST()</slot>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>SystemMessagesViewer</class>
+   <extends>QTextEdit</extends>
+   <header>SystemMessagesViewer.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>actionQuit</sender>
+   <signal>activated()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>quitST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionClearLog</sender>
+   <signal>activated()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>clearLogST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionClearLog</sender>
+   <signal>activated()</signal>
+   <receiver>auditMessagesTE</receiver>
+   <slot>clearLogST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>103</x>
+     <y>127</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionClearLog</sender>
+   <signal>activated()</signal>
+   <receiver>generatedPolicyTE</receiver>
+   <slot>clearLogST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>103</x>
+     <y>127</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>alertsListLV</receiver>
+   <slot>filterChangedST(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>295</x>
+     <y>121</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>277</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionGeneratePolicyAll</sender>
+   <signal>activated()</signal>
+   <receiver>generatedPolicyTE</receiver>
+   <slot>generatePolicyAllST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>333</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionGeneratePolicyEditor</sender>
+   <signal>activated()</signal>
+   <receiver>generatedPolicyTE</receiver>
+   <slot>generatePolicyEditorST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>333</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionGeneratePolicySys</sender>
+   <signal>activated()</signal>
+   <receiver>generatedPolicyTE</receiver>
+   <slot>generatePolicySystemST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>333</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionClearLog</sender>
+   <signal>activated()</signal>
+   <receiver>rawMessageTE</receiver>
+   <slot>clearLogST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>457</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rawMessageTE</sender>
+   <signal>messageNeedAppending(QString)</signal>
+   <receiver>alertsEditorTE</receiver>
+   <slot>appendMessageST(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>399</x>
+     <y>457</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>333</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAppendAlertToEditor</sender>
+   <signal>activated()</signal>
+   <receiver>rawMessageTE</receiver>
+   <slot>appendMessageST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>457</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionNewFile</sender>
+   <signal>activated()</signal>
+   <receiver>mainTab</receiver>
+   <slot>newFileST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionOpenFile</sender>
+   <signal>activated()</signal>
+   <receiver>mainTab</receiver>
+   <slot>openFileST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionCloseFile</sender>
+   <signal>activated()</signal>
+   <receiver>mainTab</receiver>
+   <slot>closeFileST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSaveFile</sender>
+   <signal>activated()</signal>
+   <receiver>mainTab</receiver>
+   <slot>saveFileST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSaveAll</sender>
+   <signal>activated()</signal>
+   <receiver>mainTab</receiver>
+   <slot>saveAllFilesST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSaveFileAs</sender>
+   <signal>activated()</signal>
+   <receiver>mainTab</receiver>
+   <slot>saveFileAsST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionEditCopy</sender>
+   <signal>activated()</signal>
+   <receiver>mainTab</receiver>
+   <slot>editCopyST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionEditPaste</sender>
+   <signal>activated()</signal>
+   <receiver>mainTab</receiver>
+   <slot>editPasteST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionEditCut</sender>
+   <signal>activated()</signal>
+   <receiver>mainTab</receiver>
+   <slot>editCutST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionEditDelete</sender>
+   <signal>activated()</signal>
+   <receiver>mainTab</receiver>
+   <slot>editDeleteST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionEditSelectAll</sender>
+   <signal>activated()</signal>
+   <receiver>mainTab</receiver>
+   <slot>editSelectAllST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionEditUndo</sender>
+   <signal>activated()</signal>
+   <receiver>mainTab</receiver>
+   <slot>editUndoST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionEditRedo</sender>
+   <signal>activated()</signal>
+   <receiver>mainTab</receiver>
+   <slot>editRedoST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionEditPreferences</sender>
+   <signal>activated()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>editPreferencesST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionFind</sender>
+   <signal>activated()</signal>
+   <receiver>mainTab</receiver>
+   <slot>showFindDialogST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>alertsListLV</sender>
+   <signal>messagesSelected(QModelIndexList)</signal>
+   <receiver>rawMessageTE</receiver>
+   <slot>messagesSelectedST(QModelIndexList)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>257</x>
+     <y>294</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>252</x>
+     <y>432</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionClearSelection</sender>
+   <signal>activated()</signal>
+   <receiver>mainTab</receiver>
+   <slot>editClearSelectionST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionNewPolicy</sender>
+   <signal>activated()</signal>
+   <receiver>mainTab</receiver>
+   <slot>createPolicyST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionHelpAbout</sender>
+   <signal>activated()</signal>
+   <receiver>mainTab</receiver>
+   <slot>showAboutDialogST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <signal>logCleared()</signal>
+  <slot>quitST()</slot>
+  <slot>clearLogST()</slot>
+  <slot>editPreferencesST()</slot>
+ </slots>
+</ui>

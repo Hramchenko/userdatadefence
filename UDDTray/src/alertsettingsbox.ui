@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AlertSettingsBox</class>
+ <widget class="QGroupBox" name="AlertSettingsBox">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>578</width>
+    <height>353</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Notification Parameters</string>
+  </property>
+  <property name="title">
+   <string>GroupBox</string>
+  </property>
+  <property name="flat">
+   <bool>true</bool>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="ImageSelectionBox" name="imageSelectionBox">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="title">
+        <string>Image</string>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Clearance level: </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="levelSB"/>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Format string:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextEdit" name="alertTextTB"/>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string>Caption:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="captionLE"/>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ImageSelectionBox</class>
+   <extends>QGroupBox</extends>
+   <header>ImageSelectionBox.h</header>
+   <container>1</container>
+   <slots>
+    <signal>imageFileChanged(QString)</signal>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="images.qrc"/>
+  <include location="images.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>alertTextTB</sender>
+   <signal>textChanged()</signal>
+   <receiver>AlertSettingsBox</receiver>
+   <slot>alertTextChangedST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>396</x>
+     <y>130</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>402</x>
+     <y>517</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>levelSB</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>AlertSettingsBox</receiver>
+   <slot>levelChangedST(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>219</x>
+     <y>332</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>219</x>
+     <y>436</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>captionLE</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>AlertSettingsBox</receiver>
+   <slot>captionChangedST(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>499</x>
+     <y>333</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>508</x>
+     <y>366</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>imageSelectionBox</sender>
+   <signal>imageFileChanged(QString)</signal>
+   <receiver>AlertSettingsBox</receiver>
+   <slot>imageFileChangedST(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>84</x>
+     <y>144</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>113</x>
+     <y>474</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>alertTextChangedST()</slot>
+  <slot>levelChangedST(int)</slot>
+  <slot>captionChangedST(QString)</slot>
+  <slot>imageFileChangedST(QString)</slot>
+ </slots>
+</ui>

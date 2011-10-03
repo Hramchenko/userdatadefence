@@ -1,0 +1,13 @@
+policy_module(POLICYNAME,1.0.0) 
+
+require {
+  type staff_t;
+  role staff_r;
+}
+
+udd_gui_application_create(POLICYNAME);
+udd_gui_application_access(POLICYNAME, staff_r, staff_t);
+udd_gui_application_append_special_domain(POLICYNAME, secret);
+udd_gui_application_special_domain_access(POLICYNAME, secret,  staff_r, staff_t); 
+
+# Append your own rules here

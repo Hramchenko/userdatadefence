@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=UDDTray
+GenericName=Host Intrusion Prevention System
+Comment=User Data Defence Applet
+Exec=UDDTray
+Type=Application
+Terminal=false
+Icon=UDDTray
+Categories=Qt;KDE;System;

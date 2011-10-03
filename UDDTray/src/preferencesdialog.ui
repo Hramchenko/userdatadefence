@@ -1,0 +1,1521 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PreferencesDialog</class>
+ <widget class="QDialog" name="PreferencesDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>814</width>
+    <height>557</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Preferences</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout_3">
+   <item>
+    <widget class="QListWidget" name="groupsListWgt">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>1</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>150</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>100</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="baseSize">
+      <size>
+       <width>100</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>48</width>
+       <height>48</height>
+      </size>
+     </property>
+     <property name="flow">
+      <enum>QListView::TopToBottom</enum>
+     </property>
+     <property name="isWrapping" stdset="0">
+      <bool>false</bool>
+     </property>
+     <property name="resizeMode">
+      <enum>QListView::Adjust</enum>
+     </property>
+     <property name="layoutMode">
+      <enum>QListView::SinglePass</enum>
+     </property>
+     <property name="spacing">
+      <number>10</number>
+     </property>
+     <property name="viewMode">
+      <enum>QListView::IconMode</enum>
+     </property>
+     <property name="uniformItemSizes">
+      <bool>true</bool>
+     </property>
+     <item>
+      <property name="text">
+       <string>Main</string>
+      </property>
+      <property name="icon">
+       <iconset resource="images.qrc">
+        <normaloff>:/images/configure.png</normaloff>:/images/configure.png</iconset>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Alerts</string>
+      </property>
+      <property name="icon">
+       <iconset resource="images.qrc">
+        <normaloff>:/images/dialog-warning.png</normaloff>:/images/dialog-warning.png</iconset>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Applications</string>
+      </property>
+      <property name="icon">
+       <iconset resource="images.qrc">
+        <normaloff>:/images/system-run.png</normaloff>:/images/system-run.png</iconset>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QGroupBox" name="mainGroupBox">
+       <property name="title">
+        <string>Main</string>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QStackedWidget" name="mainStack">
+          <property name="currentIndex">
+           <number>1</number>
+          </property>
+          <widget class="QWidget" name="page">
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_16">
+              <item>
+               <widget class="QLabel" name="label_4">
+                <property name="text">
+                 <string>Editors font: </string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="editorsFontLB">
+                <property name="frameShape">
+                 <enum>QFrame::Panel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Sunken</enum>
+                </property>
+                <property name="text">
+                 <string>Font</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_3">
+                <property name="text">
+                 <string>Select...</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_18">
+              <item>
+               <widget class="QLabel" name="label_6">
+                <property name="text">
+                 <string>Max audit messages count:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="maxAuditMessagesCountSB">
+                <property name="minimum">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <number>100000</number>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_19">
+              <item>
+               <widget class="QLabel" name="label_7">
+                <property name="text">
+                 <string>Audit messages reserve:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="auditMessagesReserveSB">
+                <property name="minimum">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <number>100000</number>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_22">
+              <item>
+               <widget class="QLabel" name="label">
+                <property name="text">
+                 <string>System log updation time:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="logUpdationTimeSB">
+                <property name="minimum">
+                 <number>20</number>
+                </property>
+                <property name="maximum">
+                 <number>100000</number>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>322</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="page_2">
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="QTabWidget" name="mainTab">
+              <property name="currentIndex">
+               <number>0</number>
+              </property>
+              <widget class="QWidget" name="tab">
+               <attribute name="title">
+                <string>Default</string>
+               </attribute>
+               <layout class="QVBoxLayout" name="verticalLayout_2">
+                <item>
+                 <widget class="AlertSettingsBox" name="unclassifiedAlertSettingsBox">
+                  <property name="title">
+                   <string>Settings for unclassified alert</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="showUnknownMessagesCB">
+                  <property name="text">
+                   <string>Show unknown messages</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="tab_2">
+               <attribute name="title">
+                <string>Multiple</string>
+               </attribute>
+               <layout class="QHBoxLayout" name="horizontalLayout_5">
+                <item>
+                 <widget class="AlertSettingsBox" name="multipleAlertsSettingsBox">
+                  <property name="title">
+                   <string>Settings for multiple messages notification</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="tab_3">
+               <attribute name="title">
+                <string>Type filter</string>
+               </attribute>
+               <layout class="QVBoxLayout" name="verticalLayout_15">
+                <item>
+                 <widget class="NotificationMessagesList" name="alertTypeSelectionList" native="true"/>
+                </item>
+                <item>
+                 <widget class="AlertSettingsBox" name="typeAlertSettingsBox">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>300</height>
+                   </size>
+                  </property>
+                  <property name="title">
+                   <string>Alert settings</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_6">
+                  <item>
+                   <widget class="QLabel" name="label_2">
+                    <property name="text">
+                     <string>Alert type:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="lineEdit"/>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="tab_4">
+               <attribute name="title">
+                <string>Reg Exp Filter</string>
+               </attribute>
+               <layout class="QVBoxLayout" name="verticalLayout_14">
+                <item>
+                 <widget class="NotificationMessagesList" name="alertRegExpSelectionList" native="true"/>
+                </item>
+                <item>
+                 <widget class="AlertSettingsBox" name="regExpAlertSettingsBox">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>300</height>
+                   </size>
+                  </property>
+                  <property name="title">
+                   <string>Alert settings</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_7">
+                  <item>
+                   <widget class="QLabel" name="label_3">
+                    <property name="text">
+                     <string>Reg Exp:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="lineEdit_2"/>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="page_3">
+           <layout class="QHBoxLayout" name="horizontalLayout_8">
+            <item>
+             <widget class="QTabWidget" name="tabWidget_2">
+              <property name="currentIndex">
+               <number>0</number>
+              </property>
+              <widget class="QWidget" name="tab_5">
+               <attribute name="title">
+                <string>Application Groups</string>
+               </attribute>
+               <layout class="QVBoxLayout" name="verticalLayout_5">
+                <item>
+                 <widget class="QGroupBox" name="groupBox_10">
+                  <property name="title">
+                   <string>Application groups</string>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_16">
+                   <item>
+                    <widget class="ApplicationsSettingsList" name="applicationGroupsList"/>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_11">
+                     <item>
+                      <spacer name="horizontalSpacer_2">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QToolButton" name="toolButton">
+                       <property name="text">
+                        <string>...</string>
+                       </property>
+                       <property name="icon">
+                        <iconset resource="images.qrc">
+                         <normaloff>:/images/list-add.png</normaloff>:/images/list-add.png</iconset>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QToolButton" name="toolButton_2">
+                       <property name="text">
+                        <string>...</string>
+                       </property>
+                       <property name="icon">
+                        <iconset resource="images.qrc">
+                         <normaloff>:/images/list-remove.png</normaloff>:/images/list-remove.png</iconset>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <widget class="ApplicationSettingsBox" name="groupsSettingsBox" native="true">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>100</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="tab_6">
+               <attribute name="title">
+                <string>Group Modes</string>
+               </attribute>
+               <layout class="QVBoxLayout" name="verticalLayout_9">
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_12">
+                  <item>
+                   <widget class="QGroupBox" name="groupBox">
+                    <property name="title">
+                     <string>Groups</string>
+                    </property>
+                    <property name="flat">
+                     <bool>true</bool>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_9">
+                     <item>
+                      <widget class="ApplicationsSettingsList" name="groupsSelectonList"/>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QGroupBox" name="groupBox_2">
+                    <property name="title">
+                     <string>Modes</string>
+                    </property>
+                    <property name="flat">
+                     <bool>true</bool>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_10">
+                     <item>
+                      <widget class="ApplicationsSettingsList" name="modesList"/>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <layout class="QVBoxLayout" name="verticalLayout_3">
+                    <item>
+                     <widget class="QToolButton" name="toolButton_3">
+                      <property name="text">
+                       <string>...</string>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="images.qrc">
+                        <normaloff>:/images/list-add.png</normaloff>:/images/list-add.png</iconset>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QToolButton" name="toolButton_4">
+                      <property name="text">
+                       <string>...</string>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="images.qrc">
+                        <normaloff>:/images/list-remove.png</normaloff>:/images/list-remove.png</iconset>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="verticalSpacer">
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="ApplicationSettingsBox" name="modesSettingsBox" native="true">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>100</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="tab_7">
+               <attribute name="title">
+                <string>Applications</string>
+               </attribute>
+               <layout class="QVBoxLayout" name="verticalLayout_6">
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_17">
+                  <item>
+                   <widget class="QGroupBox" name="groupBox_3">
+                    <property name="title">
+                     <string>Groups</string>
+                    </property>
+                    <property name="flat">
+                     <bool>true</bool>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_13">
+                     <item>
+                      <widget class="ApplicationsSettingsList" name="applicatonsGroupsSelectonList"/>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QGroupBox" name="groupBox_4">
+                    <property name="title">
+                     <string>Modes</string>
+                    </property>
+                    <property name="flat">
+                     <bool>true</bool>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_14">
+                     <item>
+                      <widget class="ApplicationsSettingsList" name="modesSelectionList"/>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QGroupBox" name="groupBox_5">
+                    <property name="title">
+                     <string>Applicaions</string>
+                    </property>
+                    <property name="flat">
+                     <bool>true</bool>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_15">
+                     <item>
+                      <widget class="ApplicationsSettingsList" name="applicatonsList"/>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <layout class="QVBoxLayout" name="verticalLayout_4">
+                    <item>
+                     <widget class="QToolButton" name="toolButton_6">
+                      <property name="text">
+                       <string>...</string>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="images.qrc">
+                        <normaloff>:/images/list-add.png</normaloff>:/images/list-add.png</iconset>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QToolButton" name="toolButton_7">
+                      <property name="text">
+                       <string>...</string>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="images.qrc">
+                        <normaloff>:/images/list-remove.png</normaloff>:/images/list-remove.png</iconset>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="verticalSpacer_2">
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_20">
+                  <item>
+                   <widget class="QLabel" name="label_9">
+                    <property name="text">
+                     <string>Application name:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="applicationNameLE"/>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_21">
+                  <item>
+                   <widget class="QLabel" name="label_10">
+                    <property name="text">
+                     <string>Command:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="applicatonCommandLE"/>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>Apply</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/images/dialog-ok-apply.png</normaloff>:/images/dialog-ok-apply.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="text">
+          <string>Cancel</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/images/dialog-cancel.png</normaloff>:/images/dialog-cancel.png</iconset>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>AlertSettingsBox</class>
+   <extends>QGroupBox</extends>
+   <header>AlertSettingsBox.h</header>
+   <container>1</container>
+   <slots>
+    <slot>loadMessageST(AuditMessageNotification*)</slot>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>NotificationMessagesList</class>
+   <extends>QWidget</extends>
+   <header>NotificationMessagesList.h</header>
+   <container>1</container>
+   <slots>
+    <signal>messageSelected(AuditMessageNotification*)</signal>
+    <signal>messageFilterSelected(QString)</signal>
+    <signal>needNewMessageNotification()</signal>
+    <signal>messageNotificationDeleted(AuditMessageNotification*)</signal>
+    <slot>messageFilterChangedST(QString)</slot>
+    <slot>notificationAppendedST(AuditMessageNotification*)</slot>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>ApplicationsSettingsList</class>
+   <extends>QListWidget</extends>
+   <header>ApplicationsSettingsList.h</header>
+   <slots>
+    <signal>parameterDeleted(ApplicationsSettingsParameter*)</signal>
+    <signal>parameterSelected(ApplicationsSettingsParameter*)</signal>
+    <signal>parameterAppended(ApplicationsSettingsParameter*)</signal>
+    <slot>appendNewItemST()</slot>
+    <slot>deleteCurrentItemST()</slot>
+    <slot>parameterDeletedST(ApplicationsSettingsParameter*)</slot>
+    <slot>setParentST(ApplicationsSettingsParameter*)</slot>
+    <slot>parameterAppendedST(ApplicationsSettingsParameter*)</slot>
+    <slot>changeCurrentText(QString)</slot>
+    <slot>parameterNameChangedST(ApplicationsSettingsParameter*)</slot>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>ApplicationSettingsBox</class>
+   <extends>QWidget</extends>
+   <header>ApplicationSettingsBox.h</header>
+   <container>1</container>
+   <slots>
+    <signal>parameterNameChanged(ApplicationsSettingsParameter*)</signal>
+    <slot>parameterSelectedST(ApplicationsSettingsParameter*)</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>groupsListWgt</sender>
+   <signal>currentRowChanged(int)</signal>
+   <receiver>mainStack</receiver>
+   <slot>setCurrentIndex(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>85</x>
+     <y>291</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>424</x>
+     <y>298</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>groupsListWgt</sender>
+   <signal>activated(QModelIndex)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>groupActivatedST(QModelIndex)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>81</x>
+     <y>383</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>128</x>
+     <y>523</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>pressed()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>applyST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>695</x>
+     <y>550</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>472</x>
+     <y>530</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>pressed()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>cancelST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>807</x>
+     <y>550</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>547</x>
+     <y>507</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>alertTypeSelectionList</sender>
+   <signal>messageSelected(AuditMessageNotification*)</signal>
+   <receiver>typeAlertSettingsBox</receiver>
+   <slot>loadMessageST(AuditMessageNotification*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>269</x>
+     <y>92</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>261</x>
+     <y>357</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>alertRegExpSelectionList</sender>
+   <signal>messageSelected(AuditMessageNotification*)</signal>
+   <receiver>regExpAlertSettingsBox</receiver>
+   <slot>loadMessageST(AuditMessageNotification*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>269</x>
+     <y>92</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>261</x>
+     <y>329</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>alertTypeSelectionList</sender>
+   <signal>messageFilterSelected(QString)</signal>
+   <receiver>lineEdit</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>269</x>
+     <y>92</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>367</x>
+     <y>480</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>alertTypeSelectionList</receiver>
+   <slot>messageFilterChangedST(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>367</x>
+     <y>480</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>269</x>
+     <y>92</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>alertRegExpSelectionList</sender>
+   <signal>messageFilterSelected(QString)</signal>
+   <receiver>lineEdit_2</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>269</x>
+     <y>92</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>361</x>
+     <y>480</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_2</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>alertRegExpSelectionList</receiver>
+   <slot>messageFilterChangedST(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>361</x>
+     <y>480</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>269</x>
+     <y>92</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>alertTypeSelectionList</sender>
+   <signal>needNewMessageNotification()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>needNewTypeNotificationST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>269</x>
+     <y>92</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>288</x>
+     <y>699</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>PreferencesDialog</sender>
+   <signal>typeNotificationAppended(AuditMessageNotification*)</signal>
+   <receiver>alertTypeSelectionList</receiver>
+   <slot>notificationAppendedST(AuditMessageNotification*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>406</x>
+     <y>278</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>269</x>
+     <y>92</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>alertRegExpSelectionList</sender>
+   <signal>needNewMessageNotification()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>needNewRegExpNotificationST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>269</x>
+     <y>92</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>345</x>
+     <y>713</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>PreferencesDialog</sender>
+   <signal>regExpNotificationAppended(AuditMessageNotification*)</signal>
+   <receiver>alertRegExpSelectionList</receiver>
+   <slot>notificationAppendedST(AuditMessageNotification*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>406</x>
+     <y>278</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>269</x>
+     <y>92</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>alertTypeSelectionList</sender>
+   <signal>messageNotificationDeleted(AuditMessageNotification*)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>typeNotificationDeletedST(AuditMessageNotification*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>269</x>
+     <y>92</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>372</x>
+     <y>724</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>alertRegExpSelectionList</sender>
+   <signal>messageNotificationDeleted(AuditMessageNotification*)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>regExpNotificationDeletedST(AuditMessageNotification*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>269</x>
+     <y>92</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>404</x>
+     <y>656</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButton</sender>
+   <signal>pressed()</signal>
+   <receiver>applicationGroupsList</receiver>
+   <slot>appendNewItemST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>751</x>
+     <y>379</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>284</x>
+     <y>157</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButton_2</sender>
+   <signal>pressed()</signal>
+   <receiver>applicationGroupsList</receiver>
+   <slot>deleteCurrentItemST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>781</x>
+     <y>379</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>284</x>
+     <y>157</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>groupsSelectonList</sender>
+   <signal>parameterSelected(ApplicationsSettingsParameter*)</signal>
+   <receiver>modesList</receiver>
+   <slot>setParentST(ApplicationsSettingsParameter*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButton_3</sender>
+   <signal>pressed()</signal>
+   <receiver>modesList</receiver>
+   <slot>appendNewItemST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButton_4</sender>
+   <signal>pressed()</signal>
+   <receiver>modesList</receiver>
+   <slot>deleteCurrentItemST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>applicatonsGroupsSelectonList</sender>
+   <signal>parameterSelected(ApplicationsSettingsParameter*)</signal>
+   <receiver>modesSelectionList</receiver>
+   <slot>setParentST(ApplicationsSettingsParameter*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>modesSelectionList</sender>
+   <signal>parameterSelected(ApplicationsSettingsParameter*)</signal>
+   <receiver>applicatonsList</receiver>
+   <slot>setParentST(ApplicationsSettingsParameter*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButton_6</sender>
+   <signal>pressed()</signal>
+   <receiver>applicatonsList</receiver>
+   <slot>appendNewItemST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButton_7</sender>
+   <signal>pressed()</signal>
+   <receiver>applicatonsList</receiver>
+   <slot>deleteCurrentItemST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>applicationGroupsList</sender>
+   <signal>parameterDeleted(ApplicationsSettingsParameter*)</signal>
+   <receiver>groupsSelectonList</receiver>
+   <slot>parameterDeletedST(ApplicationsSettingsParameter*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>284</x>
+     <y>157</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>applicationGroupsList</sender>
+   <signal>parameterDeleted(ApplicationsSettingsParameter*)</signal>
+   <receiver>applicatonsGroupsSelectonList</receiver>
+   <slot>parameterDeletedST(ApplicationsSettingsParameter*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>284</x>
+     <y>157</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>modesList</sender>
+   <signal>parameterDeleted(ApplicationsSettingsParameter*)</signal>
+   <receiver>modesSelectionList</receiver>
+   <slot>parameterDeletedST(ApplicationsSettingsParameter*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>applicationGroupsList</sender>
+   <signal>parameterAppended(ApplicationsSettingsParameter*)</signal>
+   <receiver>groupsSelectonList</receiver>
+   <slot>parameterAppendedST(ApplicationsSettingsParameter*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>284</x>
+     <y>157</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>applicationGroupsList</sender>
+   <signal>parameterAppended(ApplicationsSettingsParameter*)</signal>
+   <receiver>applicatonsGroupsSelectonList</receiver>
+   <slot>parameterAppendedST(ApplicationsSettingsParameter*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>284</x>
+     <y>157</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>modesList</sender>
+   <signal>parameterAppended(ApplicationsSettingsParameter*)</signal>
+   <receiver>modesSelectionList</receiver>
+   <slot>parameterAppendedST(ApplicationsSettingsParameter*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>modesList</sender>
+   <signal>parameterSelected(ApplicationsSettingsParameter*)</signal>
+   <receiver>modesSettingsBox</receiver>
+   <slot>parameterSelectedST(ApplicationsSettingsParameter*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>261</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>applicationGroupsList</sender>
+   <signal>parameterSelected(ApplicationsSettingsParameter*)</signal>
+   <receiver>groupsSettingsBox</receiver>
+   <slot>parameterSelectedST(ApplicationsSettingsParameter*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>284</x>
+     <y>157</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>284</x>
+     <y>484</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>groupsSettingsBox</sender>
+   <signal>parameterNameChanged(ApplicationsSettingsParameter*)</signal>
+   <receiver>applicationGroupsList</receiver>
+   <slot>parameterNameChangedST(ApplicationsSettingsParameter*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>284</x>
+     <y>484</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>284</x>
+     <y>157</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>modesSettingsBox</sender>
+   <signal>parameterNameChanged(ApplicationsSettingsParameter*)</signal>
+   <receiver>modesList</receiver>
+   <slot>parameterNameChangedST(ApplicationsSettingsParameter*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>261</x>
+     <y>161</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>groupsSettingsBox</sender>
+   <signal>parameterNameChanged(ApplicationsSettingsParameter*)</signal>
+   <receiver>groupsSelectonList</receiver>
+   <slot>parameterNameChangedST(ApplicationsSettingsParameter*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>284</x>
+     <y>484</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>groupsSettingsBox</sender>
+   <signal>parameterNameChanged(ApplicationsSettingsParameter*)</signal>
+   <receiver>applicatonsGroupsSelectonList</receiver>
+   <slot>parameterNameChangedST(ApplicationsSettingsParameter*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>284</x>
+     <y>484</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>modesSettingsBox</sender>
+   <signal>parameterNameChanged(ApplicationsSettingsParameter*)</signal>
+   <receiver>modesSelectionList</receiver>
+   <slot>parameterNameChangedST(ApplicationsSettingsParameter*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>261</x>
+     <y>161</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>applicationNameLE</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>applicationNameChangedST(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>277</x>
+     <y>126</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>499</x>
+     <y>595</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>applicatonCommandLE</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>applicationCommandChangedST(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>277</x>
+     <y>135</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>455</x>
+     <y>615</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>applicatonsList</sender>
+   <signal>parameterSelected(ApplicationsSettingsParameter*)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>applicationSelectedST(ApplicationsSettingsParameter*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>572</x>
+     <y>589</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>PreferencesDialog</sender>
+   <signal>applicationNameChanged(ApplicationsSettingsParameter*)</signal>
+   <receiver>applicatonsList</receiver>
+   <slot>parameterNameChangedST(ApplicationsSettingsParameter*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>812</x>
+     <y>291</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>pressed()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>selectEditorsFontST()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>708</x>
+     <y>53</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>845</x>
+     <y>67</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>maxAuditMessagesCountSB</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>maxAuditMessagesCountChangedST(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>635</x>
+     <y>94</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>914</x>
+     <y>110</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>auditMessagesReserveSB</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>auditMessagesReserveChangedST(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>796</x>
+     <y>161</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>941</x>
+     <y>140</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>logUpdationTimeSB</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>logUpdationIntervalChangedST(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>796</x>
+     <y>200</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>860</x>
+     <y>175</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>showUnknownMessagesCB</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>showUnknownMessagesChangedST(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>418</x>
+     <y>482</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>418</x>
+     <y>570</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <signal>typeNotificationAppended(AuditMessageNotification*)</signal>
+  <signal>regExpNotificationAppended(AuditMessageNotification*)</signal>
+  <signal>applicationNameChanged(ApplicationsSettingsParameter*)</signal>
+  <slot>groupActivatedST(QModelIndex)</slot>
+  <slot>applyST()</slot>
+  <slot>cancelST()</slot>
+  <slot>needNewTypeNotificationST()</slot>
+  <slot>needNewRegExpNotificationST()</slot>
+  <slot>regExpNotificationDeletedST(AuditMessageNotification*)</slot>
+  <slot>typeNotificationDeletedST(AuditMessageNotification*)</slot>
+  <slot>applicationNameChangedST(QString)</slot>
+  <slot>applicationCommandChangedST(QString)</slot>
+  <slot>applicationSelectedST(ApplicationsSettingsParameter*)</slot>
+  <slot>selectEditorsFontST()</slot>
+  <slot>maxAuditMessagesCountChangedST(int)</slot>
+  <slot>auditMessagesReserveChangedST(int)</slot>
+  <slot>logUpdationIntervalChangedST(int)</slot>
+  <slot>showUnknownMessagesChangedST(bool)</slot>
+ </slots>
+</ui>

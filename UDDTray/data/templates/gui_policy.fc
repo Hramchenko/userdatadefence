@@ -1,0 +1,7 @@
+/path/to/application -- system_u:object_r:POLICYNAME_exec_t:s0
+/path/to/application_secret -- system_u:object_r:POLICYNAME_secret_exec_t:s0
+HOME_DIR/\.POLICYNAME_config -d system_u:object_r:POLICYNAME_config_dir_t:s0
+HOME_DIR/\.POLICYNAME_secret_dir(/.*)? -d staff_u:object_r:POLICYNAME_secret_dir_t:s0
+HOME_DIR/\.POLICYNAME_secret_dir(/.*)? -- staff_u:object_r:POLICYNAME_secret_file_t:s0
+
+ 
