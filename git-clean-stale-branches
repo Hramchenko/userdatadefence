@@ -1,0 +1,33 @@
+#!/bin/sh
+#
+# Suggested name for this script: git-clean-stale-branches
+#
+# This script will help to remove "stale" branches from a remote
+# repository (by default the "origin" repository). Stale branches
+# are any branches that does not exist in the local repository.
+#
+# This script should be run in the local repository. It will print
+# out a git command to remove all branches from the remote repository
+# that do not exist locally. If the command seems to be correct,
+# you can copy and paste the command and run it, or re-run the script
+# like this:
+#
+# git-clean-stale-branches | sh
+#
+IFS='
+'
+
+# Name of remote repository. Can be edited.
+remote=origin
+
+printf "git push $remote"
+for i in `git branch -r | grep "^ *$remote/" | grep -v HEAD | sed "s;^ *$remote/;;"`
+do
+if git rev-parse -q --verify $i >/dev/null
+then
+nothing=
+else
+printf " :%s" "$i"
+fi
+done
+printf "\n" 
