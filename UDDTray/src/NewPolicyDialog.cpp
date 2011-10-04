@@ -41,7 +41,24 @@ void NewPolicyDialog::createPolicyST(){
   createFileFromTemplate(".te");
   createFileFromTemplate(".fc");
   createFileFromTemplate(".if");
+  createMakefile();
   close();
+}
+
+void NewPolicyDialog::createMakefile(){
+  createIfNeed("Makefile");
+  createIfNeed("udd.if");
+  createIfNeed("udd.te");
+  createIfNeed("udd.fc");
+}
+
+void NewPolicyDialog::createIfNeed(QString file_name){
+  QString file_path = _folder + "/" + file_name;
+  QFileInfo file_info(file_path);
+  if (!file_info.exists()){
+    QString file_template = GlobalSettings::instance()->getConfigFile("templates/" + file_name);
+    QFile::copy(file_template, file_path);
+  }
 }
 
 QString NewPolicyDialog::policyFilePath(){

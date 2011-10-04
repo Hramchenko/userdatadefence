@@ -37,6 +37,8 @@ PolicyEditor::PolicyEditor(QWidget* parent): QTextEdit(parent) {
 
   fontChangedST();
 
+  setAcceptRichText(false);
+
   connect(document(), SIGNAL(contentsChanged()), this, SLOT(textModifiedST()));
   connect(this, SIGNAL(copyAvailable(bool)), this, SLOT(copyAvailableST(bool)));
   connect(this, SIGNAL(undoAvailable(bool)), this, SLOT(undoAvailableST(bool)));

@@ -37,6 +37,8 @@ private:
   void createFileFromTemplate(QString suffix);
   QString templateFile(QString suffix);
   QString policyFilePath();
+  void createMakefile();
+  void createIfNeed(QString file_name);
 public:
   QString policyFile;
 private:

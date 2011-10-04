@@ -24,6 +24,9 @@ autostart.files = config/UDDTray.desktop
 autostart_home.path = /home/*/.config/autostart/
 autostart_home.files = config/UDDTray.desktop
 
+udd.path = /usr/share/UDDTray/templates/
+udd.files = ../UDDPolicy/udd.*
 
-INSTALLS += share icon_file icon_desktop notifyrc autostart autostart_home share_chmod
+
+INSTALLS += share icon_file icon_desktop notifyrc autostart autostart_home share_chmod udd
 
