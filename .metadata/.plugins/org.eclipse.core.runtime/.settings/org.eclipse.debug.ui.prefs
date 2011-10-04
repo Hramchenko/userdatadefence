@@ -1,4 +1,8 @@
-#Sat Oct 01 15:36:10 YEKT 2011
+#Wed Oct 05 00:58:40 YEKT 2011
+org.eclipse.debug.ui.switch_perspective_on_suspend=always
+pref_state_memento.org.eclipse.debug.ui.VariableView=<?xml version\="1.0" encoding\="UTF-8"?>\n<VariablesViewMemento org.eclipse.debug.ui.SASH_DETAILS_PART\="315" org.eclipse.debug.ui.SASH_VIEW_PART\="684">\n<COLUMN_SIZES IMemento.internal.id\="org.eclipse.cdt.dsf.ui.COLUMN_ID__TYPE" SIZE\="145"/>\n<COLUMN_SIZES IMemento.internal.id\="org.eclipse.cdt.dsf.ui.COLUMN_ID__VALUE" SIZE\="145"/>\n<COLUMN_SIZES IMemento.internal.id\="org.eclipse.cdt.dsf.ui.COLUMN_ID__NAME" SIZE\="145"/>\n<PRESENTATION_CONTEXT_PROPERTIES IMemento.internal.id\="org.eclipse.debug.ui.VariableView">\n<STRING IMemento.internal.id\="org.eclipse.cdt.dsf.ui.viewmodel.update.selectedUpdateScope" STRING\="org.eclipse.cdt.dsf.ui.viewmodel.update.visibleUpdateScope"/>\n</PRESENTATION_CONTEXT_PROPERTIES>\n</VariablesViewMemento>
+pref_state_memento.org.eclipse.debug.ui.DebugVieworg.eclipse.debug.ui.DebugView=<?xml version\="1.0" encoding\="UTF-8"?>\n<DebugViewMemento org.eclipse.debug.ui.BREADCRUMB_DROPDOWN_AUTO_EXPAND\="false"/>
 eclipse.preferences.version=1
+preferredDetailPanes=DefaultDetailPane\:DefaultDetailPane|NumberFormatPane\:NumberFormatPane|
 preferredTargets=org.eclipse.cdt.debug.ui.toggleCBreakpointTarget\:org.eclipse.cdt.debug.ui.toggleCBreakpointTarget|
 org.eclipse.debug.ui.PREF_LAUNCH_PERSPECTIVES=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<launchPerspectives/>\n

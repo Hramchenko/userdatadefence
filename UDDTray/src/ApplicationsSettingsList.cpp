@@ -50,6 +50,8 @@ void ApplicationsSettingsList::appendNewElement(ApplicationsSettingsParameter* p
 
 void ApplicationsSettingsList::appendNewItemST(){
   ApplicationsSettingsParameter* parameter;
+  if (!_parentItem)
+    return;
   parameter = _parentItem->appendNewItem();
   parameter->setName("<new>");
   appendNewElement(parameter);
