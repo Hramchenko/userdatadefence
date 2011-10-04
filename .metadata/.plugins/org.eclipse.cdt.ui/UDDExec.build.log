@@ -1,0 +1,9 @@
+
+**** Build of configuration Debug for project UDDExec ****
+
+sh ./build.sh all 
+cd src/ && make -f Makefile 
+make[1]: Вход в каталог `/home/user/hacking/userdatadefence/UDDExec/src'
+g++ -c -pipe -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -Wall -W -D_REENTRANT -DQT_NO_DEBUG -DQT_DBUS_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/lib64/qt4/mkspecs/linux-g++ -I. -I/usr/include/QtCore -I/usr/include/QtDBus -I/usr/include -I../build -o ../build/main.o main.cpp
+g++ -Wl,-O1 -o ../UDDExec ../build/main.o    -L/usr/lib64 -lQtDBus -lQtXml -lQtCore -lpthread 
+make[1]: Выход из каталога `/home/user/hacking/userdatadefence/UDDExec/src'

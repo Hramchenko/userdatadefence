@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move 1 resources to &apos;UDDTray&apos;" description="Move 1 resources to &apos;UDDTray&apos;" destination="/UDDTray" element1="src/build.sh" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1317462162996" updateReferences="true"/>
+</session>

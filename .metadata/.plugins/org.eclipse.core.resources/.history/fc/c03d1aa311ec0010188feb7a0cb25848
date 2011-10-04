@@ -1,0 +1,5 @@
+ifdef(`gwenview_per_role_template',`
+')
+ifdef(`gwenview_per_userdomain_template',`
+errprint(`Warning: per_userdomain_templates have been renamed to per_role_templates (gwenview_per_userdomain_template)'__endline__)
+')

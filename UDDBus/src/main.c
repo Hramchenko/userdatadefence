@@ -30,7 +30,7 @@
  *
  */
 
-/* Modified by Hramchenko Vitaliy <hramchenko@bk.ru> for using with
+/* Modified by Hramchenko Vitaliy <v.hramchenko@gmail.com> for using with
  * User Data Defence
  */
 

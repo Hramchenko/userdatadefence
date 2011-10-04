@@ -22,7 +22,7 @@ TYPE ?= $(NTYPE)
 HEADERDIR := $(SHAREDIR)/devel/include
 include $(HEADERDIR)/Makefile
 
-install:
+install: all
 	semodule -i udd.pp
 
 distclean:
