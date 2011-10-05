@@ -1,0 +1,86 @@
+Installation
+
+========================================================================
+Requirements
+
+For installing User Data Defence on your machine you need to download from system repository some packages:
+
+    SELinux;
+    Audit daemon must be installed and activated;
+    QT4 development package including D-Bus support;
+    audit-libs-devel;
+    libselinux-devel;
+    dbus-devel.
+
+========================================================================
+Warning
+
+Before installation User Data Defence switch your SELinux in Permissive mode. Type in root console:
+
+setenforce 0
+
+Then edit /etc/selinux/config: replace SELINUX=disabled or SELINUX=enforcing with SELINUX=permissive.
+
+========================================================================
+Installation
+
+For installation type in your console:
+
+git clone git@github.com:Hramchenko/userdatadefence.git
+
+cd ./userdatadefence
+
+qmake (or qmake-qt4 in Fedora)
+
+make
+
+make install
+
+For applying changes reboot your computer. If UDDTray not started automatically you could start it from console or system menu. At first start you must receive many alerts, otherwise check that you SELinux is in Permissive mode, then check that UDDaemon and UDDBus are started correctly. If UDDaemon was not started you can start it manually from root console:
+
+UDDaemon &
+
+If you can't find UDDBus in process list check contents of file /etc/audisp/plugins.d/UDDBus.conf and restart auditd.
+
+If UDDaemon and UDDBus were started check their contexts:
+
+ps axZ | grep UDD
+
+system_u:system_r:user_data_defence_bus_t:s0 948 ? S< 0:00 /usr/sbin/UDDBus
+
+system_u:system_r:user_data_defence_daemon_t:s0 1468 ? S 0:00 /usr/sbin/UDDaemon
+
+If they have another types check that udd policy was loaded:
+
+semodule -l | grep udd
+
+udd 1.0.0
+
+If policy was not loaded install it with semodule -i udd.pp command. You may need to customize it for your system.
+
+========================================================================
+Post installation
+
+When your system worked correctly (you don't receive false-positive AVC alerts) you could try to change context of your user. Switch SELinux in Permissive mode and type:
+
+login -m -s staff_u your_login_name
+
+Then append some aliases in ~/.bash_rc profile:
+
+alias su="sudo -u sysadm_u -r sysadm_r -t sysadm_t -u root bash"
+
+Start new session. You will receive new SELinux alerts. Process it with UDDTray generation policy tool. After some days of system usage, when you don't get false-positive alerts, you could try to switch SELinux in Enforcing mode (mode with intrusion prevention).
+
+Open graphical console (konsole, gnome-terminal...) execute su or sudo bash command. Temporary switch SELinux in Enforcing mode. You will get new alerts. Append it in a policy.
+
+Warning! Some AVC messages are not shown in alerts list because there are not processed by auditd service (such as D-Bus messages). They are shown only in /var/log/messages file. You could generate policy for it with Generate policy for /var/log/messages option in UDDTray.
+
+Enforcing mode will resetting after computer restart. So if your system worked properly in that mode set SELINUX=enforcing in /etc/selinux/config file.
+
+========================================================================
+Troubleshooting
+
+If your system doesn't work correctly and you don't have any audit messages or a system messages in /var/log/messages file try to rebuild SELinux policy with disabled dontaudit rules. In root console type semodule -D
+
+When problem was resolved you could enable rules with semodule -B command.
+ 
