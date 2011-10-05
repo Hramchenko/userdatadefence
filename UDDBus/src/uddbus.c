@@ -23,6 +23,10 @@
  * Written by Matthew Johnson <dbus@matthew.ath.cx>
  *
  */
+/* Modified by Hramchenko Vitaliy <v.hramchenko@gmail.com> for using with
+ * User Data Defence
+ */
+
 #include <dbus/dbus.h>
 #include <stdbool.h>
 #include <syslog.h>
@@ -32,7 +36,6 @@
 #include <stdlib.h>
 
 int uddbus_send_avc(DBusConnection* connection, char *avc) {
-  //syslog(LOG_ERR, "UDD Message received.\n");
   DBusError error;
   DBusMessage *call;
   dbus_error_init(&error);
@@ -42,7 +45,6 @@ int uddbus_send_avc(DBusConnection* connection, char *avc) {
     syslog(LOG_ERR, "UDD error: Can't send message.\n");
   }
   dbus_connection_flush(connection);
-  //syslog(LOG_ERR, "UDD Message: %s\n", avc);
   dbus_message_unref(call);
   return 0;
 }

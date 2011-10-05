@@ -16,7 +16,6 @@
 #ifndef MESSAGESLISTANALYZER_H_
 #define MESSAGESLISTANALYZER_H_
 
-
 #include "AuditMessage.h"
 
 class MessagesListAnalyzer {

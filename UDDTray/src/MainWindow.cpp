@@ -56,7 +56,6 @@ void MainWindow::initAlertsWatcher(){
   alertsWatcher->connectToInterface();
 }
 
-
 void MainWindow::createTrayIcon(){
   trayIcon = TrayIcon::instance();
   trayIcon->init();

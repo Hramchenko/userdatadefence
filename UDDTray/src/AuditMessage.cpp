@@ -52,7 +52,6 @@ QString AuditMessage::rawMessage(){
 void AuditMessage::setRawMessage(QString text){
   _rawMessage = text;
   _notificationMessage = AuditMessageNotificationSettings::currentSettings()->searchNotificationMessage(this);
-  //_formattedMessage = _notificationMessage->formatMessage(this);
 }
 
 QIcon AuditMessage::icon(){
@@ -65,7 +64,6 @@ QByteArray AuditMessage::pixmapBytes(){
 
 QString AuditMessage::formattedMessage(){
   return _notificationMessage->formatMessage(this);
-  //return _formattedMessage;
 }
 
 QString AuditMessage::caption(){

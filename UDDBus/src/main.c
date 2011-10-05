@@ -181,7 +181,6 @@ static void dump_whole_record(auparse_state_t *au, void *conn) {
   else
     syslog(LOG_ERR, "UDDBus error. Connection not initialized.\n");
 
-  //syslog(LOG_ERR, "UDDBus message.\n");
   free(tmp);
 }
 

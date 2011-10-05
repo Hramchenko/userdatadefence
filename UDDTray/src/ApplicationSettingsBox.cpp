@@ -20,12 +20,10 @@
 #include <QtDebug>
 
 ApplicationSettingsBox::ApplicationSettingsBox(QWidget* parent): QWidget(parent) {
-  // TODO Auto-generated constructor stub
   setupUi(this);
 }
 
 ApplicationSettingsBox::~ApplicationSettingsBox() {
-  // TODO Auto-generated destructor stub
 }
 
 void ApplicationSettingsBox::parameterSelectedST(ApplicationsSettingsParameter* parameter){

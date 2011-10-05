@@ -20,7 +20,6 @@ NotificationMessagesListItem::NotificationMessagesListItem(QListWidget* parent):
 }
 
 NotificationMessagesListItem::~NotificationMessagesListItem() {
-  // TODO Auto-generated destructor stub
 }
 
 AuditMessageNotification* NotificationMessagesListItem::messageNotification(){

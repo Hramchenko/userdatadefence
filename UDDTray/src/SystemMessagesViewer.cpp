@@ -25,11 +25,9 @@
 
 SystemMessagesViewer::SystemMessagesViewer(QWidget* parent): PolicyEditor(parent) {
   updationTimer = new QTimer();
-//  setTimerInterval();
   connect(updationTimer, SIGNAL(timeout()), this, SLOT(updateST()));
   lastLogLine = AlertsDepositary::instance()->lastSystemMessage;
 }
-
 
 SystemMessagesViewer::~SystemMessagesViewer() {
   delete updationTimer;
@@ -39,7 +37,6 @@ void SystemMessagesViewer::setTimerInterval(){
   int interval = GlobalSettings::instance()->systemMessagesUpdationTime();
   updationTimer->setInterval(interval);
 }
-
 
 void SystemMessagesViewer::updateST(){
   QString last_messages;

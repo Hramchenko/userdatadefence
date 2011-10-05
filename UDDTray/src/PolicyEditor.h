@@ -18,8 +18,6 @@
 
 #include <QTextEdit>
 
-
-
 class PolicyEditor: public QTextEdit {
   Q_OBJECT
 public:
@@ -33,7 +31,6 @@ public:
   virtual void activated();
   virtual void deactivated();
   bool isModified();
-
   void save();
   void saveAs();
   void loadFile(QString file_name);
@@ -67,7 +64,6 @@ private:
   bool _copyAvailable;
   bool _undoAvailable;
   bool _redoAvailable;
-
 };
 
 #endif /* POLICYEDITOR_H_ */

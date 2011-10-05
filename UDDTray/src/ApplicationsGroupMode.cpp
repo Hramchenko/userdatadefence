@@ -59,7 +59,6 @@ void ApplicationsGroupMode::writeSubElements(QXmlStreamWriter* xml_writer){
   }
 }
 
-
 void ApplicationsGroupMode::setActive(bool value){
   QFont font = trayAction->font();
   font.setBold(value);

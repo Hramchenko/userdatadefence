@@ -70,7 +70,6 @@ PolicyEditor* MainTab::appendNewEditor(){
 void MainTab::addEditor(PolicyEditor* editor){
   connectEditor(editor);
   connect(editor, SIGNAL(editorCaptionChanged(PolicyEditor*)), this, SLOT(editorCaptionChangedST(PolicyEditor*)));
-//  connect(GlobalSettings::instance(), SIGNAL(editorsFontChanged()), editor, SLOT(fontChangedST()));
   int index = addTab(editor, editor->caption());
   setCurrentIndex(index);
 }
@@ -152,8 +151,6 @@ void MainTab::setActionListEnabled(QList<QAction*>& actions_list, bool is_enable
   }
 }
 
-
-
 void MainTab::newFileST(){
   appendNewEditor();
 }
@@ -164,7 +161,6 @@ void MainTab::openFileST(){
     return;
   openEditor(file_name);
 }
-
 
 void MainTab::closeFileST(){
   if (isCurrentEditorSpecial())
@@ -187,7 +183,6 @@ bool MainTab::isCurrentEditorSpecial(){
 int MainTab::firstEditorIndex(){
   return 5;
 }
-
 
 PolicyEditor* MainTab::currentEditor(){
   PolicyEditor* result = 0;
@@ -327,7 +322,6 @@ void MainTab::openEditor(QString file_name){
   editor->loadFile(file_name);
 }
 
-
 void MainTab::createPolicyST(){
   NewPolicyDialog dialog(this);
   dialog.exec();
@@ -338,7 +332,6 @@ void MainTab::createPolicyST(){
     openEditor(file + ".te");
   }
 }
-
 
 void MainTab::showAboutDialogST(){
   AboutDialog about(this);

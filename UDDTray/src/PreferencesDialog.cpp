@@ -31,7 +31,6 @@
 #include "ApplicationsParser.h"
 #include "GlobalSettings.h"
 
-
 #include <QtDebug>
 
 
@@ -76,7 +75,6 @@ void PreferencesDialog::loadMultipleMessagesTab(){
   multipleAlertsSettingsBox->loadMessageST(_notificationSettings->multipleEventsNotification());
 }
 
-
 PreferencesDialog::~PreferencesDialog() {
 }
 
@@ -115,11 +113,9 @@ void PreferencesDialog::saveNotificationSettings(){
   parser.write(notifications_config);
 }
 
-
 void PreferencesDialog::createReserve(QString file_name){
   QFile::copy(file_name, file_name + ".old");
 }
-
 
 void PreferencesDialog::cancelST(){
   close();

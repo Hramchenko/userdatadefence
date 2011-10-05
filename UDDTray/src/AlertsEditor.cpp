@@ -16,12 +16,9 @@
 #include "AlertsEditor.h"
 
 AlertsEditor::AlertsEditor(QWidget* parent): RawMessagesTextEdit(parent) {
-  // TODO Auto-generated constructor stub
-
 }
 
 AlertsEditor::~AlertsEditor() {
-  // TODO Auto-generated destructor stub
 }
 
 void AlertsEditor::appendMessageST(QString message){

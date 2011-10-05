@@ -51,8 +51,6 @@ TEHighlighter::TEHighlighter(QTextDocument* parent):QSyntaxHighlighter(parent) {
 
 
 void TEHighlighter::initKeyWords(){
-
-
   keywordPatterns <<"CLONE"<<"clone"<<
       "COMMON"<<"common"<<
       "CLASS"<<"class"<<
@@ -136,7 +134,6 @@ void TEHighlighter::initKeyWords(){
       "interface"<<
       "template"<<
       "define"<< "DEFINE";
-
 }
 
 

@@ -74,7 +74,6 @@ private:
   QList<QAction*> selectionReadActions;
   PolicyEditor* oldEditor;
   FindReplaceDialog* findReplaceDialog;
-
 };
 
 #endif /* MAINTAB_H_ */

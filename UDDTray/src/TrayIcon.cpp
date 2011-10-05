@@ -56,7 +56,6 @@ void TrayIcon::reloadMenu(){
   setContextMenu(menu);
 }
 
-
 void TrayIcon::createMenu(){
   menu = new QMenu();
 

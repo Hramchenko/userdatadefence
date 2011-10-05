@@ -49,5 +49,4 @@ template<class K, class T> void deleteMapOfPointers(QMap<K, T>*& map){
   map = 0;
 }
 
-
 #endif

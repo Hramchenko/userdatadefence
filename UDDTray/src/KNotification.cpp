@@ -22,7 +22,6 @@
 
 KNotification* KNotification::_instance = 0;
 
-
 KNotification::KNotification(): QObject(){
   connectToInterface();
   notifyEvent = "alert";
@@ -44,7 +43,6 @@ KNotification* KNotification::instance(){
   return _instance;
 }
 
-
 void KNotification::clearMessagesDict(){
   QMapIterator<int, KNotificationMessage*> iter(messagesDict);
   while (iter.hasNext()){
@@ -53,7 +51,6 @@ void KNotification::clearMessagesDict(){
   }
   messagesDict.clear();
 }
-
 
 void KNotification::connectToInterface(){
   knotifyInterface = new QDBusInterface("org.kde.knotify", "/Notify", "org.kde.KNotify");
@@ -125,8 +122,6 @@ QList<QVariant>* KNotification::createUpdateEventArgs(KNotificationMessage* mess
   message_args->append(QVariant(message->actions()));
   return message_args;
 }
-
-
 
 KNotificationMessage* KNotification::findNotificationMessage(int id){
   KNotificationMessage* result = 0;

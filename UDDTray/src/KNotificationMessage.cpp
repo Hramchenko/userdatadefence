@@ -24,7 +24,6 @@ KNotificationMessage::KNotificationMessage(){
 }
 
 KNotificationMessage::~KNotificationMessage(){
-
 }
 
 QByteArray KNotificationMessage::pixmapToByteArray(QPixmap pixmap){

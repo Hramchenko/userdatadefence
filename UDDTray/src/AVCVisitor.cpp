@@ -16,10 +16,7 @@
 #include "AVCVisitor.h"
 
 AVCVisitor::AVCVisitor() {
-  // TODO Auto-generated constructor stub
-
 }
 
 AVCVisitor::~AVCVisitor() {
-  // TODO Auto-generated destructor stub
 }

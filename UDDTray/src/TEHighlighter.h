@@ -17,7 +17,6 @@
 #define TEHIGHLIGHTER_H_
 
 #include <QSyntaxHighlighter>
-
 #include <QHash>
 #include <QTextCharFormat>
 
@@ -26,20 +25,17 @@ struct TEHighlightingRule{
   QTextCharFormat format;
 };
 
-
 class TEHighlighter: public QSyntaxHighlighter {
   Q_OBJECT
 public:
   TEHighlighter(QTextDocument* parent = 0);
   virtual ~TEHighlighter();
-
 protected:
   void highlightBlock(const QString &text);
 private:
   void initKeyWords();
 private:
   QVector<TEHighlightingRule> highlightingRules;
-
   QTextCharFormat keywordFormat;
   QTextCharFormat classFormat;
   QTextCharFormat singleLineCommentFormat;

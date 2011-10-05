@@ -38,7 +38,6 @@ SOURCES += main.cpp \
            MessagesListAnalyzer.cpp \
            UDDaemonInterface.cpp \
            AlertsListViewer.cpp \
-           AlertsViewerDelegate.cpp \
            AlertsDepositary.cpp \
            AlertsStatistics.cpp \
            functions.cpp \
@@ -104,7 +103,6 @@ HEADERS += MainWindow.h \
            MessagesListAnalyzer.h \
            UDDaemonInterface.h \
            AlertsListViewer.h \
-           AlertsViewerDelegate.h \
            AlertsDepositary.h \
            AlertsStatistics.h \
            functions.h \

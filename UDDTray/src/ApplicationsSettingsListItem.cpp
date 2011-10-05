@@ -18,12 +18,9 @@
 #include "ApplicationsSettingsParameter.h"
 
 ApplicationsSettingsListItem::ApplicationsSettingsListItem(QListWidget* parent): QListWidgetItem(parent) {
-  // TODO Auto-generated constructor stub
-
 }
 
 ApplicationsSettingsListItem::~ApplicationsSettingsListItem() {
-  // TODO Auto-generated destructor stub
 }
 
 void ApplicationsSettingsListItem::setParameter(ApplicationsSettingsParameter* parameter){

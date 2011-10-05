@@ -43,4 +43,3 @@ QString XMLFileWriter::elementName(){
 bool XMLFileWriter::processAttributes(){
   return true;
 }
-

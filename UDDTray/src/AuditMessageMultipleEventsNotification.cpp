@@ -66,5 +66,5 @@ QString AuditMessageMultipleEventsNotification::elementName(){
   return "multiple_events";
 }
 
-void AuditMessageMultipleEventsNotification::writeExtraAttributes(QXmlStreamWriter* xml_writer){
+void AuditMessageMultipleEventsNotification::writeExtraAttributes(QXmlStreamWriter*){
 }

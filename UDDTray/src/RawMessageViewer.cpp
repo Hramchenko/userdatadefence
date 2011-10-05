@@ -15,13 +15,13 @@
 
 #include "RawMessageViewer.h"
 
+#include <QSortFilterProxyModel>
+
+#include "AlertsDepositary.h"
 #include "AuditMessage.h"
 
 #include <QtDebug>
 
-#include <QSortFilterProxyModel>
-
-#include "AlertsDepositary.h"
 
 RawMessageViewer::RawMessageViewer(QWidget* parent): RawMessagesTextEdit(parent) {
 }
@@ -41,7 +41,6 @@ void RawMessageViewer::messagesSelectedST(QModelIndexList index_list){
   setPlainText(text);
 }
 
-
 void RawMessageViewer::appendMessageST(){
   emit(messageNeedAppending(toPlainText()));
 }
@@ -53,4 +52,3 @@ bool RawMessageViewer::copyEnabled(){
 bool RawMessageViewer::selectionReadActionsEnabled(){
   return true;
 }
-

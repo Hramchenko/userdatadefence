@@ -19,7 +19,6 @@
 
 TEEditor::TEEditor(QWidget* parent): PolicyEditor(parent) {
   _highlighter = 0;
-
 }
 
 TEEditor::~TEEditor() {
@@ -30,7 +29,6 @@ void TEEditor::deleteHighlighter(){
   if (_highlighter)
     delete _highlighter;
 }
-
 
 void TEEditor::setFile(QString file_path){
   bool flag = file_path.endsWith(".te") || file_path.endsWith(".if");

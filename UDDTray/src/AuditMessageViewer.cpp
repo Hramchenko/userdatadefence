@@ -24,7 +24,6 @@ AuditMessageViewer::AuditMessageViewer() {
 }
 
 AuditMessageViewer::~AuditMessageViewer() {
-
 }
 
 void AuditMessageViewer::initMessagesFormats(){

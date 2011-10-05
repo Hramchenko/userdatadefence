@@ -45,7 +45,6 @@ void ApplicationsMenuItem::setIcon(QString file_name){
     icon = new QIcon(iconFile);
 }
 
-
 bool ApplicationsMenuItem::endElement(){
   return true;
 }

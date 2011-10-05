@@ -27,7 +27,6 @@ AlertSettingsBox::AlertSettingsBox(QWidget* parent): QGroupBox(parent) {
 }
 
 AlertSettingsBox::~AlertSettingsBox() {
-  // TODO Auto-generated destructor stub
 }
 
 void AlertSettingsBox::loadMessageST(AuditMessageNotification* notification_message){

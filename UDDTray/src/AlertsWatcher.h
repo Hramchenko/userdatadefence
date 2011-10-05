@@ -27,8 +27,6 @@ class AVCAnalyzer;
 class AuditMessageViewer;
 class AuditMessage;
 class UDDaemonInterface;
-
-
 class AuditMessageNotificationSettings;
 
 class AlertsWatcher: public QObject, public AVCVisitor{

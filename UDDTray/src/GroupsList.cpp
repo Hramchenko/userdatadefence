@@ -20,5 +20,4 @@ GroupsList::GroupsList(QWidget* parent): QGroupBox(parent) {
 }
 
 GroupsList::~GroupsList() {
-  // TODO Auto-generated destructor stub
 }

@@ -44,7 +44,6 @@ bool XMLFileElement::hasSubElements(){
   return true;
 }
 
-
 void XMLFileElement::writeElement(QXmlStreamWriter* xml_writer){
   if (hasSubElements())
     xml_writer->writeStartElement(elementName());

@@ -31,7 +31,6 @@ public:
   bool isActive();
   QString elementName();
   void writeExtraAttributes(QXmlStreamWriter* xml_writer);
-
 private:
   void setAlertParameters();
 public:

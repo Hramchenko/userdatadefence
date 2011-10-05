@@ -26,7 +26,6 @@ public:
   RawMessageViewer(QWidget* parent);
   virtual ~RawMessageViewer();
 public slots:
-  //void alertsSelectedST(QModelIndexList indexes);
   void messagesSelectedST(QModelIndexList index_list);
   void appendMessageST();
   bool copyEnabled();

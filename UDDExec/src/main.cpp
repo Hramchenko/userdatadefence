@@ -32,7 +32,6 @@ int main(int argc, char** argv) {
   message_args.append(QString(argv[1]));
   QDBusReply<QString> reply;
   reply = exec_bus->callWithArgumentList(QDBus::AutoDetect, "getCommand", message_args);
-  //
   QObject parent;
   QString program = reply.value();
   if (program.isEmpty()){
@@ -47,7 +46,5 @@ int main(int argc, char** argv) {
   QProcess myProcess(&parent);
   myProcess.start(program, arguments);
   myProcess.waitForFinished();
-  //app.exec();
-
   return 0;
 }

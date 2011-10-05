@@ -16,12 +16,9 @@
 #include "ApplicationsSettingsParameter.h"
 
 ApplicationsSettingsParameter::ApplicationsSettingsParameter() {
-  // TODO Auto-generated constructor stub
-
 }
 
 ApplicationsSettingsParameter::~ApplicationsSettingsParameter() {
-  // TODO Auto-generated destructor stub
 }
 
 QList<ApplicationsSettingsParameter*>* ApplicationsSettingsParameter::subElements(){

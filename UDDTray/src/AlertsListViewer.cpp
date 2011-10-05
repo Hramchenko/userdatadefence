@@ -18,7 +18,6 @@
 #include <QSortFilterProxyModel>
 #include <QStandardItemModel>
 
-#include "AlertsViewerDelegate.h"
 #include "AuditMessage.h"
 #include "AuditMessageNotificationSettings.h"
 #include "UDDaemonInterface.h"
@@ -47,7 +46,6 @@ void AlertsListViewer::selectionChangedST(const QItemSelection&, const QItemSele
   indexes = selectionModel()->selectedIndexes();
   emit(messagesSelected(indexes));
 }
-
 
 AlertsListViewer::~AlertsListViewer() {
 }

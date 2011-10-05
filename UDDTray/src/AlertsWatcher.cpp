@@ -21,8 +21,6 @@
 #include <QtDebug>
 #include <QRegExp>
 
-
-
 #include "KNotification.h"
 #include "KNotificationMessageAlert.h"
 #include "AVCAnalyzer.h"
@@ -37,9 +35,7 @@
 #include "KNotificationMessage.h"
 #include "UDDaemonInterface.h"
 
-
 AlertsWatcher* AlertsWatcher::_instance = 0;
-
 
 AlertsWatcher::AlertsWatcher(): QObject(){
   notificationSettings = AuditMessageNotificationSettings::currentSettings();

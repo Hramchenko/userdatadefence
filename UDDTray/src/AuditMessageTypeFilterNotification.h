@@ -25,7 +25,6 @@ public:
   bool processExtraAttributes();
   QString elementName();
   void writeExtraAttributes(QXmlStreamWriter* xml_writer);
-
   bool checkNotification(AuditMessage* message);
 public:
   QString type;

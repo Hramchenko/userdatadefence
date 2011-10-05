@@ -130,7 +130,6 @@ void AuditMessageNotificationSettings::writeMessageNotificationsList(QXmlStreamW
   }
 }
 
-
 AuditMessageNotification* AuditMessageNotificationSettings::searchNotificationMessage(AuditMessage* message){
   AuditMessageNotification* result = 0;
   result = searchNotificationWithEventsList(_regExpFilterNotificationsList, message);
@@ -156,12 +155,16 @@ AuditMessageNotification* AuditMessageNotificationSettings::searchNotificationWi
 AuditMessageDefaultNotification* AuditMessageNotificationSettings::defaultNotification(){
   return _defaultNotification;
 }
+
 AuditMessageMultipleEventsNotification* AuditMessageNotificationSettings::multipleEventsNotification(){
   return _multipleEventsNotification;
 }
+
 QList<AuditMessageNotification*>& AuditMessageNotificationSettings::typeFilterNotificationsList(){
   return _typeFilterNotificationsList;
 }
+
 QList<AuditMessageNotification*>& AuditMessageNotificationSettings::regExpFilterNotificationsList(){
   return _regExpFilterNotificationsList;
 }
+

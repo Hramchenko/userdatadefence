@@ -22,10 +22,7 @@
 
 #include "GlobalSettings.h"
 
-
-
 #include <QtDebug>
-
 
 PolicyEditor::PolicyEditor(QWidget* parent): QTextEdit(parent) {
   _isModified = false;
@@ -36,7 +33,6 @@ PolicyEditor::PolicyEditor(QWidget* parent): QTextEdit(parent) {
   _loadingFile = false;
 
   fontChangedST();
-
   setAcceptRichText(false);
 
   connect(document(), SIGNAL(contentsChanged()), this, SLOT(textModifiedST()));
@@ -178,7 +174,6 @@ void PolicyEditor::setFlagValue(bool& flag, bool value){
 bool PolicyEditor::isEditable(){
   return false;
 }
-
 
 bool PolicyEditor::copyEnabled(){
   return hasSelection();

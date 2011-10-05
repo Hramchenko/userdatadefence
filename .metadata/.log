@@ -2256,3 +2256,54 @@ Binding(CTRL+A,
 
 !ENTRY org.eclipse.cdt.core 1 0 2011-10-04 18:54:34.888
 !MESSAGE Indexed 'UDDExec' (1 sources, 233 headers) in 5,58 sec: 25 958 declarations; 40 122 references; 0 unresolved inclusions; 4 syntax errors; 125 unresolved names (0,19 %)
+!SESSION 2011-10-05 18:28:06.525 -----------------------------------------------
+eclipse.buildId=M20110210-1200
+java.version=1.6.0_22
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=ru_RU
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.jface 2 0 2011-10-05 18:28:44.934
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2011-10-05 18:28:44.934
+!MESSAGE A conflict occurred for CTRL+A:
+Binding(CTRL+A,
+	ParameterizedCommand(Command(org.eclipse.ui.edit.selectAll,Выбрать все,
+		Выбрать все,
+		Category(org.eclipse.ui.category.edit,Правка,null,true),
+		LegacyHandlerWrapper(ActionHandler(action=org.eclipse.ui.texteditor.TextOperationAction@34ea95e0)),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.dialogAndWindow,,,system)
+Binding(CTRL+A,
+	ParameterizedCommand(Command(org.eclipse.ui.edit.selectAll,Выбрать все,
+		Выбрать все,
+		Category(org.eclipse.ui.category.edit,Правка,null,true),
+		LegacyHandlerWrapper(ActionHandler(action=org.eclipse.ui.texteditor.TextOperationAction@34ea95e0)),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+A,
+	ParameterizedCommand(Command(org.eclipse.ui.edit.selectAll,Выбрать все,
+		Выбрать все,
+		Category(org.eclipse.ui.category.edit,Правка,null,true),
+		LegacyHandlerWrapper(ActionHandler(action=org.eclipse.ui.texteditor.TextOperationAction@34ea95e0)),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+A,
+	ParameterizedCommand(Command(org.eclipse.ui.edit.selectAll,Выбрать все,
+		Выбрать все,
+		Category(org.eclipse.ui.category.edit,Правка,null,true),
+		LegacyHandlerWrapper(ActionHandler(action=org.eclipse.ui.texteditor.TextOperationAction@34ea95e0)),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+A,
+	ParameterizedCommand(Command(org.eclipse.ui.edit.selectAll,Выбрать все,
+		Выбрать все,
+		Category(org.eclipse.ui.category.edit,Правка,null,true),
+		LegacyHandlerWrapper(ActionHandler(action=org.eclipse.ui.texteditor.TextOperationAction@34ea95e0)),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)

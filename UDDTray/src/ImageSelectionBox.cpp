@@ -21,7 +21,6 @@
 
 ImageSelectionBox::ImageSelectionBox(QWidget* parent): QGroupBox(parent) {
   setupUi(this);
-
 }
 
 ImageSelectionBox::~ImageSelectionBox() {

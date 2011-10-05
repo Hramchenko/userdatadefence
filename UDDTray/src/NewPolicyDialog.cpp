@@ -65,7 +65,6 @@ QString NewPolicyDialog::policyFilePath(){
   return _folder + "/" + _name;
 }
 
-
 void NewPolicyDialog::createFileFromTemplate(QString suffix){
   policyFile = "";
   QFile template_file(templateFile(suffix));
@@ -84,7 +83,6 @@ void NewPolicyDialog::createFileFromTemplate(QString suffix){
   target_file.close();
   policyFile = policyFilePath();
 }
-
 
 QString NewPolicyDialog::templateFile(QString suffix){
   int index = projectTypeLW->currentRow();

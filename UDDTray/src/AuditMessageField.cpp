@@ -16,10 +16,7 @@
 #include "AuditMessageField.h"
 
 AuditMessageField::AuditMessageField() {
-  // TODO Auto-generated constructor stub
-
 }
 
 AuditMessageField::~AuditMessageField() {
-  // TODO Auto-generated destructor stub
 }
