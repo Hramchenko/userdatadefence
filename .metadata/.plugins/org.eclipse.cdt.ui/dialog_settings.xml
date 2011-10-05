@@ -12,8 +12,8 @@
 	<section name="org.eclipse.cdt.internal.ui.preferences.EditTemplateDialog_dialogBounds">
 		<item value="947" key="DIALOG_WIDTH"/>
 		<item value="199" key="DIALOG_Y_ORIGIN"/>
-		<item value="347" key="DIALOG_HEIGHT"/>
 		<item value="121" key="DIALOG_X_ORIGIN"/>
+		<item value="347" key="DIALOG_HEIGHT"/>
 		<item value="1|DejaVu Sans|12.5|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.cdt.ui.text.hover.CMacroExpansionExploration">
