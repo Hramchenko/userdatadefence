@@ -141,7 +141,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>31</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -222,6 +222,7 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionNewPolicy"/>
    <addaction name="actionNewFile"/>
    <addaction name="actionOpenFile"/>
    <addaction name="actionSaveFile"/>

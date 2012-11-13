@@ -573,6 +573,7 @@
 
 
 
+
 #
 # Symbolic link (lnk_file)
 #
@@ -684,9 +685,15 @@
 
 
 #
+# Service
+#
+
+
+#
 # All 
 #
-#line 331
+#line 337
+
 
 
 
@@ -715,22 +722,22 @@
 # compatibility:
 
 
-#line 43
+#line 39
 
 
 #
 # Dynamic transition pattern
 #
-#line 52
+#line 48
 
 
 #
 # Other process permissions
 #
-#line 61
+#line 57
 
 
-#line 68
+#line 64
 
 #line 1 "/usr/share/selinux/devel/include/support/all_perms.spt"
 
@@ -815,10 +822,12 @@
 
 
 
-#line 133
 
 
-#line 168
+#line 137
+
+
+#line 172
 
 #line 1 "/usr/share/selinux/devel/include/support/misc_macros.spt"
 
@@ -1022,7 +1031,7 @@
 #
 #line 151
 
-#line 244882 "tmp/all_interfaces.conf"
+#line 293544 "tmp/all_interfaces.conf"
 
 #line 1 "udd.te"
 
@@ -1041,9 +1050,9 @@
 #line 1
 	class security { compute_av compute_create compute_member check_context load_policy compute_relabel compute_user setenforce setbool setsecparam setcheckreqprot read_policy };
 #line 1
-	class process { fork transition sigchld sigkill sigstop signull signal ptrace getsched setsched getsession getpgid setpgid getcap setcap share getattr setexec setfscreate noatsecure siginh setrlimit rlimitinh dyntransition setcurrent execmem execstack execheap setkeycreate setsockcreate };
+	class process { fork transition sigchld sigkill sigstop signull signal ptrace getsched setsched getsession getpgid setpgid getcap setcap share getattr setexec setfscreate noatsecure siginh setrlimit rlimitinh dyntransition setcurrent execmem execstack execheap setkeycreate setsockcreate ptrace_child };
 #line 1
-	class system { ipc_info syslog_read syslog_mod syslog_console module_request };
+	class system { ipc_info syslog_read syslog_mod syslog_console module_request halt reboot status undefined };
 #line 1
 	class capability { chown dac_override dac_read_search fowner fsetid kill setgid setuid setpcap linux_immutable net_bind_service net_broadcast net_admin net_raw ipc_lock ipc_owner sys_module sys_rawio sys_chroot sys_ptrace sys_pacct sys_admin sys_boot sys_nice sys_resource sys_time sys_tty_config mknod lease audit_write audit_control setfcap };
 #line 1
@@ -1136,6 +1145,10 @@
 	class kernel_service { use_as_override create_files_as };
 #line 1
 	class tun_socket { ioctl read write create getattr setattr lock relabelfrom relabelto append bind connect listen accept getopt setopt shutdown recvfrom sendto recv_msg send_msg name_bind };
+#line 1
+	class service { start stop status reload kill load enable disable };
+#line 1
+	class proxy { read };
 #line 1
 
 #line 1
@@ -3216,3563 +3229,2350 @@ category c1023;
 require{
   type audisp_t;
   type sysadm_t;
+  type staff_t;
+  type init_t;
   role system_r; 
 }
 
  	 	
-#line 13
+#line 15
 ##### begin udd_application_create(user_data_defence_bus) depth: 1
-#line 13
+#line 15
  	
-#line 13
+#line 15
   type user_data_defence_bus_t;
-#line 13
+#line 15
   type user_data_defence_bus_exec_t;
-#line 13
+#line 15
    	 	
-#line 13
+#line 15
 ##### begin application_domain(user_data_defence_bus_t,user_data_defence_bus_exec_t) depth: 2
-#line 13
+#line 15
  	
-#line 13
+#line 15
 	 	 	
-#line 13
+#line 15
 ##### begin application_type(user_data_defence_bus_t) depth: 3
-#line 13
+#line 15
  	
-#line 13
+#line 15
 	
-#line 13
+#line 15
 	
-#line 13
+#line 15
 		require {
-#line 13
+#line 15
 			
-#line 13
+#line 15
 		attribute application_domain_type;
-#line 13
+#line 15
 	
-#line 13
+#line 15
 		} # end require
-#line 13
+#line 15
 	
-#line 13
+#line 15
 
-#line 13
+#line 15
 
-#line 13
+#line 15
 	typeattribute user_data_defence_bus_t application_domain_type;
-#line 13
+#line 15
 
-#line 13
+#line 15
 	# start with basic domain
-#line 13
+#line 15
 	 	 	
-#line 13
+#line 15
 ##### begin domain_type(user_data_defence_bus_t) depth: 4
-#line 13
+#line 15
  	
-#line 13
+#line 15
 	# start with basic domain
-#line 13
+#line 15
 	 	 	
-#line 13
+#line 15
 ##### begin domain_base_type(user_data_defence_bus_t) depth: 5
-#line 13
+#line 15
  	
-#line 13
+#line 15
 	
-#line 13
+#line 15
 	
-#line 13
+#line 15
 		require {
-#line 13
+#line 15
 			
-#line 13
+#line 15
 		attribute domain;
-#line 13
+#line 15
 	
-#line 13
+#line 15
 		} # end require
-#line 13
+#line 15
 	
-#line 13
+#line 15
 
-#line 13
+#line 15
 
-#line 13
+#line 15
 	typeattribute user_data_defence_bus_t domain;
-#line 13
+#line 15
 
-#line 13
+#line 15
 	 	
-#line 13
+#line 15
 ##### end domain_base_type(user_data_defence_bus_t) depth: 4
-#line 13
+#line 15
  	
-#line 13
+#line 15
 
-#line 13
-	
-#line 13
-		
-#line 13
-	
-#line 13
-		optional {
-#line 13
-			
-#line 13
-			 	 	
-#line 13
-##### begin unconfined_use_fds(user_data_defence_bus_t) depth: 5
-#line 13
- 	
-#line 13
-	
-#line 13
-	
-#line 13
-		require {
-#line 13
-			
-#line 13
-		type unconfined_t;
-#line 13
-	
-#line 13
-		} # end require
-#line 13
-	
-#line 13
-
-#line 13
-
-#line 13
-	allow user_data_defence_bus_t unconfined_t:fd use;
-#line 13
-
-#line 13
+#line 15
 	 	
-#line 13
-##### end unconfined_use_fds(user_data_defence_bus_t) depth: 4
-#line 13
- 	
-#line 13
-		
-#line 13
-		} # end optional
-#line 13
-	
-#line 13
-
-#line 13
-	
-#line 13
-
-#line 13
-	# send init a sigchld and signull
-#line 13
-	
-#line 13
-	
-#line 13
-		optional {
-#line 13
-			
-#line 13
-		 	 	
-#line 13
-##### begin init_sigchld(user_data_defence_bus_t) depth: 5
-#line 13
- 	
-#line 13
-	
-#line 13
-	
-#line 13
-		require {
-#line 13
-			
-#line 13
-		type init_t;
-#line 13
-	
-#line 13
-		} # end require
-#line 13
-	
-#line 13
-
-#line 13
-
-#line 13
-	allow user_data_defence_bus_t init_t:process sigchld;
-#line 13
-
-#line 13
-	 	
-#line 13
-##### end init_sigchld(user_data_defence_bus_t) depth: 4
-#line 13
- 	
-#line 13
-		 	 	
-#line 13
-##### begin init_signull(user_data_defence_bus_t) depth: 5
-#line 13
- 	
-#line 13
-	
-#line 13
-	
-#line 13
-		require {
-#line 13
-			
-#line 13
-		type init_t;
-#line 13
-	
-#line 13
-		} # end require
-#line 13
-	
-#line 13
-
-#line 13
-
-#line 13
-	allow user_data_defence_bus_t init_t:process signull;
-#line 13
-
-#line 13
-	 	
-#line 13
-##### end init_signull(user_data_defence_bus_t) depth: 4
-#line 13
- 	
-#line 13
-	
-#line 13
-		} # end optional
-#line 13
-	
-#line 13
-
-#line 13
-
-#line 13
-	# these seem questionable:
-#line 13
-
-#line 13
-	
-#line 13
-	
-#line 13
-		optional {
-#line 13
-			
-#line 13
-		 	 	
-#line 13
-##### begin rpm_use_fds(user_data_defence_bus_t) depth: 5
-#line 13
- 	
-#line 13
-	
-#line 13
-	
-#line 13
-		require {
-#line 13
-			
-#line 13
-		type rpm_t;
-#line 13
-	
-#line 13
-		} # end require
-#line 13
-	
-#line 13
-
-#line 13
-
-#line 13
-	allow user_data_defence_bus_t rpm_t:fd use;
-#line 13
-
-#line 13
-	 	
-#line 13
-##### end rpm_use_fds(user_data_defence_bus_t) depth: 4
-#line 13
- 	
-#line 13
-		 	 	
-#line 13
-##### begin rpm_read_pipes(user_data_defence_bus_t) depth: 5
-#line 13
- 	
-#line 13
-	
-#line 13
-	
-#line 13
-		require {
-#line 13
-			
-#line 13
-		type rpm_t;
-#line 13
-	
-#line 13
-		} # end require
-#line 13
-	
-#line 13
-
-#line 13
-
-#line 13
-	allow user_data_defence_bus_t rpm_t:fifo_file { getattr open read lock ioctl };
-#line 13
-
-#line 13
-	 	
-#line 13
-##### end rpm_read_pipes(user_data_defence_bus_t) depth: 4
-#line 13
- 	
-#line 13
-	
-#line 13
-		} # end optional
-#line 13
-	
-#line 13
-
-#line 13
-
-#line 13
-	
-#line 13
-	
-#line 13
-		optional {
-#line 13
-			
-#line 13
-		 	 	
-#line 13
-##### begin selinux_dontaudit_getattr_fs(user_data_defence_bus_t) depth: 5
-#line 13
- 	
-#line 13
-	
-#line 13
-	
-#line 13
-		require {
-#line 13
-			
-#line 13
-		type security_t;
-#line 13
-	
-#line 13
-		} # end require
-#line 13
-	
-#line 13
-
-#line 13
-
-#line 13
-	dontaudit user_data_defence_bus_t security_t:filesystem getattr;
-#line 13
-
-#line 13
-	 	
-#line 13
-##### end selinux_dontaudit_getattr_fs(user_data_defence_bus_t) depth: 4
-#line 13
- 	
-#line 13
-		 	 	
-#line 13
-##### begin selinux_dontaudit_read_fs(user_data_defence_bus_t) depth: 5
-#line 13
- 	
-#line 13
-	
-#line 13
-	
-#line 13
-		require {
-#line 13
-			
-#line 13
-		type security_t;
-#line 13
-	
-#line 13
-		} # end require
-#line 13
-	
-#line 13
-
-#line 13
-
-#line 13
-	 	 	
-#line 13
-##### begin selinux_dontaudit_getattr_fs(user_data_defence_bus_t) depth: 6
-#line 13
- 	
-#line 13
-	
-#line 13
-	
-#line 13
-		require {
-#line 13
-			
-#line 13
-		type security_t;
-#line 13
-	
-#line 13
-		} # end require
-#line 13
-	
-#line 13
-
-#line 13
-
-#line 13
-	dontaudit user_data_defence_bus_t security_t:filesystem getattr;
-#line 13
-
-#line 13
-	 	
-#line 13
-##### end selinux_dontaudit_getattr_fs(user_data_defence_bus_t) depth: 5
-#line 13
- 	
-#line 13
-	dontaudit user_data_defence_bus_t security_t:dir { getattr search open };
-#line 13
-	dontaudit user_data_defence_bus_t security_t:file { open { getattr read ioctl lock } };
-#line 13
-
-#line 13
-	 	
-#line 13
-##### end selinux_dontaudit_read_fs(user_data_defence_bus_t) depth: 4
-#line 13
- 	
-#line 13
-	
-#line 13
-		} # end optional
-#line 13
-	
-#line 13
-
-#line 13
-
-#line 13
-	
-#line 13
-	
-#line 13
-		optional {
-#line 13
-			
-#line 13
-		 	 	
-#line 13
-##### begin seutil_dontaudit_read_config(user_data_defence_bus_t) depth: 5
-#line 13
- 	
-#line 13
-	
-#line 13
-	
-#line 13
-		require {
-#line 13
-			
-#line 13
-		type selinux_config_t;
-#line 13
-	
-#line 13
-		} # end require
-#line 13
-	
-#line 13
-
-#line 13
-
-#line 13
-	dontaudit user_data_defence_bus_t selinux_config_t:dir { getattr search open };
-#line 13
-	dontaudit user_data_defence_bus_t selinux_config_t:file { open { getattr read ioctl lock } };
-#line 13
-
-#line 13
-	 	
-#line 13
-##### end seutil_dontaudit_read_config(user_data_defence_bus_t) depth: 4
-#line 13
- 	
-#line 13
-	
-#line 13
-		} # end optional
-#line 13
-	
-#line 13
-
-#line 13
-
-#line 13
-	 	
-#line 13
+#line 15
 ##### end domain_type(user_data_defence_bus_t) depth: 3
-#line 13
+#line 15
  	
-#line 13
+#line 15
 
-#line 13
+#line 15
 	 	
-#line 13
+#line 15
 ##### end application_type(user_data_defence_bus_t) depth: 2
-#line 13
+#line 15
  	
-#line 13
+#line 15
 	 	 	
-#line 13
+#line 15
 ##### begin application_executable_file(user_data_defence_bus_exec_t) depth: 3
-#line 13
+#line 15
  	
-#line 13
+#line 15
 	
-#line 13
+#line 15
 	
-#line 13
+#line 15
 		require {
-#line 13
+#line 15
 			
-#line 13
+#line 15
 		attribute application_exec_type;
-#line 13
+#line 15
 	
-#line 13
+#line 15
 		} # end require
-#line 13
+#line 15
 	
-#line 13
+#line 15
 
-#line 13
+#line 15
 
-#line 13
+#line 15
 	typeattribute user_data_defence_bus_exec_t application_exec_type;
-#line 13
+#line 15
 
-#line 13
+#line 15
 	 	 	
-#line 13
+#line 15
 ##### begin corecmd_executable_file(user_data_defence_bus_exec_t) depth: 4
-#line 13
+#line 15
  	
-#line 13
+#line 15
 	
-#line 13
+#line 15
 	
-#line 13
+#line 15
 		require {
-#line 13
+#line 15
 			
-#line 13
+#line 15
 		attribute exec_type;
-#line 13
+#line 15
 	
-#line 13
+#line 15
 		} # end require
-#line 13
+#line 15
 	
-#line 13
+#line 15
 
-#line 13
+#line 15
 
-#line 13
+#line 15
 	typeattribute user_data_defence_bus_exec_t exec_type;
-#line 13
+#line 15
 
-#line 13
+#line 15
 	 	 	
-#line 13
+#line 15
 ##### begin files_type(user_data_defence_bus_exec_t) depth: 5
-#line 13
+#line 15
  	
-#line 13
+#line 15
 	
-#line 13
+#line 15
 	
-#line 13
+#line 15
 		require {
-#line 13
+#line 15
 			
-#line 13
+#line 15
 		attribute file_type, non_security_file_type;
-#line 13
+#line 15
 	
-#line 13
+#line 15
 		} # end require
-#line 13
+#line 15
 	
-#line 13
+#line 15
 
-#line 13
+#line 15
 
-#line 13
+#line 15
 	typeattribute user_data_defence_bus_exec_t file_type, non_security_file_type;
-#line 13
+#line 15
 
-#line 13
+#line 15
 	 	
-#line 13
+#line 15
 ##### end files_type(user_data_defence_bus_exec_t) depth: 4
-#line 13
+#line 15
  	
-#line 13
+#line 15
 
-#line 13
+#line 15
 	 	
-#line 13
+#line 15
 ##### end corecmd_executable_file(user_data_defence_bus_exec_t) depth: 3
-#line 13
+#line 15
  	
-#line 13
+#line 15
 
-#line 13
+#line 15
 	 	
-#line 13
+#line 15
 ##### end application_executable_file(user_data_defence_bus_exec_t) depth: 2
-#line 13
+#line 15
  	
-#line 13
+#line 15
 	 	 	
-#line 13
+#line 15
 ##### begin domain_entry_file(user_data_defence_bus_t,user_data_defence_bus_exec_t) depth: 3
-#line 13
+#line 15
  	
-#line 13
+#line 15
 	
-#line 13
+#line 15
 	
-#line 13
+#line 15
 		require {
-#line 13
+#line 15
 			
-#line 13
+#line 15
 		attribute entry_type;
-#line 13
+#line 15
 	
-#line 13
+#line 15
 		} # end require
-#line 13
+#line 15
 	
-#line 13
+#line 15
 
-#line 13
+#line 15
 
-#line 13
+#line 15
 	allow user_data_defence_bus_t user_data_defence_bus_exec_t:file entrypoint;
-#line 13
+#line 15
 	allow user_data_defence_bus_t user_data_defence_bus_exec_t:file { { getattr open read execute ioctl } ioctl lock };
-#line 13
+#line 15
 
-#line 13
+#line 15
 	typeattribute user_data_defence_bus_exec_t entry_type;
-#line 13
+#line 15
 
-#line 13
+#line 15
 	 	 	
-#line 13
+#line 15
 ##### begin corecmd_executable_file(user_data_defence_bus_exec_t) depth: 4
-#line 13
+#line 15
  	
-#line 13
+#line 15
 	
-#line 13
+#line 15
 	
-#line 13
+#line 15
 		require {
-#line 13
+#line 15
 			
-#line 13
+#line 15
 		attribute exec_type;
-#line 13
+#line 15
 	
-#line 13
+#line 15
 		} # end require
-#line 13
+#line 15
 	
-#line 13
+#line 15
 
-#line 13
+#line 15
 
-#line 13
+#line 15
 	typeattribute user_data_defence_bus_exec_t exec_type;
-#line 13
+#line 15
 
-#line 13
+#line 15
 	 	 	
-#line 13
+#line 15
 ##### begin files_type(user_data_defence_bus_exec_t) depth: 5
-#line 13
+#line 15
  	
-#line 13
+#line 15
 	
-#line 13
+#line 15
 	
-#line 13
+#line 15
 		require {
-#line 13
+#line 15
 			
-#line 13
+#line 15
 		attribute file_type, non_security_file_type;
-#line 13
+#line 15
 	
-#line 13
+#line 15
 		} # end require
-#line 13
+#line 15
 	
-#line 13
+#line 15
 
-#line 13
+#line 15
 
-#line 13
+#line 15
 	typeattribute user_data_defence_bus_exec_t file_type, non_security_file_type;
-#line 13
+#line 15
 
-#line 13
+#line 15
 	 	
-#line 13
+#line 15
 ##### end files_type(user_data_defence_bus_exec_t) depth: 4
-#line 13
+#line 15
  	
-#line 13
+#line 15
 
-#line 13
+#line 15
 	 	
-#line 13
+#line 15
 ##### end corecmd_executable_file(user_data_defence_bus_exec_t) depth: 3
-#line 13
+#line 15
  	
-#line 13
+#line 15
 
-#line 13
+#line 15
 	 	
-#line 13
+#line 15
 ##### end domain_entry_file(user_data_defence_bus_t,user_data_defence_bus_exec_t) depth: 2
-#line 13
+#line 15
  	
-#line 13
+#line 15
 
-#line 13
+#line 15
 	 	
-#line 13
+#line 15
 ##### end application_domain(user_data_defence_bus_t,user_data_defence_bus_exec_t) depth: 1
-#line 13
+#line 15
  	;
-#line 13
+#line 15
    	 	
-#line 13
+#line 15
 ##### begin ubac_constrained(user_data_defence_bus_t) depth: 2
-#line 13
+#line 15
  	
-#line 13
+#line 15
 	
-#line 13
+#line 15
 	
-#line 13
+#line 15
 		require {
-#line 13
+#line 15
 			
-#line 13
+#line 15
 		attribute ubac_constrained_type;
-#line 13
+#line 15
 	
-#line 13
+#line 15
 		} # end require
-#line 13
+#line 15
 	
-#line 13
+#line 15
 
-#line 13
+#line 15
 
-#line 13
+#line 15
 	typeattribute user_data_defence_bus_t ubac_constrained_type;
-#line 13
+#line 15
 
-#line 13
+#line 15
 	 	
-#line 13
+#line 15
 ##### end ubac_constrained(user_data_defence_bus_t) depth: 1
-#line 13
+#line 15
  	
-#line 13
+#line 15
 
-#line 13
+#line 15
 	 	
-#line 13
+#line 15
 ##### end udd_application_create(user_data_defence_bus) depth: 0
-#line 13
+#line 15
  	
  	 	
-#line 14
+#line 16
 ##### begin udd_application_user_role(system_r,audisp_t,user_data_defence_bus) depth: 1
-#line 14
+#line 16
  	
-#line 14
+#line 16
   role system_r types user_data_defence_bus_t;
-#line 14
+#line 16
   
-#line 14
+#line 16
 	
-#line 14
+#line 16
 	
-#line 14
+#line 16
 	allow audisp_t user_data_defence_bus_exec_t:file { getattr open read execute };
-#line 14
+#line 16
 	allow audisp_t user_data_defence_bus_t:process transition;
-#line 14
-	dontaudit audisp_t user_data_defence_bus_t:process { noatsecure siginh rlimitinh };
-#line 14
+#line 16
+#	dontaudit audisp_t user_data_defence_bus_t:process { noatsecure siginh rlimitinh };
+#line 16
 
-#line 14
+#line 16
 	type_transition audisp_t user_data_defence_bus_exec_t:process user_data_defence_bus_t;
-#line 14
+#line 16
 
-#line 14
+#line 16
 
-#line 14
+#line 16
 	allow user_data_defence_bus_t audisp_t:fd use;
-#line 14
+#line 16
 	allow user_data_defence_bus_t audisp_t:fifo_file { getattr read write append ioctl lock };
-#line 14
+#line 16
 	allow user_data_defence_bus_t audisp_t:process sigchld;
-#line 14
+#line 16
 
-#line 14
-	
-#line 14
-		dontaudit user_data_defence_bus_t audisp_t:{ socket dccp_socket tcp_socket udp_socket rawip_socket netlink_socket packet_socket unix_stream_socket unix_dgram_socket appletalk_socket netlink_route_socket netlink_firewall_socket netlink_tcpdiag_socket netlink_nflog_socket netlink_xfrm_socket netlink_selinux_socket netlink_audit_socket netlink_ip6fw_socket netlink_dnrt_socket netlink_kobject_uevent_socket tun_socket } { read write };
-#line 14
-	
-#line 14
-
-#line 14
+#line 16
   #domain_auto_trans(audisp_t, user_data_defence_bus_exec_t, user_data_defence_bus_t)
-#line 14
+#line 16
 
-#line 14
+#line 16
 	 	
-#line 14
+#line 16
 ##### end udd_application_user_role(system_r,audisp_t,user_data_defence_bus) depth: 0
-#line 14
+#line 16
  	
 
  	 	
-#line 16
+#line 18
 ##### begin udd_application_create(user_data_defence_daemon) depth: 1
-#line 16
+#line 18
  	
-#line 16
+#line 18
   type user_data_defence_daemon_t;
-#line 16
+#line 18
   type user_data_defence_daemon_exec_t;
-#line 16
+#line 18
    	 	
-#line 16
+#line 18
 ##### begin application_domain(user_data_defence_daemon_t,user_data_defence_daemon_exec_t) depth: 2
-#line 16
+#line 18
  	
-#line 16
+#line 18
 	 	 	
-#line 16
+#line 18
 ##### begin application_type(user_data_defence_daemon_t) depth: 3
-#line 16
+#line 18
  	
-#line 16
+#line 18
 	
-#line 16
+#line 18
 	
-#line 16
+#line 18
 		require {
-#line 16
+#line 18
 			
-#line 16
+#line 18
 		attribute application_domain_type;
-#line 16
+#line 18
 	
-#line 16
+#line 18
 		} # end require
-#line 16
+#line 18
 	
-#line 16
+#line 18
 
-#line 16
+#line 18
 
-#line 16
+#line 18
 	typeattribute user_data_defence_daemon_t application_domain_type;
-#line 16
+#line 18
 
-#line 16
+#line 18
 	# start with basic domain
-#line 16
+#line 18
 	 	 	
-#line 16
+#line 18
 ##### begin domain_type(user_data_defence_daemon_t) depth: 4
-#line 16
+#line 18
  	
-#line 16
+#line 18
 	# start with basic domain
-#line 16
+#line 18
 	 	 	
-#line 16
+#line 18
 ##### begin domain_base_type(user_data_defence_daemon_t) depth: 5
-#line 16
+#line 18
  	
-#line 16
+#line 18
 	
-#line 16
+#line 18
 	
-#line 16
+#line 18
 		require {
-#line 16
+#line 18
 			
-#line 16
+#line 18
 		attribute domain;
-#line 16
+#line 18
 	
-#line 16
+#line 18
 		} # end require
-#line 16
+#line 18
 	
-#line 16
+#line 18
 
-#line 16
+#line 18
 
-#line 16
+#line 18
 	typeattribute user_data_defence_daemon_t domain;
-#line 16
+#line 18
 
-#line 16
+#line 18
 	 	
-#line 16
+#line 18
 ##### end domain_base_type(user_data_defence_daemon_t) depth: 4
-#line 16
+#line 18
  	
-#line 16
+#line 18
 
-#line 16
-	
-#line 16
-		
-#line 16
-	
-#line 16
-		optional {
-#line 16
-			
-#line 16
-			 	 	
-#line 16
-##### begin unconfined_use_fds(user_data_defence_daemon_t) depth: 5
-#line 16
- 	
-#line 16
-	
-#line 16
-	
-#line 16
-		require {
-#line 16
-			
-#line 16
-		type unconfined_t;
-#line 16
-	
-#line 16
-		} # end require
-#line 16
-	
-#line 16
-
-#line 16
-
-#line 16
-	allow user_data_defence_daemon_t unconfined_t:fd use;
-#line 16
-
-#line 16
+#line 18
 	 	
-#line 16
-##### end unconfined_use_fds(user_data_defence_daemon_t) depth: 4
-#line 16
- 	
-#line 16
-		
-#line 16
-		} # end optional
-#line 16
-	
-#line 16
-
-#line 16
-	
-#line 16
-
-#line 16
-	# send init a sigchld and signull
-#line 16
-	
-#line 16
-	
-#line 16
-		optional {
-#line 16
-			
-#line 16
-		 	 	
-#line 16
-##### begin init_sigchld(user_data_defence_daemon_t) depth: 5
-#line 16
- 	
-#line 16
-	
-#line 16
-	
-#line 16
-		require {
-#line 16
-			
-#line 16
-		type init_t;
-#line 16
-	
-#line 16
-		} # end require
-#line 16
-	
-#line 16
-
-#line 16
-
-#line 16
-	allow user_data_defence_daemon_t init_t:process sigchld;
-#line 16
-
-#line 16
-	 	
-#line 16
-##### end init_sigchld(user_data_defence_daemon_t) depth: 4
-#line 16
- 	
-#line 16
-		 	 	
-#line 16
-##### begin init_signull(user_data_defence_daemon_t) depth: 5
-#line 16
- 	
-#line 16
-	
-#line 16
-	
-#line 16
-		require {
-#line 16
-			
-#line 16
-		type init_t;
-#line 16
-	
-#line 16
-		} # end require
-#line 16
-	
-#line 16
-
-#line 16
-
-#line 16
-	allow user_data_defence_daemon_t init_t:process signull;
-#line 16
-
-#line 16
-	 	
-#line 16
-##### end init_signull(user_data_defence_daemon_t) depth: 4
-#line 16
- 	
-#line 16
-	
-#line 16
-		} # end optional
-#line 16
-	
-#line 16
-
-#line 16
-
-#line 16
-	# these seem questionable:
-#line 16
-
-#line 16
-	
-#line 16
-	
-#line 16
-		optional {
-#line 16
-			
-#line 16
-		 	 	
-#line 16
-##### begin rpm_use_fds(user_data_defence_daemon_t) depth: 5
-#line 16
- 	
-#line 16
-	
-#line 16
-	
-#line 16
-		require {
-#line 16
-			
-#line 16
-		type rpm_t;
-#line 16
-	
-#line 16
-		} # end require
-#line 16
-	
-#line 16
-
-#line 16
-
-#line 16
-	allow user_data_defence_daemon_t rpm_t:fd use;
-#line 16
-
-#line 16
-	 	
-#line 16
-##### end rpm_use_fds(user_data_defence_daemon_t) depth: 4
-#line 16
- 	
-#line 16
-		 	 	
-#line 16
-##### begin rpm_read_pipes(user_data_defence_daemon_t) depth: 5
-#line 16
- 	
-#line 16
-	
-#line 16
-	
-#line 16
-		require {
-#line 16
-			
-#line 16
-		type rpm_t;
-#line 16
-	
-#line 16
-		} # end require
-#line 16
-	
-#line 16
-
-#line 16
-
-#line 16
-	allow user_data_defence_daemon_t rpm_t:fifo_file { getattr open read lock ioctl };
-#line 16
-
-#line 16
-	 	
-#line 16
-##### end rpm_read_pipes(user_data_defence_daemon_t) depth: 4
-#line 16
- 	
-#line 16
-	
-#line 16
-		} # end optional
-#line 16
-	
-#line 16
-
-#line 16
-
-#line 16
-	
-#line 16
-	
-#line 16
-		optional {
-#line 16
-			
-#line 16
-		 	 	
-#line 16
-##### begin selinux_dontaudit_getattr_fs(user_data_defence_daemon_t) depth: 5
-#line 16
- 	
-#line 16
-	
-#line 16
-	
-#line 16
-		require {
-#line 16
-			
-#line 16
-		type security_t;
-#line 16
-	
-#line 16
-		} # end require
-#line 16
-	
-#line 16
-
-#line 16
-
-#line 16
-	dontaudit user_data_defence_daemon_t security_t:filesystem getattr;
-#line 16
-
-#line 16
-	 	
-#line 16
-##### end selinux_dontaudit_getattr_fs(user_data_defence_daemon_t) depth: 4
-#line 16
- 	
-#line 16
-		 	 	
-#line 16
-##### begin selinux_dontaudit_read_fs(user_data_defence_daemon_t) depth: 5
-#line 16
- 	
-#line 16
-	
-#line 16
-	
-#line 16
-		require {
-#line 16
-			
-#line 16
-		type security_t;
-#line 16
-	
-#line 16
-		} # end require
-#line 16
-	
-#line 16
-
-#line 16
-
-#line 16
-	 	 	
-#line 16
-##### begin selinux_dontaudit_getattr_fs(user_data_defence_daemon_t) depth: 6
-#line 16
- 	
-#line 16
-	
-#line 16
-	
-#line 16
-		require {
-#line 16
-			
-#line 16
-		type security_t;
-#line 16
-	
-#line 16
-		} # end require
-#line 16
-	
-#line 16
-
-#line 16
-
-#line 16
-	dontaudit user_data_defence_daemon_t security_t:filesystem getattr;
-#line 16
-
-#line 16
-	 	
-#line 16
-##### end selinux_dontaudit_getattr_fs(user_data_defence_daemon_t) depth: 5
-#line 16
- 	
-#line 16
-	dontaudit user_data_defence_daemon_t security_t:dir { getattr search open };
-#line 16
-	dontaudit user_data_defence_daemon_t security_t:file { open { getattr read ioctl lock } };
-#line 16
-
-#line 16
-	 	
-#line 16
-##### end selinux_dontaudit_read_fs(user_data_defence_daemon_t) depth: 4
-#line 16
- 	
-#line 16
-	
-#line 16
-		} # end optional
-#line 16
-	
-#line 16
-
-#line 16
-
-#line 16
-	
-#line 16
-	
-#line 16
-		optional {
-#line 16
-			
-#line 16
-		 	 	
-#line 16
-##### begin seutil_dontaudit_read_config(user_data_defence_daemon_t) depth: 5
-#line 16
- 	
-#line 16
-	
-#line 16
-	
-#line 16
-		require {
-#line 16
-			
-#line 16
-		type selinux_config_t;
-#line 16
-	
-#line 16
-		} # end require
-#line 16
-	
-#line 16
-
-#line 16
-
-#line 16
-	dontaudit user_data_defence_daemon_t selinux_config_t:dir { getattr search open };
-#line 16
-	dontaudit user_data_defence_daemon_t selinux_config_t:file { open { getattr read ioctl lock } };
-#line 16
-
-#line 16
-	 	
-#line 16
-##### end seutil_dontaudit_read_config(user_data_defence_daemon_t) depth: 4
-#line 16
- 	
-#line 16
-	
-#line 16
-		} # end optional
-#line 16
-	
-#line 16
-
-#line 16
-
-#line 16
-	 	
-#line 16
+#line 18
 ##### end domain_type(user_data_defence_daemon_t) depth: 3
-#line 16
+#line 18
  	
-#line 16
+#line 18
 
-#line 16
+#line 18
 	 	
-#line 16
+#line 18
 ##### end application_type(user_data_defence_daemon_t) depth: 2
-#line 16
+#line 18
  	
-#line 16
+#line 18
 	 	 	
-#line 16
+#line 18
 ##### begin application_executable_file(user_data_defence_daemon_exec_t) depth: 3
-#line 16
+#line 18
  	
-#line 16
+#line 18
 	
-#line 16
+#line 18
 	
-#line 16
+#line 18
 		require {
-#line 16
+#line 18
 			
-#line 16
+#line 18
 		attribute application_exec_type;
-#line 16
+#line 18
 	
-#line 16
+#line 18
 		} # end require
-#line 16
+#line 18
 	
-#line 16
+#line 18
 
-#line 16
+#line 18
 
-#line 16
+#line 18
 	typeattribute user_data_defence_daemon_exec_t application_exec_type;
-#line 16
+#line 18
 
-#line 16
+#line 18
 	 	 	
-#line 16
+#line 18
 ##### begin corecmd_executable_file(user_data_defence_daemon_exec_t) depth: 4
-#line 16
+#line 18
  	
-#line 16
+#line 18
 	
-#line 16
+#line 18
 	
-#line 16
+#line 18
 		require {
-#line 16
+#line 18
 			
-#line 16
+#line 18
 		attribute exec_type;
-#line 16
+#line 18
 	
-#line 16
+#line 18
 		} # end require
-#line 16
+#line 18
 	
-#line 16
+#line 18
 
-#line 16
+#line 18
 
-#line 16
+#line 18
 	typeattribute user_data_defence_daemon_exec_t exec_type;
-#line 16
+#line 18
 
-#line 16
+#line 18
 	 	 	
-#line 16
+#line 18
 ##### begin files_type(user_data_defence_daemon_exec_t) depth: 5
-#line 16
+#line 18
  	
-#line 16
+#line 18
 	
-#line 16
+#line 18
 	
-#line 16
+#line 18
 		require {
-#line 16
+#line 18
 			
-#line 16
+#line 18
 		attribute file_type, non_security_file_type;
-#line 16
+#line 18
 	
-#line 16
+#line 18
 		} # end require
-#line 16
+#line 18
 	
-#line 16
+#line 18
 
-#line 16
+#line 18
 
-#line 16
+#line 18
 	typeattribute user_data_defence_daemon_exec_t file_type, non_security_file_type;
-#line 16
+#line 18
 
-#line 16
+#line 18
 	 	
-#line 16
+#line 18
 ##### end files_type(user_data_defence_daemon_exec_t) depth: 4
-#line 16
+#line 18
  	
-#line 16
+#line 18
 
-#line 16
+#line 18
 	 	
-#line 16
+#line 18
 ##### end corecmd_executable_file(user_data_defence_daemon_exec_t) depth: 3
-#line 16
+#line 18
  	
-#line 16
+#line 18
 
-#line 16
+#line 18
 	 	
-#line 16
+#line 18
 ##### end application_executable_file(user_data_defence_daemon_exec_t) depth: 2
-#line 16
+#line 18
  	
-#line 16
+#line 18
 	 	 	
-#line 16
+#line 18
 ##### begin domain_entry_file(user_data_defence_daemon_t,user_data_defence_daemon_exec_t) depth: 3
-#line 16
+#line 18
  	
-#line 16
+#line 18
 	
-#line 16
+#line 18
 	
-#line 16
+#line 18
 		require {
-#line 16
+#line 18
 			
-#line 16
+#line 18
 		attribute entry_type;
-#line 16
+#line 18
 	
-#line 16
+#line 18
 		} # end require
-#line 16
+#line 18
 	
-#line 16
+#line 18
 
-#line 16
+#line 18
 
-#line 16
+#line 18
 	allow user_data_defence_daemon_t user_data_defence_daemon_exec_t:file entrypoint;
-#line 16
+#line 18
 	allow user_data_defence_daemon_t user_data_defence_daemon_exec_t:file { { getattr open read execute ioctl } ioctl lock };
-#line 16
+#line 18
 
-#line 16
+#line 18
 	typeattribute user_data_defence_daemon_exec_t entry_type;
-#line 16
+#line 18
 
-#line 16
+#line 18
 	 	 	
-#line 16
+#line 18
 ##### begin corecmd_executable_file(user_data_defence_daemon_exec_t) depth: 4
-#line 16
+#line 18
  	
-#line 16
+#line 18
 	
-#line 16
+#line 18
 	
-#line 16
+#line 18
 		require {
-#line 16
+#line 18
 			
-#line 16
+#line 18
 		attribute exec_type;
-#line 16
+#line 18
 	
-#line 16
+#line 18
 		} # end require
-#line 16
+#line 18
 	
-#line 16
+#line 18
 
-#line 16
+#line 18
 
-#line 16
+#line 18
 	typeattribute user_data_defence_daemon_exec_t exec_type;
-#line 16
+#line 18
 
-#line 16
+#line 18
 	 	 	
-#line 16
+#line 18
 ##### begin files_type(user_data_defence_daemon_exec_t) depth: 5
-#line 16
+#line 18
  	
-#line 16
+#line 18
 	
-#line 16
+#line 18
 	
-#line 16
+#line 18
 		require {
-#line 16
+#line 18
 			
-#line 16
+#line 18
 		attribute file_type, non_security_file_type;
-#line 16
+#line 18
 	
-#line 16
+#line 18
 		} # end require
-#line 16
+#line 18
 	
-#line 16
+#line 18
 
-#line 16
+#line 18
 
-#line 16
+#line 18
 	typeattribute user_data_defence_daemon_exec_t file_type, non_security_file_type;
-#line 16
+#line 18
 
-#line 16
+#line 18
 	 	
-#line 16
+#line 18
 ##### end files_type(user_data_defence_daemon_exec_t) depth: 4
-#line 16
+#line 18
  	
-#line 16
+#line 18
 
-#line 16
+#line 18
 	 	
-#line 16
+#line 18
 ##### end corecmd_executable_file(user_data_defence_daemon_exec_t) depth: 3
-#line 16
+#line 18
  	
-#line 16
+#line 18
 
-#line 16
+#line 18
 	 	
-#line 16
+#line 18
 ##### end domain_entry_file(user_data_defence_daemon_t,user_data_defence_daemon_exec_t) depth: 2
-#line 16
+#line 18
  	
-#line 16
+#line 18
 
-#line 16
+#line 18
 	 	
-#line 16
+#line 18
 ##### end application_domain(user_data_defence_daemon_t,user_data_defence_daemon_exec_t) depth: 1
-#line 16
+#line 18
  	;
-#line 16
+#line 18
    	 	
-#line 16
+#line 18
 ##### begin ubac_constrained(user_data_defence_daemon_t) depth: 2
-#line 16
+#line 18
  	
-#line 16
+#line 18
 	
-#line 16
+#line 18
 	
-#line 16
+#line 18
 		require {
-#line 16
+#line 18
 			
-#line 16
+#line 18
 		attribute ubac_constrained_type;
-#line 16
+#line 18
 	
-#line 16
+#line 18
 		} # end require
-#line 16
+#line 18
 	
-#line 16
+#line 18
 
-#line 16
+#line 18
 
-#line 16
+#line 18
 	typeattribute user_data_defence_daemon_t ubac_constrained_type;
-#line 16
+#line 18
 
-#line 16
+#line 18
 	 	
-#line 16
+#line 18
 ##### end ubac_constrained(user_data_defence_daemon_t) depth: 1
-#line 16
+#line 18
  	
-#line 16
+#line 18
 
-#line 16
+#line 18
 	 	
-#line 16
+#line 18
 ##### end udd_application_create(user_data_defence_daemon) depth: 0
-#line 16
- 	
- 	 	
-#line 17
-##### begin udd_application_user_role(system_r,initrc_t,user_data_defence_daemon) depth: 1
-#line 17
- 	
-#line 17
-  role system_r types user_data_defence_daemon_t;
-#line 17
-  
-#line 17
-	
-#line 17
-	
-#line 17
-	allow initrc_t user_data_defence_daemon_exec_t:file { getattr open read execute };
-#line 17
-	allow initrc_t user_data_defence_daemon_t:process transition;
-#line 17
-	dontaudit initrc_t user_data_defence_daemon_t:process { noatsecure siginh rlimitinh };
-#line 17
-
-#line 17
-	type_transition initrc_t user_data_defence_daemon_exec_t:process user_data_defence_daemon_t;
-#line 17
-
-#line 17
-
-#line 17
-	allow user_data_defence_daemon_t initrc_t:fd use;
-#line 17
-	allow user_data_defence_daemon_t initrc_t:fifo_file { getattr read write append ioctl lock };
-#line 17
-	allow user_data_defence_daemon_t initrc_t:process sigchld;
-#line 17
-
-#line 17
-	
-#line 17
-		dontaudit user_data_defence_daemon_t initrc_t:{ socket dccp_socket tcp_socket udp_socket rawip_socket netlink_socket packet_socket unix_stream_socket unix_dgram_socket appletalk_socket netlink_route_socket netlink_firewall_socket netlink_tcpdiag_socket netlink_nflog_socket netlink_xfrm_socket netlink_selinux_socket netlink_audit_socket netlink_ip6fw_socket netlink_dnrt_socket netlink_kobject_uevent_socket tun_socket } { read write };
-#line 17
-	
-#line 17
-
-#line 17
-  #domain_auto_trans(initrc_t, user_data_defence_daemon_exec_t, user_data_defence_daemon_t)
-#line 17
-
-#line 17
-	 	
-#line 17
-##### end udd_application_user_role(system_r,initrc_t,user_data_defence_daemon) depth: 0
-#line 17
- 	
- 	 	
 #line 18
+ 	
+ 	 	
+#line 19
 ##### begin udd_application_user_role(system_r,init_t,user_data_defence_daemon) depth: 1
-#line 18
+#line 19
  	
-#line 18
+#line 19
   role system_r types user_data_defence_daemon_t;
-#line 18
+#line 19
   
-#line 18
+#line 19
 	
-#line 18
+#line 19
 	
-#line 18
+#line 19
 	allow init_t user_data_defence_daemon_exec_t:file { getattr open read execute };
-#line 18
+#line 19
 	allow init_t user_data_defence_daemon_t:process transition;
-#line 18
-	dontaudit init_t user_data_defence_daemon_t:process { noatsecure siginh rlimitinh };
-#line 18
+#line 19
+#	dontaudit init_t user_data_defence_daemon_t:process { noatsecure siginh rlimitinh };
+#line 19
 
-#line 18
+#line 19
 	type_transition init_t user_data_defence_daemon_exec_t:process user_data_defence_daemon_t;
-#line 18
+#line 19
 
-#line 18
+#line 19
 
-#line 18
+#line 19
 	allow user_data_defence_daemon_t init_t:fd use;
-#line 18
+#line 19
 	allow user_data_defence_daemon_t init_t:fifo_file { getattr read write append ioctl lock };
-#line 18
+#line 19
 	allow user_data_defence_daemon_t init_t:process sigchld;
-#line 18
+#line 19
 
-#line 18
-	
-#line 18
-		dontaudit user_data_defence_daemon_t init_t:{ socket dccp_socket tcp_socket udp_socket rawip_socket netlink_socket packet_socket unix_stream_socket unix_dgram_socket appletalk_socket netlink_route_socket netlink_firewall_socket netlink_tcpdiag_socket netlink_nflog_socket netlink_xfrm_socket netlink_selinux_socket netlink_audit_socket netlink_ip6fw_socket netlink_dnrt_socket netlink_kobject_uevent_socket tun_socket } { read write };
-#line 18
-	
-#line 18
-
-#line 18
+#line 19
   #domain_auto_trans(init_t, user_data_defence_daemon_exec_t, user_data_defence_daemon_t)
-#line 18
+#line 19
 
-#line 18
+#line 19
 	 	
-#line 18
+#line 19
 ##### end udd_application_user_role(system_r,init_t,user_data_defence_daemon) depth: 0
-#line 18
+#line 19
  	
 
  	 	
-#line 20
+#line 21
 ##### begin udd_application_dbus_access(user_data_defence_bus,user_data_defence_daemon_t) depth: 1
-#line 20
+#line 21
  	
-#line 20
+#line 21
   require{
-#line 20
+#line 21
     class dbus send_msg;
-#line 20
+#line 21
   }
-#line 20
+#line 21
   allow user_data_defence_daemon_t user_data_defence_bus_t:dbus send_msg;
-#line 20
+#line 21
   allow user_data_defence_bus_t user_data_defence_daemon_t:dbus send_msg;
-#line 20
+#line 21
    	 	
-#line 20
+#line 21
 ##### begin dbus_system_bus_client(user_data_defence_bus_t) depth: 2
-#line 20
+#line 21
  	
-#line 20
+#line 21
 	
-#line 20
+#line 21
 	
-#line 20
+#line 21
 		require {
-#line 20
+#line 21
 			
-#line 20
+#line 21
 		type system_dbusd_t, system_dbusd_t;
-#line 20
+#line 21
 		type system_dbusd_var_run_t, system_dbusd_var_lib_t;
-#line 20
+#line 21
 		class dbus send_msg;
-#line 20
+#line 21
 		attribute dbusd_unconfined;
-#line 20
+#line 21
 	
-#line 20
+#line 21
 		} # end require
-#line 20
+#line 21
 	
-#line 20
+#line 21
 
-#line 20
+#line 21
 
-#line 20
+#line 21
 	# SE-DBus specific permissions
-#line 20
+#line 21
 	allow user_data_defence_bus_t { system_dbusd_t self }:dbus send_msg;
-#line 20
+#line 21
 	allow { system_dbusd_t dbusd_unconfined } user_data_defence_bus_t:dbus send_msg;
-#line 20
+#line 21
 
-#line 20
+#line 21
 	
-#line 20
+#line 21
 	allow user_data_defence_bus_t system_dbusd_var_lib_t:dir { getattr search open };
-#line 20
+#line 21
 	allow user_data_defence_bus_t system_dbusd_var_lib_t:file { open { getattr read ioctl lock } };
-#line 20
+#line 21
 
-#line 20
+#line 21
 	 	 	
-#line 20
+#line 21
 ##### begin files_search_var_lib(user_data_defence_bus_t) depth: 3
-#line 20
+#line 21
  	
-#line 20
+#line 21
 	
-#line 20
+#line 21
 	
-#line 20
+#line 21
 		require {
-#line 20
+#line 21
 			
-#line 20
+#line 21
 		type var_t, var_lib_t;
-#line 20
+#line 21
 	
-#line 20
+#line 21
 		} # end require
-#line 20
+#line 21
 	
-#line 20
+#line 21
 
-#line 20
+#line 21
 
-#line 20
+#line 21
 	
-#line 20
+#line 21
 	allow user_data_defence_bus_t var_t:dir { getattr search open };
-#line 20
+#line 21
 	allow user_data_defence_bus_t var_lib_t:dir { getattr search open };
-#line 20
+#line 21
 
-#line 20
+#line 21
 
-#line 20
+#line 21
 	 	
-#line 20
+#line 21
 ##### end files_search_var_lib(user_data_defence_bus_t) depth: 2
-#line 20
+#line 21
  	
-#line 20
+#line 21
 
-#line 20
+#line 21
 	# For connecting to the bus
-#line 20
+#line 21
 	 	 	
-#line 20
+#line 21
 ##### begin files_search_pids(user_data_defence_bus_t) depth: 3
-#line 20
+#line 21
  	
-#line 20
+#line 21
 	
-#line 20
+#line 21
 	
-#line 20
+#line 21
 		require {
-#line 20
+#line 21
 			
-#line 20
+#line 21
 		type var_t, var_run_t;
-#line 20
+#line 21
 	
-#line 20
+#line 21
 		} # end require
-#line 20
+#line 21
 	
-#line 20
+#line 21
 
-#line 20
+#line 21
 
-#line 20
+#line 21
 	allow user_data_defence_bus_t var_run_t:lnk_file { getattr read };
-#line 20
+#line 21
 	
-#line 20
+#line 21
 	allow user_data_defence_bus_t var_t:dir { getattr search open };
-#line 20
+#line 21
 	allow user_data_defence_bus_t var_run_t:dir { getattr search open };
-#line 20
+#line 21
 
-#line 20
+#line 21
 
-#line 20
+#line 21
 	 	
-#line 20
+#line 21
 ##### end files_search_pids(user_data_defence_bus_t) depth: 2
-#line 20
+#line 21
  	
-#line 20
+#line 21
 	
-#line 20
+#line 21
 	allow user_data_defence_bus_t system_dbusd_var_run_t:dir { getattr search open };
-#line 20
+#line 21
 	allow user_data_defence_bus_t system_dbusd_var_run_t:sock_file { getattr write open append };
-#line 20
+#line 21
 	allow user_data_defence_bus_t system_dbusd_t:unix_stream_socket connectto;
-#line 20
+#line 21
 
-#line 20
+#line 21
 	 	 	
-#line 20
+#line 21
 ##### begin dbus_read_config(user_data_defence_bus_t) depth: 3
-#line 20
+#line 21
  	
-#line 20
+#line 21
 	
-#line 20
+#line 21
 	
-#line 20
+#line 21
 		require {
-#line 20
+#line 21
 			
-#line 20
+#line 21
 		type dbusd_etc_t;
-#line 20
+#line 21
 	
-#line 20
+#line 21
 		} # end require
-#line 20
+#line 21
 	
-#line 20
+#line 21
 
-#line 20
+#line 21
 
-#line 20
+#line 21
 	allow user_data_defence_bus_t dbusd_etc_t:dir { getattr search open read lock ioctl };
-#line 20
+#line 21
 	allow user_data_defence_bus_t dbusd_etc_t:file { open { getattr read ioctl lock } };
-#line 20
+#line 21
 
-#line 20
+#line 21
 	 	
-#line 20
+#line 21
 ##### end dbus_read_config(user_data_defence_bus_t) depth: 2
-#line 20
+#line 21
  	
-#line 20
+#line 21
 
-#line 20
+#line 21
 	 	
-#line 20
+#line 21
 ##### end dbus_system_bus_client(user_data_defence_bus_t) depth: 1
-#line 20
+#line 21
  	;
-#line 20
+#line 21
    	 	
-#line 20
+#line 21
 ##### begin dbus_session_bus_client(user_data_defence_bus_t) depth: 2
-#line 20
+#line 21
  	
-#line 20
+#line 21
 	
-#line 20
+#line 21
 	
-#line 20
+#line 21
 		require {
-#line 20
+#line 21
 			
-#line 20
+#line 21
 		attribute session_bus_type;
-#line 20
+#line 21
 		class dbus send_msg;
-#line 20
+#line 21
 	
-#line 20
+#line 21
 		} # end require
-#line 20
+#line 21
 	
-#line 20
+#line 21
 
-#line 20
+#line 21
 
-#line 20
+#line 21
 	# SE-DBus specific permissions
-#line 20
+#line 21
 	allow user_data_defence_bus_t { session_bus_type self }:dbus send_msg;
-#line 20
+#line 21
 
-#line 20
+#line 21
 	# For connecting to the bus
-#line 20
+#line 21
 	allow user_data_defence_bus_t session_bus_type:unix_stream_socket connectto;
-#line 20
+#line 21
 
-#line 20
+#line 21
 	allow session_bus_type user_data_defence_bus_t:process sigkill;
-#line 20
+#line 21
 
-#line 20
+#line 21
 	 	
-#line 20
+#line 21
 ##### end dbus_session_bus_client(user_data_defence_bus_t) depth: 1
-#line 20
+#line 21
  	;
-#line 20
+#line 21
    	 	
-#line 20
+#line 21
 ##### begin dbus_read_lib_files(user_data_defence_bus_t) depth: 2
-#line 20
+#line 21
  	
-#line 20
+#line 21
 	
-#line 20
+#line 21
 	
-#line 20
+#line 21
 		require {
-#line 20
+#line 21
 			
-#line 20
+#line 21
 		type system_dbusd_var_lib_t;
-#line 20
+#line 21
 	
-#line 20
+#line 21
 		} # end require
-#line 20
+#line 21
 	
-#line 20
+#line 21
 
-#line 20
+#line 21
 
-#line 20
+#line 21
 	 	 	
-#line 20
+#line 21
 ##### begin files_search_var_lib(user_data_defence_bus_t) depth: 3
-#line 20
+#line 21
  	
-#line 20
+#line 21
 	
-#line 20
+#line 21
 	
-#line 20
+#line 21
 		require {
-#line 20
+#line 21
 			
-#line 20
+#line 21
 		type var_t, var_lib_t;
-#line 20
+#line 21
 	
-#line 20
+#line 21
 		} # end require
-#line 20
+#line 21
 	
-#line 20
+#line 21
 
-#line 20
+#line 21
 
-#line 20
+#line 21
 	
-#line 20
+#line 21
 	allow user_data_defence_bus_t var_t:dir { getattr search open };
-#line 20
+#line 21
 	allow user_data_defence_bus_t var_lib_t:dir { getattr search open };
-#line 20
+#line 21
 
-#line 20
+#line 21
 
-#line 20
+#line 21
 	 	
-#line 20
+#line 21
 ##### end files_search_var_lib(user_data_defence_bus_t) depth: 2
-#line 20
+#line 21
  	
-#line 20
+#line 21
 	
-#line 20
+#line 21
 	allow user_data_defence_bus_t system_dbusd_var_lib_t:dir { getattr search open };
-#line 20
+#line 21
 	allow user_data_defence_bus_t system_dbusd_var_lib_t:file { open { getattr read ioctl lock } };
-#line 20
+#line 21
 
-#line 20
+#line 21
 
-#line 20
+#line 21
 	 	
-#line 20
+#line 21
 ##### end dbus_read_lib_files(user_data_defence_bus_t) depth: 1
-#line 20
+#line 21
  	;
-#line 20
+#line 21
    	 	
-#line 20
+#line 21
 ##### begin dbus_unconfined(user_data_defence_bus_t) depth: 2
-#line 20
+#line 21
  	
-#line 20
+#line 21
 	
-#line 20
+#line 21
 	
-#line 20
+#line 21
 		require {
-#line 20
+#line 21
 			
-#line 20
+#line 21
 		attribute dbusd_unconfined;
-#line 20
+#line 21
 	
-#line 20
+#line 21
 		} # end require
-#line 20
+#line 21
 	
-#line 20
+#line 21
 
-#line 20
+#line 21
 
-#line 20
+#line 21
 	typeattribute user_data_defence_bus_t dbusd_unconfined;
-#line 20
+#line 21
 
-#line 20
+#line 21
 	 	
-#line 20
+#line 21
 ##### end dbus_unconfined(user_data_defence_bus_t) depth: 1
-#line 20
+#line 21
  	
-#line 20
+#line 21
 
-#line 20
+#line 21
 	 	
-#line 20
+#line 21
 ##### end udd_application_dbus_access(user_data_defence_bus,user_data_defence_daemon_t) depth: 0
-#line 20
+#line 21
  	
  	 	
-#line 21
+#line 22
 ##### begin udd_application_dbus_access(user_data_defence_daemon,staff_t) depth: 1
-#line 21
+#line 22
  	
-#line 21
+#line 22
   require{
-#line 21
+#line 22
     class dbus send_msg;
-#line 21
+#line 22
   }
-#line 21
+#line 22
   allow staff_t user_data_defence_daemon_t:dbus send_msg;
-#line 21
+#line 22
   allow user_data_defence_daemon_t staff_t:dbus send_msg;
-#line 21
+#line 22
    	 	
-#line 21
+#line 22
 ##### begin dbus_system_bus_client(user_data_defence_daemon_t) depth: 2
-#line 21
+#line 22
  	
-#line 21
+#line 22
 	
-#line 21
+#line 22
 	
-#line 21
+#line 22
 		require {
-#line 21
+#line 22
 			
-#line 21
+#line 22
 		type system_dbusd_t, system_dbusd_t;
-#line 21
+#line 22
 		type system_dbusd_var_run_t, system_dbusd_var_lib_t;
-#line 21
+#line 22
 		class dbus send_msg;
-#line 21
+#line 22
 		attribute dbusd_unconfined;
-#line 21
+#line 22
 	
-#line 21
+#line 22
 		} # end require
-#line 21
+#line 22
 	
-#line 21
+#line 22
 
-#line 21
+#line 22
 
-#line 21
+#line 22
 	# SE-DBus specific permissions
-#line 21
+#line 22
 	allow user_data_defence_daemon_t { system_dbusd_t self }:dbus send_msg;
-#line 21
+#line 22
 	allow { system_dbusd_t dbusd_unconfined } user_data_defence_daemon_t:dbus send_msg;
-#line 21
+#line 22
 
-#line 21
+#line 22
 	
-#line 21
+#line 22
 	allow user_data_defence_daemon_t system_dbusd_var_lib_t:dir { getattr search open };
-#line 21
+#line 22
 	allow user_data_defence_daemon_t system_dbusd_var_lib_t:file { open { getattr read ioctl lock } };
-#line 21
+#line 22
 
-#line 21
+#line 22
 	 	 	
-#line 21
+#line 22
 ##### begin files_search_var_lib(user_data_defence_daemon_t) depth: 3
-#line 21
+#line 22
  	
-#line 21
+#line 22
 	
-#line 21
+#line 22
 	
-#line 21
+#line 22
 		require {
-#line 21
+#line 22
 			
-#line 21
+#line 22
 		type var_t, var_lib_t;
-#line 21
+#line 22
 	
-#line 21
+#line 22
 		} # end require
-#line 21
+#line 22
 	
-#line 21
+#line 22
 
-#line 21
+#line 22
 
-#line 21
+#line 22
 	
-#line 21
+#line 22
 	allow user_data_defence_daemon_t var_t:dir { getattr search open };
-#line 21
+#line 22
 	allow user_data_defence_daemon_t var_lib_t:dir { getattr search open };
-#line 21
+#line 22
 
-#line 21
+#line 22
 
-#line 21
+#line 22
 	 	
-#line 21
+#line 22
 ##### end files_search_var_lib(user_data_defence_daemon_t) depth: 2
-#line 21
+#line 22
  	
-#line 21
+#line 22
 
-#line 21
+#line 22
 	# For connecting to the bus
-#line 21
+#line 22
 	 	 	
-#line 21
+#line 22
 ##### begin files_search_pids(user_data_defence_daemon_t) depth: 3
-#line 21
+#line 22
  	
-#line 21
+#line 22
 	
-#line 21
+#line 22
 	
-#line 21
+#line 22
 		require {
-#line 21
+#line 22
 			
-#line 21
+#line 22
 		type var_t, var_run_t;
-#line 21
+#line 22
 	
-#line 21
+#line 22
 		} # end require
-#line 21
+#line 22
 	
-#line 21
+#line 22
 
-#line 21
+#line 22
 
-#line 21
+#line 22
 	allow user_data_defence_daemon_t var_run_t:lnk_file { getattr read };
-#line 21
+#line 22
 	
-#line 21
+#line 22
 	allow user_data_defence_daemon_t var_t:dir { getattr search open };
-#line 21
+#line 22
 	allow user_data_defence_daemon_t var_run_t:dir { getattr search open };
-#line 21
+#line 22
 
-#line 21
+#line 22
 
-#line 21
+#line 22
 	 	
-#line 21
+#line 22
 ##### end files_search_pids(user_data_defence_daemon_t) depth: 2
-#line 21
+#line 22
  	
-#line 21
+#line 22
 	
-#line 21
+#line 22
 	allow user_data_defence_daemon_t system_dbusd_var_run_t:dir { getattr search open };
-#line 21
+#line 22
 	allow user_data_defence_daemon_t system_dbusd_var_run_t:sock_file { getattr write open append };
-#line 21
+#line 22
 	allow user_data_defence_daemon_t system_dbusd_t:unix_stream_socket connectto;
-#line 21
+#line 22
 
-#line 21
+#line 22
 	 	 	
-#line 21
+#line 22
 ##### begin dbus_read_config(user_data_defence_daemon_t) depth: 3
-#line 21
+#line 22
  	
-#line 21
+#line 22
 	
-#line 21
+#line 22
 	
-#line 21
+#line 22
 		require {
-#line 21
+#line 22
 			
-#line 21
+#line 22
 		type dbusd_etc_t;
-#line 21
+#line 22
 	
-#line 21
+#line 22
 		} # end require
-#line 21
+#line 22
 	
-#line 21
+#line 22
 
-#line 21
+#line 22
 
-#line 21
+#line 22
 	allow user_data_defence_daemon_t dbusd_etc_t:dir { getattr search open read lock ioctl };
-#line 21
+#line 22
 	allow user_data_defence_daemon_t dbusd_etc_t:file { open { getattr read ioctl lock } };
-#line 21
+#line 22
 
-#line 21
+#line 22
 	 	
-#line 21
+#line 22
 ##### end dbus_read_config(user_data_defence_daemon_t) depth: 2
-#line 21
+#line 22
  	
-#line 21
+#line 22
 
-#line 21
+#line 22
 	 	
-#line 21
+#line 22
 ##### end dbus_system_bus_client(user_data_defence_daemon_t) depth: 1
-#line 21
+#line 22
  	;
-#line 21
+#line 22
    	 	
-#line 21
+#line 22
 ##### begin dbus_session_bus_client(user_data_defence_daemon_t) depth: 2
-#line 21
+#line 22
  	
-#line 21
+#line 22
 	
-#line 21
+#line 22
 	
-#line 21
+#line 22
 		require {
-#line 21
+#line 22
 			
-#line 21
+#line 22
 		attribute session_bus_type;
-#line 21
+#line 22
 		class dbus send_msg;
-#line 21
+#line 22
 	
-#line 21
+#line 22
 		} # end require
-#line 21
+#line 22
 	
-#line 21
+#line 22
 
-#line 21
+#line 22
 
-#line 21
+#line 22
 	# SE-DBus specific permissions
-#line 21
+#line 22
 	allow user_data_defence_daemon_t { session_bus_type self }:dbus send_msg;
-#line 21
+#line 22
 
-#line 21
+#line 22
 	# For connecting to the bus
-#line 21
+#line 22
 	allow user_data_defence_daemon_t session_bus_type:unix_stream_socket connectto;
-#line 21
+#line 22
 
-#line 21
+#line 22
 	allow session_bus_type user_data_defence_daemon_t:process sigkill;
-#line 21
+#line 22
 
-#line 21
+#line 22
 	 	
-#line 21
+#line 22
 ##### end dbus_session_bus_client(user_data_defence_daemon_t) depth: 1
-#line 21
+#line 22
  	;
-#line 21
+#line 22
    	 	
-#line 21
+#line 22
 ##### begin dbus_read_lib_files(user_data_defence_daemon_t) depth: 2
-#line 21
+#line 22
  	
-#line 21
+#line 22
 	
-#line 21
+#line 22
 	
-#line 21
+#line 22
 		require {
-#line 21
+#line 22
 			
-#line 21
+#line 22
 		type system_dbusd_var_lib_t;
-#line 21
+#line 22
 	
-#line 21
+#line 22
 		} # end require
-#line 21
+#line 22
 	
-#line 21
+#line 22
 
-#line 21
+#line 22
 
-#line 21
+#line 22
 	 	 	
-#line 21
+#line 22
 ##### begin files_search_var_lib(user_data_defence_daemon_t) depth: 3
-#line 21
+#line 22
  	
-#line 21
+#line 22
 	
-#line 21
+#line 22
 	
-#line 21
+#line 22
 		require {
-#line 21
+#line 22
 			
-#line 21
+#line 22
 		type var_t, var_lib_t;
-#line 21
+#line 22
 	
-#line 21
+#line 22
 		} # end require
-#line 21
+#line 22
 	
-#line 21
+#line 22
 
-#line 21
+#line 22
 
-#line 21
+#line 22
 	
-#line 21
+#line 22
 	allow user_data_defence_daemon_t var_t:dir { getattr search open };
-#line 21
+#line 22
 	allow user_data_defence_daemon_t var_lib_t:dir { getattr search open };
-#line 21
+#line 22
 
-#line 21
+#line 22
 
-#line 21
+#line 22
 	 	
-#line 21
+#line 22
 ##### end files_search_var_lib(user_data_defence_daemon_t) depth: 2
-#line 21
+#line 22
  	
-#line 21
+#line 22
 	
-#line 21
+#line 22
 	allow user_data_defence_daemon_t system_dbusd_var_lib_t:dir { getattr search open };
-#line 21
+#line 22
 	allow user_data_defence_daemon_t system_dbusd_var_lib_t:file { open { getattr read ioctl lock } };
-#line 21
+#line 22
 
-#line 21
+#line 22
 
-#line 21
+#line 22
 	 	
-#line 21
+#line 22
 ##### end dbus_read_lib_files(user_data_defence_daemon_t) depth: 1
-#line 21
+#line 22
  	;
-#line 21
+#line 22
    	 	
-#line 21
+#line 22
 ##### begin dbus_unconfined(user_data_defence_daemon_t) depth: 2
-#line 21
+#line 22
  	
-#line 21
+#line 22
 	
-#line 21
+#line 22
 	
-#line 21
+#line 22
 		require {
-#line 21
+#line 22
 			
-#line 21
+#line 22
 		attribute dbusd_unconfined;
-#line 21
+#line 22
 	
-#line 21
+#line 22
 		} # end require
-#line 21
+#line 22
 	
-#line 21
+#line 22
 
-#line 21
+#line 22
 
-#line 21
+#line 22
 	typeattribute user_data_defence_daemon_t dbusd_unconfined;
-#line 21
+#line 22
 
-#line 21
+#line 22
 	 	
-#line 21
+#line 22
 ##### end dbus_unconfined(user_data_defence_daemon_t) depth: 1
-#line 21
+#line 22
  	
-#line 21
+#line 22
 
-#line 21
+#line 22
 	 	
-#line 21
+#line 22
 ##### end udd_application_dbus_access(user_data_defence_daemon,staff_t) depth: 0
-#line 21
+#line 22
  	
 
 
-allow audisp_t user_data_defence_bus_t:file { read execute open };
+
 require {
-        type user_data_defence_bus_t;
-        type audisp_t;
-        class unix_stream_socket read;
+  type user_data_defence_bus_t;
+  type audisp_t;
+  type user_data_defence_daemon_t;
+  class unix_stream_socket getattr;
+  class unix_dgram_socket { create connect };
+}
+
+#============= user_data_defence_bus_t ==============
+allow user_data_defence_bus_t audisp_t:unix_stream_socket getattr;
+allow user_data_defence_bus_t self:unix_dgram_socket { create connect };
+ 	 	
+#line 37
+##### begin logging_send_syslog_msg(user_data_defence_bus_t) depth: 1
+#line 37
+ 	
+#line 37
+	
+#line 37
+	
+#line 37
+		require {
+#line 37
+			
+#line 37
+		type syslogd_t, devlog_t;
+#line 37
+	
+#line 37
+		} # end require
+#line 37
+	
+#line 37
+
+#line 37
+
+#line 37
+	allow user_data_defence_bus_t devlog_t:lnk_file { getattr read };
+#line 37
+	allow user_data_defence_bus_t devlog_t:sock_file { getattr write open append };
+#line 37
+
+#line 37
+	# the type of socket depends on the syslog daemon
+#line 37
+	allow user_data_defence_bus_t syslogd_t:unix_dgram_socket sendto;
+#line 37
+	allow user_data_defence_bus_t syslogd_t:unix_stream_socket connectto;
+#line 37
+	allow user_data_defence_bus_t self:unix_dgram_socket { create { ioctl read getattr lock write setattr append bind connect getopt setopt shutdown } };
+#line 37
+	allow user_data_defence_bus_t self:unix_stream_socket { create { ioctl read getattr lock write setattr append bind connect getopt setopt shutdown } };
+#line 37
+
+#line 37
+	# If syslog is down, the glibc syslog() function
+#line 37
+	# will write to the console.
+#line 37
+	 	 	
+#line 37
+##### begin term_write_console(user_data_defence_bus_t) depth: 2
+#line 37
+ 	
+#line 37
+	
+#line 37
+	
+#line 37
+		require {
+#line 37
+			
+#line 37
+		type console_device_t;
+#line 37
+	
+#line 37
+		} # end require
+#line 37
+	
+#line 37
+
+#line 37
+
+#line 37
+	 	 	
+#line 37
+##### begin dev_list_all_dev_nodes(user_data_defence_bus_t) depth: 3
+#line 37
+ 	
+#line 37
+	
+#line 37
+	
+#line 37
+		require {
+#line 37
+			
+#line 37
+		type device_t;
+#line 37
+	
+#line 37
+		} # end require
+#line 37
+	
+#line 37
+
+#line 37
+
+#line 37
+	
+#line 37
+	allow user_data_defence_bus_t device_t:dir { getattr search open };
+#line 37
+	allow user_data_defence_bus_t device_t:dir { getattr search open read lock ioctl };
+#line 37
+
+#line 37
+	
+#line 37
+	allow user_data_defence_bus_t device_t:dir { getattr search open };
+#line 37
+	allow user_data_defence_bus_t device_t:lnk_file { getattr read };
+#line 37
+
+#line 37
+
+#line 37
+	 	
+#line 37
+##### end dev_list_all_dev_nodes(user_data_defence_bus_t) depth: 2
+#line 37
+ 	
+#line 37
+	allow user_data_defence_bus_t console_device_t:chr_file { getattr open write append lock ioctl };
+#line 37
+
+#line 37
+	 	
+#line 37
+##### end term_write_console(user_data_defence_bus_t) depth: 1
+#line 37
+ 	
+#line 37
+	 	 	
+#line 37
+##### begin term_dontaudit_read_console(user_data_defence_bus_t) depth: 2
+#line 37
+ 	
+#line 37
+	
+#line 37
+	
+#line 37
+		require {
+#line 37
+			
+#line 37
+		type console_device_t;
+#line 37
+	
+#line 37
+		} # end require
+#line 37
+	
+#line 37
+
+#line 37
+
+#line 37
+	dontaudit user_data_defence_bus_t console_device_t:chr_file { getattr open read lock ioctl };
+#line 37
+
+#line 37
+	 	
+#line 37
+##### end term_dontaudit_read_console(user_data_defence_bus_t) depth: 1
+#line 37
+ 	
+#line 37
+
+#line 37
+	 	
+#line 37
+##### end logging_send_syslog_msg(user_data_defence_bus_t) depth: 0
+#line 37
+ 	
+ 	 	
+#line 38
+##### begin miscfiles_read_localization(user_data_defence_bus_t) depth: 1
+#line 38
+ 	
+#line 38
+	
+#line 38
+	
+#line 38
+		require {
+#line 38
+			
+#line 38
+		type locale_t;
+#line 38
+	
+#line 38
+		} # end require
+#line 38
+	
+#line 38
+
+#line 38
+
+#line 38
+	 	 	
+#line 38
+##### begin files_read_etc_symlinks(user_data_defence_bus_t) depth: 2
+#line 38
+ 	
+#line 38
+	
+#line 38
+	
+#line 38
+		require {
+#line 38
+			
+#line 38
+		type etc_t;
+#line 38
+	
+#line 38
+		} # end require
+#line 38
+	
+#line 38
+
+#line 38
+
+#line 38
+	
+#line 38
+	allow user_data_defence_bus_t etc_t:dir { getattr search open };
+#line 38
+	allow user_data_defence_bus_t etc_t:lnk_file { getattr read };
+#line 38
+
+#line 38
+
+#line 38
+	 	
+#line 38
+##### end files_read_etc_symlinks(user_data_defence_bus_t) depth: 1
+#line 38
+ 	
+#line 38
+	 	 	
+#line 38
+##### begin files_search_usr(user_data_defence_bus_t) depth: 2
+#line 38
+ 	
+#line 38
+	
+#line 38
+	
+#line 38
+		require {
+#line 38
+			
+#line 38
+		type usr_t;
+#line 38
+	
+#line 38
+		} # end require
+#line 38
+	
+#line 38
+
+#line 38
+
+#line 38
+	allow user_data_defence_bus_t usr_t:dir { getattr search open };
+#line 38
+
+#line 38
+	 	
+#line 38
+##### end files_search_usr(user_data_defence_bus_t) depth: 1
+#line 38
+ 	
+#line 38
+	allow user_data_defence_bus_t locale_t:dir { getattr search open read lock ioctl };
+#line 38
+	
+#line 38
+	allow user_data_defence_bus_t locale_t:dir { getattr search open };
+#line 38
+	allow user_data_defence_bus_t locale_t:file { open { getattr read ioctl lock } };
+#line 38
+
+#line 38
+	
+#line 38
+	allow user_data_defence_bus_t locale_t:dir { getattr search open };
+#line 38
+	allow user_data_defence_bus_t locale_t:lnk_file { getattr read };
+#line 38
+
+#line 38
+
+#line 38
+	 	
+#line 38
+##### end miscfiles_read_localization(user_data_defence_bus_t) depth: 0
+#line 38
+ 	
+
+#============= user_data_defence_daemon_t ==============
+ 	 	
+#line 41
+##### begin dbus_connect_system_bus(user_data_defence_daemon_t) depth: 1
+#line 41
+ 	
+#line 41
+	
+#line 41
+	
+#line 41
+		require {
+#line 41
+			
+#line 41
+		type system_dbusd_t;
+#line 41
+		class dbus acquire_svc;
+#line 41
+	
+#line 41
+		} # end require
+#line 41
+	
+#line 41
+
+#line 41
+
+#line 41
+	allow user_data_defence_daemon_t system_dbusd_t:dbus acquire_svc;
+#line 41
+
+#line 41
+	 	
+#line 41
+##### end dbus_connect_system_bus(user_data_defence_daemon_t) depth: 0
+#line 41
+ 	
+ 	 	
+#line 42
+##### begin logging_read_audit_log(user_data_defence_daemon_t) depth: 1
+#line 42
+ 	
+#line 42
+	
+#line 42
+	
+#line 42
+		require {
+#line 42
+			
+#line 42
+		type auditd_log_t;
+#line 42
+	
+#line 42
+		} # end require
+#line 42
+	
+#line 42
+
+#line 42
+
+#line 42
+	 	 	
+#line 42
+##### begin files_search_var(user_data_defence_daemon_t) depth: 2
+#line 42
+ 	
+#line 42
+	
+#line 42
+	
+#line 42
+		require {
+#line 42
+			
+#line 42
+		type var_t;
+#line 42
+	
+#line 42
+		} # end require
+#line 42
+	
+#line 42
+
+#line 42
+
+#line 42
+	allow user_data_defence_daemon_t var_t:dir { getattr search open };
+#line 42
+
+#line 42
+	 	
+#line 42
+##### end files_search_var(user_data_defence_daemon_t) depth: 1
+#line 42
+ 	
+#line 42
+	
+#line 42
+	allow user_data_defence_daemon_t auditd_log_t:dir { getattr search open };
+#line 42
+	allow user_data_defence_daemon_t auditd_log_t:file { open { getattr read ioctl lock } };
+#line 42
+
+#line 42
+	allow user_data_defence_daemon_t auditd_log_t:dir { getattr search open read lock ioctl };
+#line 42
+
+#line 42
+	 	
+#line 42
+##### end logging_read_audit_log(user_data_defence_daemon_t) depth: 0
+#line 42
+ 	
+ 	 	
+#line 43
+##### begin logging_read_generic_logs(user_data_defence_daemon_t) depth: 1
+#line 43
+ 	
+#line 43
+	
+#line 43
+	
+#line 43
+		require {
+#line 43
+			
+#line 43
+		type var_log_t;
+#line 43
+	
+#line 43
+		} # end require
+#line 43
+	
+#line 43
+
+#line 43
+
+#line 43
+	 	 	
+#line 43
+##### begin files_search_var(user_data_defence_daemon_t) depth: 2
+#line 43
+ 	
+#line 43
+	
+#line 43
+	
+#line 43
+		require {
+#line 43
+			
+#line 43
+		type var_t;
+#line 43
+	
+#line 43
+		} # end require
+#line 43
+	
+#line 43
+
+#line 43
+
+#line 43
+	allow user_data_defence_daemon_t var_t:dir { getattr search open };
+#line 43
+
+#line 43
+	 	
+#line 43
+##### end files_search_var(user_data_defence_daemon_t) depth: 1
+#line 43
+ 	
+#line 43
+	allow user_data_defence_daemon_t var_log_t:dir { getattr search open read lock ioctl };
+#line 43
+	
+#line 43
+	allow user_data_defence_daemon_t var_log_t:dir { getattr search open };
+#line 43
+	allow user_data_defence_daemon_t var_log_t:file { open { getattr read ioctl lock } };
+#line 43
+
+#line 43
+
+#line 43
+	 	
+#line 43
+##### end logging_read_generic_logs(user_data_defence_daemon_t) depth: 0
+#line 43
+ 	
+ 	 	
+#line 44
+##### begin miscfiles_read_localization(user_data_defence_daemon_t) depth: 1
+#line 44
+ 	
+#line 44
+	
+#line 44
+	
+#line 44
+		require {
+#line 44
+			
+#line 44
+		type locale_t;
+#line 44
+	
+#line 44
+		} # end require
+#line 44
+	
+#line 44
+
+#line 44
+
+#line 44
+	 	 	
+#line 44
+##### begin files_read_etc_symlinks(user_data_defence_daemon_t) depth: 2
+#line 44
+ 	
+#line 44
+	
+#line 44
+	
+#line 44
+		require {
+#line 44
+			
+#line 44
+		type etc_t;
+#line 44
+	
+#line 44
+		} # end require
+#line 44
+	
+#line 44
+
+#line 44
+
+#line 44
+	
+#line 44
+	allow user_data_defence_daemon_t etc_t:dir { getattr search open };
+#line 44
+	allow user_data_defence_daemon_t etc_t:lnk_file { getattr read };
+#line 44
+
+#line 44
+
+#line 44
+	 	
+#line 44
+##### end files_read_etc_symlinks(user_data_defence_daemon_t) depth: 1
+#line 44
+ 	
+#line 44
+	 	 	
+#line 44
+##### begin files_search_usr(user_data_defence_daemon_t) depth: 2
+#line 44
+ 	
+#line 44
+	
+#line 44
+	
+#line 44
+		require {
+#line 44
+			
+#line 44
+		type usr_t;
+#line 44
+	
+#line 44
+		} # end require
+#line 44
+	
+#line 44
+
+#line 44
+
+#line 44
+	allow user_data_defence_daemon_t usr_t:dir { getattr search open };
+#line 44
+
+#line 44
+	 	
+#line 44
+##### end files_search_usr(user_data_defence_daemon_t) depth: 1
+#line 44
+ 	
+#line 44
+	allow user_data_defence_daemon_t locale_t:dir { getattr search open read lock ioctl };
+#line 44
+	
+#line 44
+	allow user_data_defence_daemon_t locale_t:dir { getattr search open };
+#line 44
+	allow user_data_defence_daemon_t locale_t:file { open { getattr read ioctl lock } };
+#line 44
+
+#line 44
+	
+#line 44
+	allow user_data_defence_daemon_t locale_t:dir { getattr search open };
+#line 44
+	allow user_data_defence_daemon_t locale_t:lnk_file { getattr read };
+#line 44
+
+#line 44
+
+#line 44
+	 	
+#line 44
+##### end miscfiles_read_localization(user_data_defence_daemon_t) depth: 0
+#line 44
+ 	
+
+
+require {
+	type user_data_defence_bus_t;
+	type audisp_t;
+	type user_data_defence_daemon_t;
+	class unix_stream_socket read;
 }
 
 #============= user_data_defence_bus_t ==============
 allow user_data_defence_bus_t audisp_t:unix_stream_socket read;
 
-require {
-        type user_data_defence_bus_t;
-        type staff_t;
-        class process getsched;
-        class unix_dgram_socket create;
-}
-
-#============= staff_t ==============
-allow staff_t user_data_defence_bus_t:process getsched;
-
-#============= user_data_defence_bus_t ==============
-allow user_data_defence_bus_t self:unix_dgram_socket create;
-
-require {
-        type user_data_defence_bus_t;
-        class unix_dgram_socket connect;
-}
-
-#============= user_data_defence_bus_t ==============
-allow user_data_defence_bus_t self:unix_dgram_socket connect;
-
-require {
-        type user_data_defence_bus_t;
-        class unix_dgram_socket write;
-        type locale_t;
-}
-
-#============= user_data_defence_bus_t ==============
-allow user_data_defence_bus_t self:unix_dgram_socket write;
- 	 	
-#line 63
-##### begin logging_send_syslog_msg(user_data_defence_bus_t) depth: 1
-#line 63
- 	
-#line 63
-	
-#line 63
-	
-#line 63
-		require {
-#line 63
-			
-#line 63
-		type syslogd_t, devlog_t;
-#line 63
-	
-#line 63
-		} # end require
-#line 63
-	
-#line 63
-
-#line 63
-
-#line 63
-	allow user_data_defence_bus_t devlog_t:lnk_file { getattr read };
-#line 63
-	allow user_data_defence_bus_t devlog_t:sock_file { getattr write open append };
-#line 63
-
-#line 63
-	# the type of socket depends on the syslog daemon
-#line 63
-	allow user_data_defence_bus_t syslogd_t:unix_dgram_socket sendto;
-#line 63
-	allow user_data_defence_bus_t syslogd_t:unix_stream_socket connectto;
-#line 63
-	allow user_data_defence_bus_t self:unix_dgram_socket { create { ioctl read getattr lock write setattr append bind connect getopt setopt shutdown } };
-#line 63
-	allow user_data_defence_bus_t self:unix_stream_socket { create { ioctl read getattr lock write setattr append bind connect getopt setopt shutdown } };
-#line 63
-
-#line 63
-	# If syslog is down, the glibc syslog() function
-#line 63
-	# will write to the console.
-#line 63
-	 	 	
-#line 63
-##### begin term_write_console(user_data_defence_bus_t) depth: 2
-#line 63
- 	
-#line 63
-	
-#line 63
-	
-#line 63
-		require {
-#line 63
-			
-#line 63
-		type console_device_t;
-#line 63
-	
-#line 63
-		} # end require
-#line 63
-	
-#line 63
-
-#line 63
-
-#line 63
-	 	 	
-#line 63
-##### begin dev_list_all_dev_nodes(user_data_defence_bus_t) depth: 3
-#line 63
- 	
-#line 63
-	
-#line 63
-	
-#line 63
-		require {
-#line 63
-			
-#line 63
-		type device_t;
-#line 63
-	
-#line 63
-		} # end require
-#line 63
-	
-#line 63
-
-#line 63
-
-#line 63
-	
-#line 63
-	allow user_data_defence_bus_t device_t:dir { getattr search open };
-#line 63
-	allow user_data_defence_bus_t device_t:dir { getattr search open read lock ioctl };
-#line 63
-
-#line 63
-	
-#line 63
-	allow user_data_defence_bus_t device_t:dir { getattr search open };
-#line 63
-	allow user_data_defence_bus_t device_t:lnk_file { getattr read };
-#line 63
-
-#line 63
-
-#line 63
-	 	
-#line 63
-##### end dev_list_all_dev_nodes(user_data_defence_bus_t) depth: 2
-#line 63
- 	
-#line 63
-	allow user_data_defence_bus_t console_device_t:chr_file { getattr open write append lock ioctl };
-#line 63
-
-#line 63
-	 	
-#line 63
-##### end term_write_console(user_data_defence_bus_t) depth: 1
-#line 63
- 	
-#line 63
-	 	 	
-#line 63
-##### begin term_dontaudit_read_console(user_data_defence_bus_t) depth: 2
-#line 63
- 	
-#line 63
-	
-#line 63
-	
-#line 63
-		require {
-#line 63
-			
-#line 63
-		type console_device_t;
-#line 63
-	
-#line 63
-		} # end require
-#line 63
-	
-#line 63
-
-#line 63
-
-#line 63
-	dontaudit user_data_defence_bus_t console_device_t:chr_file { getattr open read lock ioctl };
-#line 63
-
-#line 63
-	 	
-#line 63
-##### end term_dontaudit_read_console(user_data_defence_bus_t) depth: 1
-#line 63
- 	
-#line 63
-
-#line 63
-	 	
-#line 63
-##### end logging_send_syslog_msg(user_data_defence_bus_t) depth: 0
-#line 63
- 	
-allow user_data_defence_bus_t locale_t:file { read getattr open };
-
-
-
-
-
-require {
-        type staff_t;
-        type staff_java_t;
-        class process { siginh noatsecure rlimitinh };
-}
-
-#============= staff_java_t ==============
-allow staff_java_t staff_t:process { siginh rlimitinh noatsecure };
- 	 	
-#line 78
-##### begin init_dbus_send_script(staff_java_t) depth: 1
-#line 78
- 	
-#line 78
-	
-#line 78
-	
-#line 78
-		require {
-#line 78
-			
-#line 78
-		type initrc_t;
-#line 78
-		class dbus send_msg;
-#line 78
-	
-#line 78
-		} # end require
-#line 78
-	
-#line 78
-
-#line 78
-
-#line 78
-	allow staff_java_t initrc_t:dbus send_msg;
-#line 78
-
-#line 78
-	 	
-#line 78
-##### end init_dbus_send_script(staff_java_t) depth: 0
-#line 78
- 	
-
 #============= user_data_defence_daemon_t ==============
-allow user_data_defence_daemon_t self:fifo_file write;
  	 	
-#line 82
-##### begin dbus_connect_system_bus(user_data_defence_daemon_t) depth: 1
-#line 82
+#line 58
+##### begin init_rw_stream_sockets(user_data_defence_daemon_t) depth: 1
+#line 58
  	
-#line 82
+#line 58
 	
-#line 82
+#line 58
 	
-#line 82
+#line 58
 		require {
-#line 82
+#line 58
 			
-#line 82
-		type system_dbusd_t;
-#line 82
-		class dbus acquire_svc;
-#line 82
-	
-#line 82
-		} # end require
-#line 82
-	
-#line 82
-
-#line 82
-
-#line 82
-	allow user_data_defence_daemon_t system_dbusd_t:dbus acquire_svc;
-#line 82
-
-#line 82
-	 	
-#line 82
-##### end dbus_connect_system_bus(user_data_defence_daemon_t) depth: 0
-#line 82
- 	
- 	 	
-#line 83
-##### begin logging_read_audit_log(user_data_defence_daemon_t) depth: 1
-#line 83
- 	
-#line 83
-	
-#line 83
-	
-#line 83
-		require {
-#line 83
-			
-#line 83
-		type auditd_log_t;
-#line 83
-	
-#line 83
-		} # end require
-#line 83
-	
-#line 83
-
-#line 83
-
-#line 83
-	 	 	
-#line 83
-##### begin files_search_var(user_data_defence_daemon_t) depth: 2
-#line 83
- 	
-#line 83
-	
-#line 83
-	
-#line 83
-		require {
-#line 83
-			
-#line 83
-		type var_t;
-#line 83
-	
-#line 83
-		} # end require
-#line 83
-	
-#line 83
-
-#line 83
-
-#line 83
-	allow user_data_defence_daemon_t var_t:dir { getattr search open };
-#line 83
-
-#line 83
-	 	
-#line 83
-##### end files_search_var(user_data_defence_daemon_t) depth: 1
-#line 83
- 	
-#line 83
-	
-#line 83
-	allow user_data_defence_daemon_t auditd_log_t:dir { getattr search open };
-#line 83
-	allow user_data_defence_daemon_t auditd_log_t:file { open { getattr read ioctl lock } };
-#line 83
-
-#line 83
-	allow user_data_defence_daemon_t auditd_log_t:dir { getattr search open read lock ioctl };
-#line 83
-
-#line 83
-	 	
-#line 83
-##### end logging_read_audit_log(user_data_defence_daemon_t) depth: 0
-#line 83
- 	
- 	 	
-#line 84
-##### begin miscfiles_read_localization(user_data_defence_daemon_t) depth: 1
-#line 84
- 	
-#line 84
-	
-#line 84
-	
-#line 84
-		require {
-#line 84
-			
-#line 84
-		type locale_t;
-#line 84
-	
-#line 84
-		} # end require
-#line 84
-	
-#line 84
-
-#line 84
-
-#line 84
-	 	 	
-#line 84
-##### begin files_read_etc_symlinks(user_data_defence_daemon_t) depth: 2
-#line 84
- 	
-#line 84
-	
-#line 84
-	
-#line 84
-		require {
-#line 84
-			
-#line 84
-		type etc_t;
-#line 84
-	
-#line 84
-		} # end require
-#line 84
-	
-#line 84
-
-#line 84
-
-#line 84
-	
-#line 84
-	allow user_data_defence_daemon_t etc_t:dir { getattr search open };
-#line 84
-	allow user_data_defence_daemon_t etc_t:lnk_file { getattr read };
-#line 84
-
-#line 84
-
-#line 84
-	 	
-#line 84
-##### end files_read_etc_symlinks(user_data_defence_daemon_t) depth: 1
-#line 84
- 	
-#line 84
-	 	 	
-#line 84
-##### begin files_search_usr(user_data_defence_daemon_t) depth: 2
-#line 84
- 	
-#line 84
-	
-#line 84
-	
-#line 84
-		require {
-#line 84
-			
-#line 84
-		type usr_t;
-#line 84
-	
-#line 84
-		} # end require
-#line 84
-	
-#line 84
-
-#line 84
-
-#line 84
-	allow user_data_defence_daemon_t usr_t:dir { getattr search open };
-#line 84
-
-#line 84
-	 	
-#line 84
-##### end files_search_usr(user_data_defence_daemon_t) depth: 1
-#line 84
- 	
-#line 84
-	allow user_data_defence_daemon_t locale_t:dir { getattr search open read lock ioctl };
-#line 84
-	
-#line 84
-	allow user_data_defence_daemon_t locale_t:dir { getattr search open };
-#line 84
-	allow user_data_defence_daemon_t locale_t:file { open { getattr read ioctl lock } };
-#line 84
-
-#line 84
-	
-#line 84
-	allow user_data_defence_daemon_t locale_t:dir { getattr search open };
-#line 84
-	allow user_data_defence_daemon_t locale_t:lnk_file { getattr read };
-#line 84
-
-#line 84
-
-#line 84
-	 	
-#line 84
-##### end miscfiles_read_localization(user_data_defence_daemon_t) depth: 0
-#line 84
- 	
- 	 	
-#line 85
-##### begin term_use_generic_ptys(user_data_defence_daemon_t) depth: 1
-#line 85
- 	
-#line 85
-	
-#line 85
-	
-#line 85
-		require {
-#line 85
-			
-#line 85
-		type devpts_t;
-#line 85
-	
-#line 85
-		} # end require
-#line 85
-	
-#line 85
-
-#line 85
-
-#line 85
-	 	 	
-#line 85
-##### begin dev_list_all_dev_nodes(user_data_defence_daemon_t) depth: 2
-#line 85
- 	
-#line 85
-	
-#line 85
-	
-#line 85
-		require {
-#line 85
-			
-#line 85
-		type device_t;
-#line 85
-	
-#line 85
-		} # end require
-#line 85
-	
-#line 85
-
-#line 85
-
-#line 85
-	
-#line 85
-	allow user_data_defence_daemon_t device_t:dir { getattr search open };
-#line 85
-	allow user_data_defence_daemon_t device_t:dir { getattr search open read lock ioctl };
-#line 85
-
-#line 85
-	
-#line 85
-	allow user_data_defence_daemon_t device_t:dir { getattr search open };
-#line 85
-	allow user_data_defence_daemon_t device_t:lnk_file { getattr read };
-#line 85
-
-#line 85
-
-#line 85
-	 	
-#line 85
-##### end dev_list_all_dev_nodes(user_data_defence_daemon_t) depth: 1
-#line 85
- 	
-#line 85
-	allow user_data_defence_daemon_t devpts_t:dir { getattr search open read lock ioctl };
-#line 85
-	allow user_data_defence_daemon_t devpts_t:chr_file { { { getattr read write append ioctl } open } lock append };
-#line 85
-
-#line 85
-	 	
-#line 85
-##### end term_use_generic_ptys(user_data_defence_daemon_t) depth: 0
-#line 85
- 	
- 	 	
-#line 86
-##### begin term_write_console(user_data_defence_daemon_t) depth: 1
-#line 86
- 	
-#line 86
-	
-#line 86
-	
-#line 86
-		require {
-#line 86
-			
-#line 86
-		type console_device_t;
-#line 86
-	
-#line 86
-		} # end require
-#line 86
-	
-#line 86
-
-#line 86
-
-#line 86
-	 	 	
-#line 86
-##### begin dev_list_all_dev_nodes(user_data_defence_daemon_t) depth: 2
-#line 86
- 	
-#line 86
-	
-#line 86
-	
-#line 86
-		require {
-#line 86
-			
-#line 86
-		type device_t;
-#line 86
-	
-#line 86
-		} # end require
-#line 86
-	
-#line 86
-
-#line 86
-
-#line 86
-	
-#line 86
-	allow user_data_defence_daemon_t device_t:dir { getattr search open };
-#line 86
-	allow user_data_defence_daemon_t device_t:dir { getattr search open read lock ioctl };
-#line 86
-
-#line 86
-	
-#line 86
-	allow user_data_defence_daemon_t device_t:dir { getattr search open };
-#line 86
-	allow user_data_defence_daemon_t device_t:lnk_file { getattr read };
-#line 86
-
-#line 86
-
-#line 86
-	 	
-#line 86
-##### end dev_list_all_dev_nodes(user_data_defence_daemon_t) depth: 1
-#line 86
- 	
-#line 86
-	allow user_data_defence_daemon_t console_device_t:chr_file { getattr open write append lock ioctl };
-#line 86
-
-#line 86
-	 	
-#line 86
-##### end term_write_console(user_data_defence_daemon_t) depth: 0
-#line 86
- 	
- 	 	
-#line 87
-##### begin userdom_use_inherited_user_ptys(user_data_defence_daemon_t) depth: 1
-#line 87
- 	
-#line 87
-    
-#line 87
-	
-#line 87
-		require {
-#line 87
-			
-#line 87
-        type user_devpts_t;
-#line 87
-    
-#line 87
-		} # end require
-#line 87
-	
-#line 87
-
-#line 87
-
-#line 87
-    allow user_data_defence_daemon_t user_devpts_t:chr_file { getattr read write append ioctl };
-#line 87
-
-#line 87
-	 	
-#line 87
-##### end userdom_use_inherited_user_ptys(user_data_defence_daemon_t) depth: 0
-#line 87
- 	
-
- 	 	
-#line 89
-##### begin dbus_unconfined(staff_t) depth: 1
-#line 89
- 	
-#line 89
-	
-#line 89
-	
-#line 89
-		require {
-#line 89
-			
-#line 89
-		attribute dbusd_unconfined;
-#line 89
-	
-#line 89
-		} # end require
-#line 89
-	
-#line 89
-
-#line 89
-
-#line 89
-	typeattribute staff_t dbusd_unconfined;
-#line 89
-
-#line 89
-	 	
-#line 89
-##### end dbus_unconfined(staff_t) depth: 0
-#line 89
- 	
-
-require {
-        type staff_t;
-        type textrel_shlib_t;
-        type staff_java_t;
-        type abrt_helper_t;
-        class process { siginh rlimitinh };
-        class file execute_no_trans;
-}
-
-#============= abrt_helper_t ==============
- 	 	
-#line 101
-##### begin logging_read_generic_logs(abrt_helper_t) depth: 1
-#line 101
- 	
-#line 101
-	
-#line 101
-	
-#line 101
-		require {
-#line 101
-			
-#line 101
-		type var_log_t;
-#line 101
-	
-#line 101
-		} # end require
-#line 101
-	
-#line 101
-
-#line 101
-
-#line 101
-	 	 	
-#line 101
-##### begin files_search_var(abrt_helper_t) depth: 2
-#line 101
- 	
-#line 101
-	
-#line 101
-	
-#line 101
-		require {
-#line 101
-			
-#line 101
-		type var_t;
-#line 101
-	
-#line 101
-		} # end require
-#line 101
-	
-#line 101
-
-#line 101
-
-#line 101
-	allow abrt_helper_t var_t:dir { getattr search open };
-#line 101
-
-#line 101
-	 	
-#line 101
-##### end files_search_var(abrt_helper_t) depth: 1
-#line 101
- 	
-#line 101
-	allow abrt_helper_t var_log_t:dir { getattr search open read lock ioctl };
-#line 101
-	
-#line 101
-	allow abrt_helper_t var_log_t:dir { getattr search open };
-#line 101
-	allow abrt_helper_t var_log_t:file { open { getattr read ioctl lock } };
-#line 101
-
-#line 101
-
-#line 101
-	 	
-#line 101
-##### end logging_read_generic_logs(abrt_helper_t) depth: 0
-#line 101
- 	
-
-#============= staff_java_t ==============
-allow staff_java_t textrel_shlib_t:file execute_no_trans;
- 	 	
-#line 105
-##### begin init_dbus_chat(staff_java_t) depth: 1
-#line 105
- 	
-#line 105
-	
-#line 105
-	
-#line 105
-		require {
-#line 105
-			
-#line 105
+#line 58
 		type init_t;
-#line 105
-		class dbus send_msg;
-#line 105
+#line 58
 	
-#line 105
+#line 58
 		} # end require
-#line 105
+#line 58
 	
-#line 105
+#line 58
 
-#line 105
+#line 58
 
-#line 105
-	allow staff_java_t init_t:dbus send_msg;
-#line 105
-	allow init_t staff_java_t:dbus send_msg;
-#line 105
+#line 58
+	allow user_data_defence_daemon_t init_t:unix_stream_socket { { ioctl read getattr lock write setattr append bind connect getopt setopt shutdown } listen accept };
+#line 58
 
-#line 105
+#line 58
 	 	
-#line 105
-##### end init_dbus_chat(staff_java_t) depth: 0
-#line 105
+#line 58
+##### end init_rw_stream_sockets(user_data_defence_daemon_t) depth: 0
+#line 58
  	
 
-#============= staff_t ==============
-allow staff_t staff_java_t:process { siginh rlimitinh };
-
-#============= audisp_t ==============
-allow audisp_t user_data_defence_bus_t:process { siginh rlimitinh noatsecure };
-
-#============= user_data_defence_bus_t ==============
-allow user_data_defence_bus_t audisp_t:unix_stream_socket write;
-
-#============= user_data_defence_daemon_t ==============
- 	 	
-#line 117
-##### begin logging_read_generic_logs(user_data_defence_daemon_t) depth: 1
-#line 117
- 	
-#line 117
-	
-#line 117
-	
-#line 117
-		require {
-#line 117
-			
-#line 117
-		type var_log_t;
-#line 117
-	
-#line 117
-		} # end require
-#line 117
-	
-#line 117
-
-#line 117
-
-#line 117
-	 	 	
-#line 117
-##### begin files_search_var(user_data_defence_daemon_t) depth: 2
-#line 117
- 	
-#line 117
-	
-#line 117
-	
-#line 117
-		require {
-#line 117
-			
-#line 117
-		type var_t;
-#line 117
-	
-#line 117
-		} # end require
-#line 117
-	
-#line 117
-
-#line 117
-
-#line 117
-	allow user_data_defence_daemon_t var_t:dir { getattr search open };
-#line 117
-
-#line 117
-	 	
-#line 117
-##### end files_search_var(user_data_defence_daemon_t) depth: 1
-#line 117
- 	
-#line 117
-	allow user_data_defence_daemon_t var_log_t:dir { getattr search open read lock ioctl };
-#line 117
-	
-#line 117
-	allow user_data_defence_daemon_t var_log_t:dir { getattr search open };
-#line 117
-	allow user_data_defence_daemon_t var_log_t:file { open { getattr read ioctl lock } };
-#line 117
-
-#line 117
-
-#line 117
-	 	
-#line 117
-##### end logging_read_generic_logs(user_data_defence_daemon_t) depth: 0
-#line 117
- 	
-
-#============= user_data_defence_bus_t ==============
-allow user_data_defence_bus_t audisp_t:unix_stream_socket getattr;
 #line 2 "tmp/udd.mod.role"
 
 #line 5
