@@ -110,7 +110,7 @@
         <item>
          <widget class="QStackedWidget" name="mainStack">
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="page">
            <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -203,6 +203,27 @@
                 </property>
                 <property name="maximum">
                  <number>100000</number>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_23">
+              <item>
+               <widget class="QLabel" name="label_5">
+                <property name="text">
+                 <string>Delay before loading old messages:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="oldMessagesLoadingDelaySB">
+                <property name="maximum">
+                 <number>100000</number>
+                </property>
+                <property name="value">
+                 <number>10000</number>
                 </property>
                </widget>
               </item>
@@ -816,8 +837,8 @@
    <slot>loadMessageST(AuditMessageNotification*)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>269</x>
-     <y>92</y>
+     <x>265</x>
+     <y>53</y>
     </hint>
     <hint type="destinationlabel">
      <x>261</x>
@@ -832,8 +853,8 @@
    <slot>loadMessageST(AuditMessageNotification*)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>269</x>
-     <y>92</y>
+     <x>265</x>
+     <y>53</y>
     </hint>
     <hint type="destinationlabel">
      <x>261</x>
@@ -848,12 +869,12 @@
    <slot>setText(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>269</x>
-     <y>92</y>
+     <x>265</x>
+     <y>53</y>
     </hint>
     <hint type="destinationlabel">
-     <x>367</x>
-     <y>480</y>
+     <x>264</x>
+     <y>69</y>
     </hint>
    </hints>
   </connection>
@@ -864,12 +885,12 @@
    <slot>messageFilterChangedST(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>367</x>
-     <y>480</y>
+     <x>264</x>
+     <y>69</y>
     </hint>
     <hint type="destinationlabel">
-     <x>269</x>
-     <y>92</y>
+     <x>265</x>
+     <y>53</y>
     </hint>
    </hints>
   </connection>
@@ -880,12 +901,12 @@
    <slot>setText(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>269</x>
-     <y>92</y>
+     <x>265</x>
+     <y>53</y>
     </hint>
     <hint type="destinationlabel">
-     <x>361</x>
-     <y>480</y>
+     <x>264</x>
+     <y>69</y>
     </hint>
    </hints>
   </connection>
@@ -896,12 +917,12 @@
    <slot>messageFilterChangedST(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>361</x>
-     <y>480</y>
+     <x>264</x>
+     <y>69</y>
     </hint>
     <hint type="destinationlabel">
-     <x>269</x>
-     <y>92</y>
+     <x>265</x>
+     <y>53</y>
     </hint>
    </hints>
   </connection>
@@ -912,8 +933,8 @@
    <slot>needNewTypeNotificationST()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>269</x>
-     <y>92</y>
+     <x>265</x>
+     <y>53</y>
     </hint>
     <hint type="destinationlabel">
      <x>288</x>
@@ -932,8 +953,8 @@
      <y>278</y>
     </hint>
     <hint type="destinationlabel">
-     <x>269</x>
-     <y>92</y>
+     <x>265</x>
+     <y>53</y>
     </hint>
    </hints>
   </connection>
@@ -944,8 +965,8 @@
    <slot>needNewRegExpNotificationST()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>269</x>
-     <y>92</y>
+     <x>265</x>
+     <y>53</y>
     </hint>
     <hint type="destinationlabel">
      <x>345</x>
@@ -964,8 +985,8 @@
      <y>278</y>
     </hint>
     <hint type="destinationlabel">
-     <x>269</x>
-     <y>92</y>
+     <x>265</x>
+     <y>53</y>
     </hint>
    </hints>
   </connection>
@@ -976,8 +997,8 @@
    <slot>typeNotificationDeletedST(AuditMessageNotification*)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>269</x>
-     <y>92</y>
+     <x>265</x>
+     <y>53</y>
     </hint>
     <hint type="destinationlabel">
      <x>372</x>
@@ -992,8 +1013,8 @@
    <slot>regExpNotificationDeletedST(AuditMessageNotification*)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>269</x>
-     <y>92</y>
+     <x>265</x>
+     <y>53</y>
     </hint>
     <hint type="destinationlabel">
      <x>404</x>
@@ -1008,12 +1029,12 @@
    <slot>appendNewItemST()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>751</x>
-     <y>379</y>
+     <x>227</x>
+     <y>82</y>
     </hint>
     <hint type="destinationlabel">
-     <x>284</x>
-     <y>157</y>
+     <x>258</x>
+     <y>84</y>
     </hint>
    </hints>
   </connection>
@@ -1024,12 +1045,12 @@
    <slot>deleteCurrentItemST()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>781</x>
-     <y>379</y>
+     <x>257</x>
+     <y>82</y>
     </hint>
     <hint type="destinationlabel">
-     <x>284</x>
-     <y>157</y>
+     <x>258</x>
+     <y>84</y>
     </hint>
    </hints>
   </connection>
@@ -1040,12 +1061,12 @@
    <slot>setParentST(ApplicationsSettingsParameter*)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>277</x>
-     <y>117</y>
+     <x>195</x>
+     <y>85</y>
     </hint>
     <hint type="destinationlabel">
-     <x>277</x>
-     <y>117</y>
+     <x>226</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -1056,12 +1077,12 @@
    <slot>appendNewItemST()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>277</x>
-     <y>117</y>
+     <x>263</x>
+     <y>50</y>
     </hint>
     <hint type="destinationlabel">
-     <x>277</x>
-     <y>117</y>
+     <x>226</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -1072,12 +1093,12 @@
    <slot>deleteCurrentItemST()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>277</x>
-     <y>117</y>
+     <x>263</x>
+     <y>54</y>
     </hint>
     <hint type="destinationlabel">
-     <x>277</x>
-     <y>117</y>
+     <x>226</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -1088,12 +1109,12 @@
    <slot>setParentST(ApplicationsSettingsParameter*)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>277</x>
-     <y>117</y>
+     <x>187</x>
+     <y>85</y>
     </hint>
     <hint type="destinationlabel">
-     <x>277</x>
-     <y>117</y>
+     <x>210</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -1104,12 +1125,12 @@
    <slot>setParentST(ApplicationsSettingsParameter*)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>277</x>
-     <y>117</y>
+     <x>210</x>
+     <y>85</y>
     </hint>
     <hint type="destinationlabel">
-     <x>277</x>
-     <y>117</y>
+     <x>234</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -1120,12 +1141,12 @@
    <slot>appendNewItemST()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>277</x>
-     <y>117</y>
+     <x>263</x>
+     <y>50</y>
     </hint>
     <hint type="destinationlabel">
-     <x>277</x>
-     <y>117</y>
+     <x>234</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -1136,12 +1157,12 @@
    <slot>deleteCurrentItemST()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>277</x>
-     <y>117</y>
+     <x>263</x>
+     <y>53</y>
     </hint>
     <hint type="destinationlabel">
-     <x>277</x>
-     <y>117</y>
+     <x>234</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -1152,12 +1173,12 @@
    <slot>parameterDeletedST(ApplicationsSettingsParameter*)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>284</x>
-     <y>157</y>
+     <x>258</x>
+     <y>84</y>
     </hint>
     <hint type="destinationlabel">
-     <x>277</x>
-     <y>117</y>
+     <x>195</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -1168,12 +1189,12 @@
    <slot>parameterDeletedST(ApplicationsSettingsParameter*)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>284</x>
-     <y>157</y>
+     <x>258</x>
+     <y>84</y>
     </hint>
     <hint type="destinationlabel">
-     <x>277</x>
-     <y>117</y>
+     <x>187</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -1184,12 +1205,12 @@
    <slot>parameterDeletedST(ApplicationsSettingsParameter*)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>277</x>
-     <y>117</y>
+     <x>226</x>
+     <y>85</y>
     </hint>
     <hint type="destinationlabel">
-     <x>277</x>
-     <y>117</y>
+     <x>210</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -1200,12 +1221,12 @@
    <slot>parameterAppendedST(ApplicationsSettingsParameter*)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>284</x>
-     <y>157</y>
+     <x>258</x>
+     <y>84</y>
     </hint>
     <hint type="destinationlabel">
-     <x>277</x>
-     <y>117</y>
+     <x>195</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -1216,12 +1237,12 @@
    <slot>parameterAppendedST(ApplicationsSettingsParameter*)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>284</x>
-     <y>157</y>
+     <x>258</x>
+     <y>84</y>
     </hint>
     <hint type="destinationlabel">
-     <x>277</x>
-     <y>117</y>
+     <x>187</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -1232,12 +1253,12 @@
    <slot>parameterAppendedST(ApplicationsSettingsParameter*)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>277</x>
-     <y>117</y>
+     <x>226</x>
+     <y>85</y>
     </hint>
     <hint type="destinationlabel">
-     <x>277</x>
-     <y>117</y>
+     <x>210</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -1248,8 +1269,8 @@
    <slot>parameterSelectedST(ApplicationsSettingsParameter*)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>277</x>
-     <y>117</y>
+     <x>226</x>
+     <y>85</y>
     </hint>
     <hint type="destinationlabel">
      <x>261</x>
@@ -1264,12 +1285,12 @@
    <slot>parameterSelectedST(ApplicationsSettingsParameter*)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>284</x>
-     <y>157</y>
+     <x>258</x>
+     <y>84</y>
     </hint>
     <hint type="destinationlabel">
-     <x>284</x>
-     <y>484</y>
+     <x>258</x>
+     <y>178</y>
     </hint>
    </hints>
   </connection>
@@ -1280,12 +1301,12 @@
    <slot>parameterNameChangedST(ApplicationsSettingsParameter*)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>284</x>
-     <y>484</y>
+     <x>258</x>
+     <y>178</y>
     </hint>
     <hint type="destinationlabel">
-     <x>284</x>
-     <y>157</y>
+     <x>258</x>
+     <y>84</y>
     </hint>
    </hints>
   </connection>
@@ -1300,8 +1321,8 @@
      <y>161</y>
     </hint>
     <hint type="destinationlabel">
-     <x>277</x>
-     <y>117</y>
+     <x>226</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -1312,12 +1333,12 @@
    <slot>parameterNameChangedST(ApplicationsSettingsParameter*)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>284</x>
-     <y>484</y>
+     <x>258</x>
+     <y>178</y>
     </hint>
     <hint type="destinationlabel">
-     <x>277</x>
-     <y>117</y>
+     <x>195</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -1328,12 +1349,12 @@
    <slot>parameterNameChangedST(ApplicationsSettingsParameter*)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>284</x>
-     <y>484</y>
+     <x>258</x>
+     <y>178</y>
     </hint>
     <hint type="destinationlabel">
-     <x>277</x>
-     <y>117</y>
+     <x>187</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -1348,8 +1369,8 @@
      <y>161</y>
     </hint>
     <hint type="destinationlabel">
-     <x>277</x>
-     <y>117</y>
+     <x>210</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -1360,8 +1381,8 @@
    <slot>applicationNameChangedST(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>277</x>
-     <y>126</y>
+     <x>264</x>
+     <y>61</y>
     </hint>
     <hint type="destinationlabel">
      <x>499</x>
@@ -1376,8 +1397,8 @@
    <slot>applicationCommandChangedST(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>277</x>
-     <y>135</y>
+     <x>264</x>
+     <y>69</y>
     </hint>
     <hint type="destinationlabel">
      <x>455</x>
@@ -1392,8 +1413,8 @@
    <slot>applicationSelectedST(ApplicationsSettingsParameter*)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>277</x>
-     <y>117</y>
+     <x>234</x>
+     <y>85</y>
     </hint>
     <hint type="destinationlabel">
      <x>572</x>
@@ -1412,8 +1433,8 @@
      <y>291</y>
     </hint>
     <hint type="destinationlabel">
-     <x>277</x>
-     <y>117</y>
+     <x>234</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -1457,7 +1478,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>796</x>
-     <y>161</y>
+     <y>145</y>
     </hint>
     <hint type="destinationlabel">
      <x>941</x>
@@ -1473,7 +1494,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>796</x>
-     <y>200</y>
+     <y>180</y>
     </hint>
     <hint type="destinationlabel">
      <x>860</x>
@@ -1488,12 +1509,28 @@
    <slot>showUnknownMessagesChangedST(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>418</x>
-     <y>482</y>
+     <x>265</x>
+     <y>70</y>
     </hint>
     <hint type="destinationlabel">
      <x>418</x>
      <y>570</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>oldMessagesLoadingDelaySB</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>oldMessagesLoadingDelayChangedST(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>643</x>
+     <y>199</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>870</x>
+     <y>239</y>
     </hint>
    </hints>
   </connection>
@@ -1517,5 +1554,6 @@
   <slot>auditMessagesReserveChangedST(int)</slot>
   <slot>logUpdationIntervalChangedST(int)</slot>
   <slot>showUnknownMessagesChangedST(bool)</slot>
+  <slot>oldMessagesLoadingDelayChangedST(int)</slot>
  </slots>
 </ui>

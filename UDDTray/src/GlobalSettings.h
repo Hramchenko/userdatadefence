@@ -30,8 +30,10 @@ public:
   void setSystemMessagesUpdationTime(int interval);
   int maxAuditMessagesCount();
   int auditMessagesReserve();
+  int oldMessagesLoadingDelay();
   void setMaxAuditMessagesCount(int count);
   void setAuditMessagesReserve(int count);
+  void setOldMessagesLoadingDelay(int count);
   int deletionAuditMessagesCount();
   QFont editorsFont();
   void setEditorsFont(QFont font);
@@ -55,6 +57,7 @@ private:
   int _systemMessagesUpdationTime;
   int _maxAuditMessagesCount;
   int _auditMessagesReserve;
+  int _oldMessagesLoadingDelay;
   QString _lastOpenedFile;
 };
 

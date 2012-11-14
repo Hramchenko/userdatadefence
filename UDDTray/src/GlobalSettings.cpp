@@ -46,7 +46,6 @@ void GlobalSettings::makeDirIfNeed(QString path){
   }
 }
 
-
 QString GlobalSettings::uddHome(){
   QString result = QDir::homePath() + "/.userdatadefence/";
   makeDirIfNeed(result);
@@ -56,7 +55,6 @@ QString GlobalSettings::uddHome(){
 QString GlobalSettings::uddShare(){
   return "/usr/share/UDDTray/";
 }
-
 
 QString GlobalSettings::getConfigFile(QString local_path){
   QString result = uddHome() + local_path;
@@ -68,11 +66,11 @@ QString GlobalSettings::getConfigFile(QString local_path){
   return result;
 }
 
-
 void GlobalSettings::loadSettings(){
   _systemMessagesUpdationTime = _settings->value("SystemMessagesUpdationTime", 1000).toInt();
-  _maxAuditMessagesCount = _settings->value("MaxAuditMessagesCount", 5000).toInt();;
+  _maxAuditMessagesCount = _settings->value("MaxAuditMessagesCount", 5000).toInt();
   _auditMessagesReserve = _settings->value("AuditMessagesReserve", 1000).toInt();
+  _oldMessagesLoadingDelay = _settings->value("OldMessagesLoadingDelay", 5000).toInt();
   _editorsFont.fromString(_settings->value("EditorsFont", "Monospace").toString());
 }
 
@@ -96,6 +94,15 @@ int GlobalSettings::auditMessagesReserve(){
 void GlobalSettings::setMaxAuditMessagesCount(int count){
   _maxAuditMessagesCount = count;
   _settings->setValue("MaxAuditMessagesCount", _maxAuditMessagesCount);
+}
+
+int GlobalSettings::oldMessagesLoadingDelay(){
+  return _oldMessagesLoadingDelay;
+}
+
+void GlobalSettings::setOldMessagesLoadingDelay(int count){
+  _oldMessagesLoadingDelay = count;
+  _settings->setValue("OldMessagesLoadingDelay", _oldMessagesLoadingDelay);
 }
 
 void GlobalSettings::setAuditMessagesReserve(int count){

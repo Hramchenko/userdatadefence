@@ -20,6 +20,7 @@
 #include <QDBusReply>
 #include <QtDebug>
 #include <QRegExp>
+#include <QTimer>
 
 #include "KNotification.h"
 #include "KNotificationMessageAlert.h"
@@ -34,6 +35,7 @@
 #include "AuditMessage.h"
 #include "KNotificationMessage.h"
 #include "UDDaemonInterface.h"
+#include "GlobalSettings.h"
 
 AlertsWatcher* AlertsWatcher::_instance = 0;
 
@@ -69,7 +71,7 @@ AlertsWatcher* AlertsWatcher::instance(){
 void AlertsWatcher::clearLogST(){
 }
 
-void AlertsWatcher::loadOldAlerts(){
+void AlertsWatcher::loadOldAlertsST(){
   if (AlertsDepositary::instance()->needLoadingOldAlerts()){
     loadingOldAlerts = true;
     QString messages;
@@ -80,7 +82,8 @@ void AlertsWatcher::loadOldAlerts(){
 }
 
 void AlertsWatcher::connectToInterface(){
-  loadOldAlerts();
+  int loading_delay = GlobalSettings::instance()->oldMessagesLoadingDelay();
+  QTimer::singleShot(loading_delay, this, SLOT(loadOldAlertsST()));
   connect(avcbusInterface, SIGNAL(alertReceived(QString)), this, SLOT(AVCAlert(QString)));
 }
 

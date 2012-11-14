@@ -38,7 +38,6 @@ MainWindow::MainWindow(QWidget* parent) :
   QMainWindow(parent) {
   _instance = this;
   setupUi(this);
-
   createTrayIcon();
   initAlertsWatcher();
   mainTab->init();
