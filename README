@@ -1,6 +1,6 @@
 Welcome to User Data Defence!
 
-User Data Defenceis a system based on SELinux, which provides protection for your documents when user space applications (such as web browser, PDF viewer) were attacked.
+User Data Defence is a system based on SELinux, which provides protection for your documents when user space applications (such as web browser, PDF viewer) were attacked.
 
 User Data Defence includes set of template policies, which makes process of creation SELinux specifications for user mode applications simple as never before. Now you could protect documents on your workstation against user mode viruses or program errors.
 
