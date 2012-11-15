@@ -88,6 +88,8 @@ void MainWindow::quitST(){
 void MainWindow::changeVisibleST(){
   _visible = !_visible;
   setVisible(_visible);
+  if (_visible)
+    showNormal();
 }
 
 void MainWindow::clearLogST(){

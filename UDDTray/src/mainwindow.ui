@@ -141,7 +141,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>26</height>
+     <height>27</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -245,10 +245,10 @@
      <normaloff>:/images/document-edit-decrypt.png</normaloff>:/images/document-edit-decrypt.png</iconset>
    </property>
    <property name="text">
-    <string>Generate Policy</string>
+    <string>Generate Policy For Alerts Editor</string>
    </property>
    <property name="toolTip">
-    <string>Generate Policy</string>
+    <string>Generate Policy For Alerts Editor</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+B</string>
