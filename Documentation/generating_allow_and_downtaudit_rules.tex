@@ -1,0 +1,39 @@
+\section{Generating allow and downtaudit rules}
+
+Now we generate \texttt{allow} and \texttt{donataudit} rules for our
+\emph{Libre Office} policy (page \pageref{creating_new_policy}).
+
+Switch your \emph{SELinux} to \emph{Permissive} mode:
+\texttt{setenforce 0}, and run \texttt{/usr/bin/libreoffice}. You will
+receive many alerts in \emph{UDDTray}. Type \texttt{libre\_office} in a
+\emph{Filter} field of alerts tab {[}1{]}. Select all chosen alerts
+{[}2{]}, or type for it \emph{Ctrl+A}. Press \emph{Append to editor}
+button {[}3{]}, and activate \emph{Generate policy} button. When
+\emph{Generate policy} was unchecked you could see allow rules in
+\emph{SELinux policy} tab {[}5{]}.
+
+
+\illustrationWithCaption[0.85]{filter_num}{Generating allow rules}
+
+Append generated rules in \texttt{libre\_office.te} files. If you don't
+want to grant some permission for \emph{Libre Office} and want to ignore
+received messages replace keyword \texttt{allow} with
+\texttt{dontaudit}.
+
+Append \texttt{allow} and \texttt{dontaudit} rules for
+\texttt{libre\_office\_secret\_t} domain (run
+\texttt{/usr/bin/libreoffice\_secret}) in the same way. Then rebuild and
+install policy.
+
+After installation you can try to switch \emph{SELinux} in
+\emph{Enforcing} mode. Type \texttt{setenforce 1} in a root console.
+When you run \emph{Libre Office} again you will receive new alerts.
+Append rules for it too.
+
+\textbf{Warning!} Some alerts are not shown at the alerts tab, because
+there are not system. You could try to generate policy for it using
+\emph{Generate policy for /var/log/messages} function. Other alerts are
+not shown because there are \texttt{dontaudit} rules for it in other
+policies. If you want to see alerts for \texttt{dontaudit} rules rebuild
+your policy: \texttt{semodule -D}. If you want hide these events type
+\texttt{semodule -DB} in your root console.

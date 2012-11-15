@@ -1,0 +1,55 @@
+\section{Customizing notification messages}
+
+\emph{User Data Defence} allows you to customize notification of alerts.
+
+Open settings of \emph{UDDTray}: \emph{Edit-\textgreater{}Preferences},
+and select \emph{Alerts} group.
+
+\illustrationWithCaption[0.55]{alerts_settings}{Editing alert notification}
+
+
+There are some tabs in this group:
+
+\begin{itemize}
+\item
+  \emph{Default} - settings for messages, which don't meet any
+  condition, if you disable \emph{Show unknown messages}, this messages
+  are not shown;
+\item
+  \emph{Multiple} - settings for notifications, which displayed where
+  KNotify is overloaded by \emph{UDDTray} alerts;\\
+\item
+  \emph{Type filter} - settings for alerts with certain type;
+\item
+  \emph{Reg Exp Filter} - settings which meet certain Qt regular
+  expression.
+\end{itemize}
+
+\emph{Format string} field contains message, which was shown in
+notification, where \texttt{\%field\%} will be replaced by its value.
+There are some system values:
+
+\begin{itemize}
+\item
+  \texttt{\%RAW\_MESSAGE\%} will replaced with raw alert text;
+\item
+  \texttt{\%alerts\_count\%} (only in \emph{Multiple} tab) replaced with
+  total count of alerts;
+\item
+  \texttt{\%max\_level\%} (only in \emph{Multiple} tab) replaced with
+  maximum clearance level of received alerts.
+\end{itemize}
+
+Now we create custom notifications for \emph{Libre Office} policy (page \pageref{creating_new_policy}).
+
+Go to the \emph{Reg Exp Filter} tab. Enter in \emph{Reg Exp} field
+\texttt{type=AVC(.*)libre\_office\_secret} select alert image and
+caption, select notification text.
+
+\illustrationWithCaption[0.55]{libre_alerts}{Alerts configuration}
+
+Now if you receive AVC alerts with \texttt{libre\_office\_secret} string
+notification system will display something like this:
+
+\illustrationWithCaption[0.6]{libre_notification}{Alert notification}
+

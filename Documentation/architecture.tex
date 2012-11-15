@@ -1,0 +1,39 @@
+\chapter{Architecture}
+
+\emph{User Data Defence} consist of five components: \emph{UDDBus},
+\emph{UDDaemon}, \emph{UDDTray}, \emph{UDDExec} and \emph{UDDPolicy}.
+
+\section{UDDBus}
+
+\emph{UDDBus} is an \emph{auditd} interaction utility. It reads from the
+input stream of audit events daemon, filters AVC messages from stream
+and transmits them via D-Bus Service to UDDaemon (this utility is based
+on code of \emph{sedispatch}, written by D. Walsh).
+
+\section{UDDaemon}
+
+\emph{UDDaemon} is a daemon of SELinux messages. Daemon receives data
+from \emph{UDDBus}, accumulates it and provides a data storage. It sends
+information about new security events to \emph{UDDTray} in a real time.
+
+\section{UDDTray}
+
+\emph{UDDTray} is a userland component of \emph{User Data Defence}. It
+is a graphical application which running in the system tray.
+\emph{UDDTray} performs SELinux alerts through the system notification
+service \emph{KNotify}. It provides an interface of controlling modes of
+access control system.
+
+\section{UDDExec}
+
+\emph{UDDExec} is an application launcher utility. It selects the
+calling program in depending on the mode selected in \emph{UDDTray}.
+This utility provide you an opportunity to specify a security policy for
+individual applications, depending on the type of information which need
+to be processed.
+
+\section{UDDPolicy}
+
+\emph{UDDPolicy} is a set of SELinux policy templates for applications
+with graphical user interface. It provides new macro functions which
+helps in rapid policy development.

@@ -1,0 +1,138 @@
+\chapter{Writing SELinux policy}
+\section{Creating new policy}\label{creating_new_policy}
+
+This example demonstrates how to create policy for application with
+graphical interface \emph{Libre Office}.
+
+\subsection{Creating policy files}
+
+For creating new policy select \emph{File-\textgreater{}New Policy} in
+\emph{UDDTray} menu. In \emph{New Policy} window select \emph{Gui
+application policy}. Then enter existing directory for policy files and
+its name - \texttt{libre\_office}.
+
+\illustrationWithCaption[0.57]{new_policy}{Policy creation window}
+
+When necessary fields was filled \emph{Create} button will activated.
+Press it. \emph{UDDTray} generates \texttt{libre\_office.te},
+\texttt{libre\_office.if}, \texttt{libre\_office.fc}. Also it creates
+\texttt{udd.te}, \texttt{udd.fc}, \texttt{udd.if} and \texttt{Makefile},
+if there are not exists.
+
+\subsection{Customizing .te file}
+
+First line describes policy module name and its version:
+
+\texttt{policy\_module(libre\_office,1.0.0)}
+
+Next four lines contains external types and roles which are used inside
+a policy:
+
+\texttt{require \{}
+
+\texttt{type staff\_t;}
+
+\texttt{role staff\_r;}
+
+\texttt{\}}
+
+Macro function \texttt{udd\_gui\_application\_create(libre\_office);}
+creates:
+
+\begin{itemize}
+\item
+  \texttt{libre\_office\_t} - domain type;
+\item
+  \texttt{libre\_office\_exec\_t} domain entry point - type of
+  executables which can be used to enter a domain;
+\item
+  \texttt{libre\_office\_config\_dir\_t},
+  \texttt{libre\_office\_config\_file\_t} - types of files and
+  directories with users configuration files (usually located at home
+  folder).\\
+\item
+  \texttt{libre\_office\_tmpfs\_t} - type of temporary files.
+\end{itemize}
+
+Line
+\texttt{udd\_gui\_application\_access(libre\_office, staff\_r, staff\_t);}
+allow user with role \texttt{staff\_r} and type \texttt{staff\_t} access
+to domain \texttt{libre\_office\_t}. It provides domain auto transition
+from \texttt{staff\_t} to \texttt{libre\_office\_t}, when user executes
+file with context \texttt{libre\_office\_exec\_t}. Also this instruction
+allows D-Bus communication between user domain and
+\texttt{libre\_office\_t}.
+
+Command
+\texttt{udd\_gui\_application\_append\_special\_domain(libre\_office, secret);}
+creates domain \texttt{libre\_office\_secret\_t} with entry point
+\texttt{libre\_office\_secret\_exec\_t} and creates types for secret
+files:
+
+\begin{itemize}
+\item
+  \texttt{libre\_office\_secret\_file\_t} secret files type;
+\item
+  \texttt{libre\_office\_secret\_dir\_t} directories type. Any file
+  written in that directory by application with domain
+  \texttt{libre\_office\_t} will have context
+  \texttt{libre\_office\_secret\_file\_t}, any creating folder will have
+  type \texttt{libre\_office\_secret\_dir\_t};
+\end{itemize}
+
+Line
+\texttt{udd\_gui\_application\_special\_domain\_access(libre\_office, secret,  staff\_r, staff\_t);}
+allows user with role \texttt{staff\_r} and domain \texttt{staff\_t}
+access to \texttt{libre\_office\_secret\_t}. It creates domain auto
+transition, and allows their D-Bus communication;
+
+\subsection{Editing .fc specification}
+
+Lets edit \texttt{libre\_office.fc}.
+
+Change line
+\texttt{/path/to/application -{}- system\_u:object\_r:libre\_office\_exec\_t:s0}
+to
+\texttt{/usr/bin/libreoffice -{}- system\_u:object\_r:libre\_office\_exec\_t:s0}.
+
+Copy \texttt{libreoffice} to \texttt{libreoffice\_secret}:
+\texttt{cp /usr/bin/libreoffice /usr/bin/libreoffice\_secret}, and
+replace line \texttt{/path/to/application\_secret} with
+\texttt{/usr/bin/libreoffice\_secret} at the second line.
+
+Next, replace
+\texttt{HOME\_DIR/\textbackslash{}.libre\_office\_config(/.*)} with
+\texttt{HOME\_DIR/\textbackslash{}.libreoffice/}.
+
+Let we have directory with secret files at
+\texttt{/home/secret\_documents}, so we need to replace
+\texttt{HOME\_DIR/\textbackslash{}.libre\_office\_secret\_dir(/.*)?}
+with \texttt{/home/secret\_documents(/.*)?} at the last two lines of
+configuration file.
+
+After all modifications you receive as a result:
+
+\texttt{/usr/bin/libreoffice -{}- system\_u:object\_r:libre\_office\_exec\_t:s0}
+
+\texttt{/usr/bin/libreoffice\_secret -{}- system\_u:object\_r:libre\_office\_secret\_exec\_t:s0}
+
+\texttt{HOME\_DIR/\textbackslash{}.libreoffice(/.*)? -d system\_u:object\_r:libre\_office\_config\_dir\_t:s0 HOME\_DIR/\textbackslash{}.libreoffice(/.*)? -{}- system\_u:object\_r:libre\_office\_config\_file\_t:s0}
+
+\texttt{/home/secret\_documents(/.*)? -d staff\_u:object\_r:libre\_office\_secret\_dir\_t:s0}
+
+\texttt{/home/secret\_documents(/.*)? -{}- staff\_u:object\_r:libre\_office\_secret\_file\_t:s0}
+
+\subsection{Policy installation}
+
+For installation type in your root console:
+
+\texttt{cd /path/to/policy/folder}
+
+\texttt{make}
+
+\texttt{semodule -i libre\_office.pp}
+
+Next step is to change files contexts:
+
+\texttt{restorecon -R /usr/bin/libreoffice* /home/*/.libre\_office /home/secret\_documents}
+
