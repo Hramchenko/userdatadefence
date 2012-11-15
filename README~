@@ -1,0 +1,23 @@
+Welcome to User Data Defence!
+
+User Data Defence is a host intrusion prevention system based on SELinux. It provides protection of your documents when user space applications (such as web browser, PDF viewer) were attacked.
+
+User Data Defence includes set of template policies, which makes process of creation SELinux specifications for user mode applications simple as never before. Now you could protect documents on your workstation against user mode viruses or program errors.
+
+User Data Defence provides advanced SELinux events notification on the Desktop. You could choose notification images and text according to event type or reg exp pattern.
+
+User Data Defence provides you an opportunity to specify a security policy for individual applications, depending on the type of information which need to be processed.
+
+
+Contributions
+==================================
+If you want to develop this project, please write mail to me.
+   
+Author:
+==================================
+Hramchenko Vitaliy <v.hramchenko@gmail.com>
+
+==================================
+For more information visit project page:  
+https://github.com/Hramchenko/userdatadefence/
+
