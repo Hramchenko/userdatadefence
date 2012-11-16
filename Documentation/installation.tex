@@ -79,7 +79,7 @@ When your system worked correctly (you don't receive false-positive AVC
 alerts) you could try to change context of your user. Switch SELinux in
 \emph{Permissive} mode and type:
 
-\texttt{login -m -s staff\_u your\_login\_name}
+\texttt{semanage login -a -s staff\_u your\_login\_name}
 
 Then append some aliases in \textasciitilde{}/.bash\_rc profile:
 

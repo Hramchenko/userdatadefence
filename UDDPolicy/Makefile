@@ -25,5 +25,8 @@ install: all
 	semodule -i udd.pp
 
 distclean:
+	rm -rf ./tmp *~ *.pp
+
+
 
  
