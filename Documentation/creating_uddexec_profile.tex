@@ -1,0 +1,45 @@
+\section{Creating UDDExec profile}
+
+\emph{UDDExec} is an application launcher utility. It executes the
+calling program in depending on the mode selected in \emph{UDDTray}. Now
+we configure \emph{UDDTray} to select modes of \emph{Libre Office} policy (page \pageref{creating_new_policy}).
+
+Open preferences of \emph{UDDTray}:
+\emph{Edit-\textgreater{}Preferences}, and select \emph{Applications}
+group.
+
+\illustrationWithCaption[0.55]{exec_groups}{Applications groups}
+
+Append new group \emph{Office} by activating plus button. Enter group
+name, and text which will be shown in \emph{UDDTray} menu. Select icon
+for this group. Go to \emph{Group modes} tab.
+
+\illustrationWithCaption[0.55]{exec_modes}{Applications groups modes}
+
+Append modes \emph{Unclassified} and \emph{Secret} in group
+\emph{Office}, select its names, menu texts, icons. Open
+\emph{Applications} tab.
+
+\illustrationWithCaption[0.55]{exec_applications}{Enforced applications}
+
+Last step is to append application with name \emph{libreoffice} and
+command \texttt{libreoffice} in mode \emph{Unclassified}, and append
+application with name \emph{libreoffice} and command
+\texttt{libreoffice\_secret} in mode \emph{Secret}.
+
+Now, if you select mode \emph{Unclassified} in \emph{UDDTray} menu,
+application \emph{libreoffice} will called when you type in users
+console \texttt{UDDExec libreoffice -writer}, and
+\emph{libreoffice\_secret} called on command
+\texttt{UDDExec libreoffice -writer} in \emph{Secret} mode.
+
+\illustrationWithCaption[0.55]{exec_tray}{Selection of UDDExec mode}
+
+So if \texttt{/usr/bin/libreoffice} has type \texttt{libre\_office\_t},
+and \texttt{/usr/bin/libreoffice\_secret} has type
+\texttt{libre\_office\_secret\_t} you could call program with single
+command but different domains.
+
+You could replace \texttt{.desktop} file of \emph{Libre Office} to your
+own file with command \texttt{UDDExec libreoffice}.
+

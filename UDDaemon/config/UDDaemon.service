@@ -1,0 +1,12 @@
+[Unit]
+Description=UDD AVC messages reader
+After=auditd.service
+
+[Service]
+ExecStart=/usr/sbin/UDDaemon
+Type=dbus
+BusName=net.sourceforge.userdatadefence.avcbus
+
+
+[Install]
+WantedBy=multi-user.target 

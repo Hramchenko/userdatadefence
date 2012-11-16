@@ -48,6 +48,7 @@ public slots:
   void maxAuditMessagesCountChangedST(int count);
   void auditMessagesReserveChangedST(int count);
   void logUpdationIntervalChangedST(int count);
+  void oldMessagesLoadingDelayChangedST(int count);
   void showUnknownMessagesChangedST(bool state);
   void saveApplicationsSettings();
   void saveNotificationSettings();

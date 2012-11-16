@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Move 1 resources to &apos;UDDaemon&apos;" description="Move 1 resources to &apos;UDDaemon&apos;" destination="/UDDaemon" element1="src/build.sh" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1317461761497" updateReferences="true"/>
-</session>

@@ -38,7 +38,6 @@ MainWindow::MainWindow(QWidget* parent) :
   QMainWindow(parent) {
   _instance = this;
   setupUi(this);
-
   createTrayIcon();
   initAlertsWatcher();
   mainTab->init();
@@ -89,6 +88,8 @@ void MainWindow::quitST(){
 void MainWindow::changeVisibleST(){
   _visible = !_visible;
   setVisible(_visible);
+  if (_visible)
+    showNormal();
 }
 
 void MainWindow::clearLogST(){

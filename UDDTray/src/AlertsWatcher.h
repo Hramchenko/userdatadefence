@@ -52,8 +52,8 @@ signals:
 public slots:
   void AVCAlert(QString text);
   void clearLogST();
+  void loadOldAlertsST();
 private:
-  void loadOldAlerts();
   void showLastAlerts(QMutableListIterator<AuditMessage*>& iter);
   void saveSettings();
   void clearStatistics();

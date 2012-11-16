@@ -202,3 +202,6 @@ void PreferencesDialog::logUpdationIntervalChangedST(int count){
   _settings->setSystemMessagesUpdationTime(count);
 }
 
+void PreferencesDialog::oldMessagesLoadingDelayChangedST(int count){
+  _settings->setOldMessagesLoadingDelay(count);
+}

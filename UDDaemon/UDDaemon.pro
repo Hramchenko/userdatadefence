@@ -3,12 +3,18 @@ TEMPLATE = subdirs
 
 SUBDIRS = src
 
-control.path = /usr/sbin/
-control.files = udd_daemon_control.py
-control.extra = python ./udd_daemon_control.py --enable
+dbus.path = /etc/dbus-1/system.d/
+dbus.files = config/net.sourceforge.userdatadefence.avcbus.conf
 
-config.path = /etc/dbus-1/system.d/
-config.files = config/*
+systemd.target = systemd
+systemd.path = /etc/systemd/system/
+systemd.files = config/UDDaemon.service
 
-INSTALLS += config control 
+start_service.path = /etc/systemd/system/
+start_service.files = config/UDDaemon.service
+start_service.extra =  systemctl enable UDDaemon.service
+start_service.depends = systemd
 
+INSTALLS += dbus systemd start_service 
+
+QMAKE_EXTRA_TARGETS += systemd

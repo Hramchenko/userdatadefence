@@ -64,7 +64,7 @@ Post installation
 
 When your system worked correctly (you don't receive false-positive AVC alerts) you could try to change context of your user. Switch SELinux in Permissive mode and type:
 
-login -m -s staff_u your_login_name
+semanage login -a -s staff_u your_login_name
 
 Then append some aliases in ~/.bash_rc profile:
 

@@ -16,6 +16,7 @@
 #include "GeneratedPolicyTextEdit.h"
 
 #include <QProcess>
+#include <QMessageBox>
 #include <QtDebug>
 
 #include "AlertsDepositary.h"
@@ -84,6 +85,8 @@ void GeneratedPolicyTextEdit::generatePolicyAllST(){
 void GeneratedPolicyTextEdit::generatePolicyEditorST(){
   QString messages;
   messages = editorMessages();
+  if (messages.length() == 0)
+    QMessageBox::information(this, "Information", "Please append messages to alerts editor first.", QMessageBox::Ok);
   runAudit2Allow(messages);
 }
 

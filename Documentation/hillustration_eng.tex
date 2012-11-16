@@ -1,0 +1,58 @@
+\usepackage{float}
+
+\newcommand\illref[1]{\ref{illustration:#1}}
+
+\newenvironment{illustrationFigure}{\begin{figure}[H]}{\end{figure}}
+
+\newcommand\illustrationWithCaption[3][0.6]{
+	\begin{illustrationFigure}
+		\noindent\centering{
+			\includegraphics[scale=#1]{#2}
+		}
+		\caption{#3}
+		\label{illustration:#2}
+	\end{illustrationFigure}
+}
+
+\newcommand\minipageIllustration[2]{
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[scale=#2]{#1}}
+	\end{minipage}
+	\hfill
+}
+
+\newcommand\doubleIllustrationRawCaptionsContent[5][0.6]{
+	\minipageIllustration{#2}{#1}	
+	\minipageIllustration{#3}{#1}	
+	\begin{minipage}[h]{1\linewidth}
+		\begin{tabular}{p{0.49\linewidth}p{0.49\linewidth}}
+			\centering #4 & \centering #5 \\
+		\end{tabular}
+	\end{minipage}
+}
+
+\newcommand\doubleIllustration[4][0.6]{
+	\begin{illustrationFigure}
+		\doubleIllustrationRawCaptionsContent[#1]{#2}{#3}{(а)}{(б)}		
+		\vspace*{-0.5cm}
+		\caption{#4}
+		\label{illustration:#2}
+	\end{illustrationFigure}
+}
+
+\newcommand\doubleIllustrationRawCaptions[5][0.6]{
+	\begin{illustrationFigure}
+		\doubleIllustrationRawCaptionsContent[#1]{#2}{#3}{#4}{#5}
+	\end{illustrationFigure}
+}
+
+\newcommand\quadIllustration[6][0.6]{
+	\doubleIllustrationRawCaptions[#1]{#2}{#3}{(а)}{(б)}
+	\begin{illustrationFigure}
+		\vspace*{-0.5cm}
+		\doubleIllustrationRawCaptionsContent[#1]{#4}{#5}{(в)}{(г)}
+		\vspace*{-0.5cm}
+		\caption{#6} 
+		\label{illustration:#2} 
+	\end{illustrationFigure}
+}

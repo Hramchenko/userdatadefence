@@ -95,8 +95,6 @@ void TrayIcon::mainWindowVisibleST(bool is_visible){
 void TrayIcon::iconActivatedST(QSystemTrayIcon::ActivationReason reason){
   if(reason == QSystemTrayIcon::Trigger){
     mainWindow->changeVisibleST();
-    if (mainWindow->isMinimized())
-      mainWindow->showNormal();
   }
 }
 
