@@ -22,6 +22,7 @@
 #include "AlertsDepositary.h"
 #include "MainWindow.h"
 #include "UDDaemonInterface.h"
+#include "GlobalSettings.h"
 
 GeneratedPolicyTextEdit::GeneratedPolicyTextEdit(QWidget* parent): TEEditor(parent){
   audit2Allow = new QProcess();
@@ -40,6 +41,7 @@ void GeneratedPolicyTextEdit::clearLogST(){
 }
 
 void GeneratedPolicyTextEdit::audit2AllowFinishedST(int exitCode, QProcess::ExitStatus){
+  clearAlertsEditorIfNeed();
   QByteArray result_bytes = audit2Allow->readAll();
   QString result = QString(result_bytes);
   if (exitCode)
@@ -50,6 +52,8 @@ void GeneratedPolicyTextEdit::audit2AllowFinishedST(int exitCode, QProcess::Exit
 
 
 void GeneratedPolicyTextEdit::runAudit2Allow(QString messages){
+
+
   audit2Allow->kill();
   audit2Allow->start("audit2allow", QStringList() << "-R");
   if (!audit2Allow->waitForStarted()){
@@ -74,6 +78,11 @@ QString GeneratedPolicyTextEdit::systemMessages(){
   QString last_messages;
   last_messages = UDDaemonInterface::instance()->loadLastMessages(AlertsDepositary::instance()->lastSystemMessage);
   return last_messages;
+}
+
+void GeneratedPolicyTextEdit::clearAlertsEditorIfNeed(){
+  if (GlobalSettings::instance()->clearAlertsEditorAfterGeneration())
+    MainWindow::instance()->alertsEditorTE->clear();
 }
 
 void GeneratedPolicyTextEdit::generatePolicyAllST(){

@@ -52,6 +52,7 @@ PreferencesDialog::PreferencesDialog(QWidget* parent): QDialog(parent) {
   maxAuditMessagesCountSB->setValue(_settings->maxAuditMessagesCount());
   auditMessagesReserveSB->setValue(_settings->auditMessagesReserve());
   logUpdationTimeSB->setValue(_settings->systemMessagesUpdationTime());
+  clearAlertsEditorAfterGenerationCB->setChecked(_settings->clearAlertsEditorAfterGeneration());
   _editorsFont = GlobalSettings::instance()->editorsFont();
   updateEditorsFontLabel();
 }
@@ -111,6 +112,9 @@ void PreferencesDialog::saveNotificationSettings(){
   NotificationConfigParser parser(_notificationSettings);
   createReserve(notifications_config);
   parser.write(notifications_config);
+}
+
+void PreferencesDialog::clearAlertsEditorAfterGenerationChangedST(bool state){
 }
 
 void PreferencesDialog::createReserve(QString file_name){

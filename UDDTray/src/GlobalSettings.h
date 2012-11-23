@@ -31,6 +31,8 @@ public:
   int maxAuditMessagesCount();
   int auditMessagesReserve();
   int oldMessagesLoadingDelay();
+  bool clearAlertsEditorAfterGeneration();
+  void setClearAlertsEditorAfterGeneration(bool value);
   void setMaxAuditMessagesCount(int count);
   void setAuditMessagesReserve(int count);
   void setOldMessagesLoadingDelay(int count);
@@ -59,6 +61,7 @@ private:
   int _auditMessagesReserve;
   int _oldMessagesLoadingDelay;
   QString _lastOpenedFile;
+  bool _clearAlertsEditorAfterGeneration;
 };
 
 #endif /* GLOBALSETTINGS_H_ */

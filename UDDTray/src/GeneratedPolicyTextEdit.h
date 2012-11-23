@@ -36,6 +36,7 @@ private:
   QString auditMessages();
   QString editorMessages();
   QString systemMessages();
+  void clearAlertsEditorIfNeed();
 private:
   QProcess* audit2Allow;
 };

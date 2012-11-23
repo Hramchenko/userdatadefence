@@ -230,6 +230,13 @@
              </layout>
             </item>
             <item>
+             <widget class="QCheckBox" name="clearAlertsEditorAfterGenerationCB">
+              <property name="text">
+               <string>Clear alerts editor after policy generation</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <spacer name="verticalSpacer_3">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
@@ -837,8 +844,8 @@
    <slot>loadMessageST(AuditMessageNotification*)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>265</x>
-     <y>53</y>
+     <x>269</x>
+     <y>84</y>
     </hint>
     <hint type="destinationlabel">
      <x>261</x>
@@ -853,8 +860,8 @@
    <slot>loadMessageST(AuditMessageNotification*)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>265</x>
-     <y>53</y>
+     <x>269</x>
+     <y>84</y>
     </hint>
     <hint type="destinationlabel">
      <x>261</x>
@@ -869,12 +876,12 @@
    <slot>setText(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>265</x>
-     <y>53</y>
+     <x>269</x>
+     <y>84</y>
     </hint>
     <hint type="destinationlabel">
-     <x>264</x>
-     <y>69</y>
+     <x>268</x>
+     <y>100</y>
     </hint>
    </hints>
   </connection>
@@ -885,12 +892,12 @@
    <slot>messageFilterChangedST(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>264</x>
-     <y>69</y>
+     <x>268</x>
+     <y>100</y>
     </hint>
     <hint type="destinationlabel">
-     <x>265</x>
-     <y>53</y>
+     <x>269</x>
+     <y>84</y>
     </hint>
    </hints>
   </connection>
@@ -901,12 +908,12 @@
    <slot>setText(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>265</x>
-     <y>53</y>
+     <x>269</x>
+     <y>84</y>
     </hint>
     <hint type="destinationlabel">
-     <x>264</x>
-     <y>69</y>
+     <x>268</x>
+     <y>100</y>
     </hint>
    </hints>
   </connection>
@@ -917,12 +924,12 @@
    <slot>messageFilterChangedST(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>264</x>
-     <y>69</y>
+     <x>268</x>
+     <y>100</y>
     </hint>
     <hint type="destinationlabel">
-     <x>265</x>
-     <y>53</y>
+     <x>269</x>
+     <y>84</y>
     </hint>
    </hints>
   </connection>
@@ -933,8 +940,8 @@
    <slot>needNewTypeNotificationST()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>265</x>
-     <y>53</y>
+     <x>269</x>
+     <y>84</y>
     </hint>
     <hint type="destinationlabel">
      <x>288</x>
@@ -953,8 +960,8 @@
      <y>278</y>
     </hint>
     <hint type="destinationlabel">
-     <x>265</x>
-     <y>53</y>
+     <x>269</x>
+     <y>84</y>
     </hint>
    </hints>
   </connection>
@@ -965,8 +972,8 @@
    <slot>needNewRegExpNotificationST()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>265</x>
-     <y>53</y>
+     <x>269</x>
+     <y>84</y>
     </hint>
     <hint type="destinationlabel">
      <x>345</x>
@@ -985,8 +992,8 @@
      <y>278</y>
     </hint>
     <hint type="destinationlabel">
-     <x>265</x>
-     <y>53</y>
+     <x>269</x>
+     <y>84</y>
     </hint>
    </hints>
   </connection>
@@ -997,8 +1004,8 @@
    <slot>typeNotificationDeletedST(AuditMessageNotification*)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>265</x>
-     <y>53</y>
+     <x>269</x>
+     <y>84</y>
     </hint>
     <hint type="destinationlabel">
      <x>372</x>
@@ -1013,8 +1020,8 @@
    <slot>regExpNotificationDeletedST(AuditMessageNotification*)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>265</x>
-     <y>53</y>
+     <x>269</x>
+     <y>84</y>
     </hint>
     <hint type="destinationlabel">
      <x>404</x>
@@ -1509,8 +1516,8 @@
    <slot>showUnknownMessagesChangedST(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>265</x>
-     <y>70</y>
+     <x>439</x>
+     <y>495</y>
     </hint>
     <hint type="destinationlabel">
      <x>418</x>
@@ -1531,6 +1538,22 @@
     <hint type="destinationlabel">
      <x>870</x>
      <y>239</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>clearAlertsEditorAfterGenerationCB</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>clearAlertsEditorAfterGenerationChangedST(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>423</x>
+     <y>225</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>836</x>
+     <y>321</y>
     </hint>
    </hints>
   </connection>
@@ -1555,5 +1578,6 @@
   <slot>logUpdationIntervalChangedST(int)</slot>
   <slot>showUnknownMessagesChangedST(bool)</slot>
   <slot>oldMessagesLoadingDelayChangedST(int)</slot>
+  <slot>clearAlertsEditorAfterGenerationChangedST(bool)</slot>
  </slots>
 </ui>

@@ -93,6 +93,7 @@ void MainWindow::changeVisibleST(){
 }
 
 void MainWindow::clearLogST(){
+  alertsEditorTE->clear();
   emit(logCleared());
 }
 

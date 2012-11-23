@@ -71,6 +71,7 @@ void GlobalSettings::loadSettings(){
   _maxAuditMessagesCount = _settings->value("MaxAuditMessagesCount", 5000).toInt();
   _auditMessagesReserve = _settings->value("AuditMessagesReserve", 1000).toInt();
   _oldMessagesLoadingDelay = _settings->value("OldMessagesLoadingDelay", 5000).toInt();
+  _clearAlertsEditorAfterGeneration = _settings->value("ClearAlertsEditorAfterGeneration", true).toBool();
   _editorsFont.fromString(_settings->value("EditorsFont", "Monospace").toString());
 }
 
@@ -98,6 +99,15 @@ void GlobalSettings::setMaxAuditMessagesCount(int count){
 
 int GlobalSettings::oldMessagesLoadingDelay(){
   return _oldMessagesLoadingDelay;
+}
+
+bool GlobalSettings::clearAlertsEditorAfterGeneration(){
+  return _clearAlertsEditorAfterGeneration;
+}
+
+void GlobalSettings::setClearAlertsEditorAfterGeneration(bool value){
+  _clearAlertsEditorAfterGeneration = value;
+  _settings->setValue("ClearAlertsEditorAfterGeneration", value);
 }
 
 void GlobalSettings::setOldMessagesLoadingDelay(int count){

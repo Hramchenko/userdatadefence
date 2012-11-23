@@ -52,6 +52,7 @@ public slots:
   void showUnknownMessagesChangedST(bool state);
   void saveApplicationsSettings();
   void saveNotificationSettings();
+  void clearAlertsEditorAfterGenerationChangedST(bool state);
 signals:
   void applicationNameChanged(ApplicationsSettingsParameter* parameter);
   void typeNotificationAppended(AuditMessageNotification*);
