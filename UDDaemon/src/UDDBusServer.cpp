@@ -15,6 +15,7 @@
 #include "UDDBusServer.h"
 
 #include <QtDebug>
+using namespace std;
 
 UDDBusServer::UDDBusServer(QObject *obj): QDBusAbstractAdaptor(obj){
 }

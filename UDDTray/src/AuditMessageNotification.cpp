@@ -90,7 +90,7 @@ QPixmap AuditMessageNotification::pixmap(){
 void AuditMessageNotification::setPixmap(QPixmap pixmap){
   _pixmap = pixmap;
   _icon = QIcon(pixmap);
-  _pixmapBytes = KNotificationMessage::pixmapToByteArray(pixmap);
+  _image = pixmap.toImage();
   _imagePath = "";
 }
 
@@ -107,8 +107,9 @@ QIcon AuditMessageNotification::icon(){
   return _icon;
 }
 
-QByteArray AuditMessageNotification::pixmapBytes(){
-  return _pixmapBytes;
+QImage AuditMessageNotification::image()
+{
+  return _image;
 }
 
 QString AuditMessageNotification::caption(){

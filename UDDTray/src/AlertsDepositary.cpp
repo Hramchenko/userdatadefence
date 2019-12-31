@@ -78,6 +78,6 @@ void AlertsDepositary::clearLogST(){
 }
 
 bool AlertsDepositary::needLoadingOldAlerts(){
-  return !lastAuditMessage.isEmpty();
+  return true;//!// lastAuditMessage.isEmpty();
 }
 

@@ -1,11 +1,10 @@
-
 TEMPLATE = subdirs
 
-CONFIG = release
+CONFIG = debug
 
 #UDDPolicy.makefile = ./UDDPolicy/Makefile.selinux
 
-SUBDIRS = UDDPolicy UDDaemon UDDBus UDDExec UDDTray Documentation
+SUBDIRS = UDDaemon UDDTray UDDBus UDDExec  UDDPolicy
 
 
 

@@ -13,12 +13,19 @@
  *   GNU General Public License for more details.                          *
  ***************************************************************************/
 #include "KNotification.h"
+#include "FreedesktopImageHint.h"
 
 #include <QDBusInterface>
 #include <QBuffer>
 #include <QDBusReply>
 #include <QObject>
 #include <QtDebug>
+#include <QImage>
+#include <QVariant>
+#include <QStringLiteral>
+#include <QMap>
+#include <iostream>
+using namespace  std;
 
 KNotification* KNotification::_instance = 0;
 
@@ -53,12 +60,12 @@ void KNotification::clearMessagesDict(){
 }
 
 void KNotification::connectToInterface(){
-  knotifyInterface = new QDBusInterface("org.kde.knotify", "/Notify", "org.kde.KNotify");
-  connect(knotifyInterface, SIGNAL(notificationActivated(int, int)), this, SLOT(notificationActivated(int, int)));
-  connect(knotifyInterface, SIGNAL(notificationClosed(int)), this, SLOT(notificationClosed(int)));
+  knotifyInterface = new QDBusInterface("org.freedesktop.Notifications", "/org/freedesktop/Notifications", "org.freedesktop.Notifications");
+  connect(knotifyInterface, SIGNAL(ActionInvoked(const uint, const QString&)), this, SLOT(notificationActivated(const uint, const QString&)));
+  connect(knotifyInterface, SIGNAL(NotificationClosed(const uint, const uint)), this, SLOT(notificationClosed(const uint, const uint)));
 }
 
-void KNotification::notificationActivated(int id, int action){
+void KNotification::notificationActivated(const uint id, const QString& action){
   KNotificationMessage* message;
   message = findNotificationMessage(id);
   if (message){
@@ -67,7 +74,7 @@ void KNotification::notificationActivated(int id, int action){
   }
 }
 
-void KNotification::notificationClosed(int id){
+void KNotification::notificationClosed(const uint id, const uint){
   removeNotificationMessage(id);
 }
 
@@ -83,44 +90,32 @@ void KNotification::removeNotificationMessage(int id){
   }
 }
 
-void KNotification::closeMessage(KNotificationMessage* message){
-  QList<QVariant> message_args;
-  message_args.push_back(message->messageId);
-  knotifyInterface->callWithArgumentList(QDBus::AutoDetect, "closeNotification", message_args);
-}
-
-void KNotification::closeAllMessages(){
-  QMapIterator<int, KNotificationMessage*> iter(messagesDict);
-  while (iter.hasNext()){
-    iter.next();
-    closeMessage(iter.value());
+void KNotification::updateMessage(KNotificationMessage* message){
+  if (messagesDict.contains(message->messageId))
+  {
+    sendUpdateMessageToDBus(message);
+  }
+  else
+  {
+    showMessage(message);
   }
 }
 
-
-void KNotification::updateMessage(KNotificationMessage* message){
-  if (messagesDict.contains(message->messageId))
-    sendUpdateMessageToDBus(message);
-  else
-    showMessage(message);
-}
-
 void KNotification::sendUpdateMessageToDBus(KNotificationMessage* message){
-  QList<QVariant>* message_args;
-  message_args = createUpdateEventArgs(message);
-  knotifyInterface->callWithArgumentList(QDBus::AutoDetect, "update", *message_args);
+  QList<QVariant> message_args;
+  createEventArgs(message, message_args);
+  knotifyInterface->callWithArgumentList(QDBus::AutoDetect, "Notify", message_args);
   message->notificationShown();
-  delete message_args;
 }
 
-QList<QVariant>* KNotification::createUpdateEventArgs(KNotificationMessage* message){
-  QList<QVariant>* message_args = new QList<QVariant>;
-  message_args->append(message->messageId);
-  message_args->append(message->title());
-  message_args->append(message->text());
-  message_args->append(message->pixmapBytes());
-  message_args->append(QVariant(message->actions()));
-  return message_args;
+int KNotification::newMessageId()
+{
+  currentMessageId += 1;
+  if (currentMessageId > 100000)
+  {
+    currentMessageId = 0;
+  }
+  return currentMessageId;
 }
 
 KNotificationMessage* KNotification::findNotificationMessage(int id){
@@ -133,27 +128,31 @@ KNotificationMessage* KNotification::findNotificationMessage(int id){
 
 int KNotification::sendMessageToDBus(KNotificationMessage* message){
   message->notificationShown();
-  QList<QVariant>* message_args;
-  message_args = createEventArgs(message);
-  QDBusReply<int> reply;
-  reply = knotifyInterface->callWithArgumentList(QDBus::AutoDetect, "event", *message_args);
-  message->messageId = reply.value();
-  delete message_args;
+  message->messageId = newMessageId();
+  QList<QVariant> message_args;
+  createEventArgs(message, message_args);
+  knotifyInterface->callWithArgumentList(QDBus::AutoDetect, "Notify", message_args);
   return message->messageId;
 }
 
-QList<QVariant>* KNotification::createEventArgs(KNotificationMessage* message){
-  QList<QVariant>* message_args = new QList<QVariant>;
-  message_args->append(notifyEvent);
-  message_args->append(notifyApplication);
-  message_args->append(QVariant::List);
-  message_args->append(message->title());
-  message_args->append(message->text());
-  message_args->append(message->pixmapBytes());
-  message_args->append(QVariant(message->actions()));
-  message_args->append(message->timeout());
-  message_args->append(QVariant::LongLong);
-  return message_args;
+void KNotification::createEventArgs(KNotificationMessage* message, QVariantList &args){
+  args.clear();
+  args.clear();
+  args << QString("UDD");
+  args << static_cast<uint>(message->messageId);
+  args << QVariant("");
+  args << QString(message->title());
+  args << QString(message->text());
+  args << message->actions();
+  QVariantMap hints;
+  QImage img = message->image();
+  if (img.width() != 0)
+  {
+    FreedesktopImageHint image(img);
+    hints.insert(QStringLiteral("image_data"), QVariant::fromValue(image));
+  }
+  args << hints;
+  args << message->timeout();
 }
 
 void KNotification::showMessage(KNotificationMessage* message){

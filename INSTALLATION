@@ -11,6 +11,8 @@ For installing User Data Defence on your machine you need to download from syste
     QT4 development package including D-Bus support;
     audit-libs-devel;
     libselinux-devel;
+    selinux-policy-devel;
+    rsyslog;
     dbus-devel.
 
 ========================================================================
@@ -31,7 +33,7 @@ git clone git@github.com:Hramchenko/userdatadefence.git
 
 cd ./userdatadefence
 
-qmake (or qmake-qt4 in Fedora)
+qmake (or qmake-qt5 in Fedora)
 
 make
 

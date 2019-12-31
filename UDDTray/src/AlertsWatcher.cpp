@@ -71,6 +71,8 @@ AlertsWatcher* AlertsWatcher::instance(){
 void AlertsWatcher::clearLogST(){
 }
 
+#include <iostream>
+using namespace std;
 void AlertsWatcher::loadOldAlertsST(){
   if (AlertsDepositary::instance()->needLoadingOldAlerts()){
     loadingOldAlerts = true;
@@ -138,7 +140,6 @@ bool AlertsWatcher::needNotifications(){
 }
 
 void AlertsWatcher::closeAllAlerts(){
-  notificationManager->closeAllMessages();
   AlertsStatistics::instance()->clearST();
 }
 

@@ -141,7 +141,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>27</height>
+     <height>29</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -237,9 +237,6 @@
    <addaction name="actionClearLog"/>
   </widget>
   <action name="actionGeneratePolicyEditor">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
    <property name="icon">
     <iconset resource="images.qrc">
      <normaloff>:/images/document-edit-decrypt.png</normaloff>:/images/document-edit-decrypt.png</iconset>
@@ -336,9 +333,6 @@
    </property>
   </action>
   <action name="actionGeneratePolicyAll">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
    <property name="icon">
     <iconset resource="images.qrc">
      <normaloff>:/images/document-edit-decrypt-all.png</normaloff>:/images/document-edit-decrypt-all.png</iconset>
@@ -462,9 +456,6 @@
    </property>
   </action>
   <action name="actionGeneratePolicySys">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
    <property name="icon">
     <iconset resource="images.qrc">
      <normaloff>:/images/document-edit-decrypt-sys.png</normaloff>:/images/document-edit-decrypt-sys.png</iconset>
@@ -622,7 +613,7 @@
  <connections>
   <connection>
    <sender>actionQuit</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>quitST()</slot>
    <hints>
@@ -638,7 +629,7 @@
   </connection>
   <connection>
    <sender>actionClearLog</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>clearLogST()</slot>
    <hints>
@@ -654,7 +645,7 @@
   </connection>
   <connection>
    <sender>actionClearLog</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>auditMessagesTE</receiver>
    <slot>clearLogST()</slot>
    <hints>
@@ -670,7 +661,7 @@
   </connection>
   <connection>
    <sender>actionClearLog</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>generatedPolicyTE</receiver>
    <slot>clearLogST()</slot>
    <hints>
@@ -702,7 +693,7 @@
   </connection>
   <connection>
    <sender>actionGeneratePolicyAll</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>generatedPolicyTE</receiver>
    <slot>generatePolicyAllST()</slot>
    <hints>
@@ -718,7 +709,7 @@
   </connection>
   <connection>
    <sender>actionGeneratePolicyEditor</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>generatedPolicyTE</receiver>
    <slot>generatePolicyEditorST()</slot>
    <hints>
@@ -734,7 +725,7 @@
   </connection>
   <connection>
    <sender>actionGeneratePolicySys</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>generatedPolicyTE</receiver>
    <slot>generatePolicySystemST()</slot>
    <hints>
@@ -750,7 +741,7 @@
   </connection>
   <connection>
    <sender>actionClearLog</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>rawMessageTE</receiver>
    <slot>clearLogST()</slot>
    <hints>
@@ -782,7 +773,7 @@
   </connection>
   <connection>
    <sender>actionAppendAlertToEditor</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>rawMessageTE</receiver>
    <slot>appendMessageST()</slot>
    <hints>
@@ -798,7 +789,7 @@
   </connection>
   <connection>
    <sender>actionNewFile</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>mainTab</receiver>
    <slot>newFileST()</slot>
    <hints>
@@ -814,7 +805,7 @@
   </connection>
   <connection>
    <sender>actionOpenFile</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>mainTab</receiver>
    <slot>openFileST()</slot>
    <hints>
@@ -830,7 +821,7 @@
   </connection>
   <connection>
    <sender>actionCloseFile</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>mainTab</receiver>
    <slot>closeFileST()</slot>
    <hints>
@@ -846,7 +837,7 @@
   </connection>
   <connection>
    <sender>actionSaveFile</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>mainTab</receiver>
    <slot>saveFileST()</slot>
    <hints>
@@ -862,7 +853,7 @@
   </connection>
   <connection>
    <sender>actionSaveAll</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>mainTab</receiver>
    <slot>saveAllFilesST()</slot>
    <hints>
@@ -878,7 +869,7 @@
   </connection>
   <connection>
    <sender>actionSaveFileAs</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>mainTab</receiver>
    <slot>saveFileAsST()</slot>
    <hints>
@@ -894,7 +885,7 @@
   </connection>
   <connection>
    <sender>actionEditCopy</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>mainTab</receiver>
    <slot>editCopyST()</slot>
    <hints>
@@ -910,7 +901,7 @@
   </connection>
   <connection>
    <sender>actionEditPaste</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>mainTab</receiver>
    <slot>editPasteST()</slot>
    <hints>
@@ -926,7 +917,7 @@
   </connection>
   <connection>
    <sender>actionEditCut</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>mainTab</receiver>
    <slot>editCutST()</slot>
    <hints>
@@ -942,7 +933,7 @@
   </connection>
   <connection>
    <sender>actionEditDelete</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>mainTab</receiver>
    <slot>editDeleteST()</slot>
    <hints>
@@ -958,7 +949,7 @@
   </connection>
   <connection>
    <sender>actionEditSelectAll</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>mainTab</receiver>
    <slot>editSelectAllST()</slot>
    <hints>
@@ -974,7 +965,7 @@
   </connection>
   <connection>
    <sender>actionEditUndo</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>mainTab</receiver>
    <slot>editUndoST()</slot>
    <hints>
@@ -990,7 +981,7 @@
   </connection>
   <connection>
    <sender>actionEditRedo</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>mainTab</receiver>
    <slot>editRedoST()</slot>
    <hints>
@@ -1006,7 +997,7 @@
   </connection>
   <connection>
    <sender>actionEditPreferences</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>editPreferencesST()</slot>
    <hints>
@@ -1022,7 +1013,7 @@
   </connection>
   <connection>
    <sender>actionFind</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>mainTab</receiver>
    <slot>showFindDialogST()</slot>
    <hints>
@@ -1054,7 +1045,7 @@
   </connection>
   <connection>
    <sender>actionClearSelection</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>mainTab</receiver>
    <slot>editClearSelectionST()</slot>
    <hints>
@@ -1070,7 +1061,7 @@
   </connection>
   <connection>
    <sender>actionNewPolicy</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>mainTab</receiver>
    <slot>createPolicyST()</slot>
    <hints>
@@ -1086,7 +1077,7 @@
   </connection>
   <connection>
    <sender>actionHelpAbout</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>mainTab</receiver>
    <slot>showAboutDialogST()</slot>
    <hints>

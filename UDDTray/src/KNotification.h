@@ -33,24 +33,22 @@ public:
   static KNotification* instance();
   void showMessage(KNotificationMessage* message);
   void updateMessage(KNotificationMessage* message);
-  void closeMessage(KNotificationMessage* message);
-  void closeAllMessages();
   int queueLength();
   void flushQueue();
 protected:
   KNotification();
 public slots:
-  void notificationActivated(int id, int action);
-  void notificationClosed(int id);
+  void notificationActivated(const uint, const QString &);
+  void notificationClosed(const uint, const uint);
 private:
   void connectToInterface();
   int sendMessageToDBus(KNotificationMessage* message);
-  QList<QVariant>* createEventArgs(KNotificationMessage* message);
+  void createEventArgs(KNotificationMessage* message, QVariantList &args);
   void removeNotificationMessage(int id);
   void clearMessagesDict();
   KNotificationMessage* findNotificationMessage(int id);
   void sendUpdateMessageToDBus(KNotificationMessage* message);
-  QList<QVariant>* createUpdateEventArgs(KNotificationMessage* message);
+  int newMessageId();
 private slots:
   void sendMessagesFromQueueST();
 private:
@@ -61,6 +59,7 @@ private:
   QString notifyEvent;
   QString notifyApplication;
   int _queueLength;
+  int currentMessageId = 0;
   static KNotification* _instance;
 };
 

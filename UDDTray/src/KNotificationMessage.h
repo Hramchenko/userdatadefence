@@ -20,23 +20,22 @@
 
 class QByteArray;
 class QStringList;
-class QPixmap;
+class QImage;
 
 class KNotificationMessage {
 public:
   KNotificationMessage();
   virtual ~KNotificationMessage();
-  virtual QByteArray pixmapBytes();
+  virtual QImage image();
   virtual QString title();
   virtual QString text();
   virtual QStringList actions();
   virtual int timeout();
-  virtual void actionActivated(int action_id);
+  virtual void actionActivated(const QString &action_id);
   virtual void notificationShown();
   virtual void notificationClosed();
   virtual bool needAutoDeletion();
   virtual bool needQueue();
-  static QByteArray pixmapToByteArray(QPixmap pixmap);
 public:
   int messageId;
 };

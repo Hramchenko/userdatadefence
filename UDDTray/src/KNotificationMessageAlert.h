@@ -17,6 +17,7 @@
 
 #include <QString>
 #include <QByteArray>
+#include <QImage>
 
 #include "KNotificationMessage.h"
 
@@ -29,18 +30,17 @@ public:
   virtual ~KNotificationMessageAlert();
   virtual QString title();
   virtual QString text();
-  virtual QByteArray pixmapBytes();
+  virtual QImage image();
   virtual QStringList actions();
-  virtual void actionActivated(int action_id);
+  virtual void actionActivated(const QString &action_id);
   void setCaption(QString caption);
   void setText(QString message);
-  void setPixmapBytes(QByteArray pixmap_bytes);
   void setFromMessage(AuditMessage* message);
   void setFromMessageNotification(AuditMessageNotification* message_notification, QString text);
 private:
   QString _caption;
   QString _message;
-  QByteArray _imageBytes;
+  QImage _image;
 };
 
 #endif /* KNOTIFICATIONMESSAGEALERT_H_ */

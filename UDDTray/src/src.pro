@@ -1,4 +1,4 @@
-QT       += dbus gui xml
+QT       += dbus gui xml widgets
 
 TARGET = UDDTray
 TEMPLATE = app
@@ -40,6 +40,7 @@ SOURCES += main.cpp \
            AlertsListViewer.cpp \
            AlertsDepositary.cpp \
            AlertsStatistics.cpp \
+           FreedesktopImageHint.cpp \
            functions.cpp \
            RawMessageViewer.cpp \
            AlertsEditor.cpp \
@@ -105,6 +106,7 @@ HEADERS += MainWindow.h \
            AlertsListViewer.h \
            AlertsDepositary.h \
            AlertsStatistics.h \
+           FreedesktopImageHint.h \
            functions.h \
            RawMessageViewer.h \
            AlertsEditor.h \

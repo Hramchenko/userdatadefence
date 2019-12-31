@@ -54,7 +54,7 @@ QString AVCAnalyzerState::processedLog(){
 
 void AVCAnalyzerState::setProcessedLog(QString log){
   _processedLog = log;
-  _processedLogData = log.toAscii();
+  _processedLogData = log.toLatin1();
 }
 
 char* AVCAnalyzerState::processedLogData(){

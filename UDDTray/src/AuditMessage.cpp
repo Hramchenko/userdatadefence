@@ -58,8 +58,8 @@ QIcon AuditMessage::icon(){
   return _notificationMessage->icon();
 }
 
-QByteArray AuditMessage::pixmapBytes(){
-  return _notificationMessage->pixmapBytes();
+QImage AuditMessage::image(){
+  return _notificationMessage->image();
 }
 
 QString AuditMessage::formattedMessage(){

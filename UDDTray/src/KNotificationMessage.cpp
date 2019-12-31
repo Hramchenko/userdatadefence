@@ -18,6 +18,7 @@
 #include <QSystemTrayIcon>
 #include <QStringList>
 #include <QBuffer>
+#include <QImage>
 
 KNotificationMessage::KNotificationMessage(){
   messageId = 0;
@@ -26,17 +27,12 @@ KNotificationMessage::KNotificationMessage(){
 KNotificationMessage::~KNotificationMessage(){
 }
 
-QByteArray KNotificationMessage::pixmapToByteArray(QPixmap pixmap){
-  QByteArray result;
-  QBuffer buffer(&result);
-  buffer.open( QIODevice::WriteOnly );
-  pixmap.save(&buffer, "PNG");
-  return result;
+QImage KNotificationMessage::image()
+{
+  return QImage();
 }
 
-QByteArray KNotificationMessage::pixmapBytes(){
-  return QByteArray();
-}
+
 
 QString KNotificationMessage::title(){
   return "";
@@ -54,7 +50,7 @@ int KNotificationMessage::timeout(){
   return 5000;
 }
 
-void KNotificationMessage::actionActivated(int){
+void KNotificationMessage::actionActivated(const QString &){
 }
 
 void KNotificationMessage::notificationShown(){

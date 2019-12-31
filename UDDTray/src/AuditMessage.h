@@ -36,7 +36,7 @@ public:
   AuditMessageTimeStamp* timeStamp();
   void clear();
   QIcon icon();
-  QByteArray pixmapBytes();
+  QImage image();
   QString formattedMessage();
   QString caption();
   AuditMessageNotification* messageNotification();

@@ -46,178 +46,215 @@
 #include <syslog.h>
 #include <selinux/context.h>
 
+#ifdef HAVE_LIBCAP_NG
+#include <cap-ng.h>
+#endif
+
+
 /* Global Data */
 static volatile int stop = 0;
 static volatile int hup = 0;
 static auparse_state_t *au = NULL;
 
-static DBusConnection* dbusconn = NULL;
+static 	DBusConnection* dbusconn = NULL;
 
 /* Local declarations */
-static void handle_event(auparse_state_t *au, auparse_cb_event_t cb_event_type,
-    void *user_data);
+static void handle_event(auparse_state_t *au,
+                         auparse_cb_event_t cb_event_type, void *user_data);
 
 /*
  * SIGTERM handler
  */
-static void term_handler(int sig __attribute__((unused))) {
-  stop = 1;
+static void term_handler( int sig __attribute__((unused)))
+{
+    stop = 1;
 }
 
 /*
  * SIGHUP handler: re-read config
  */
-static void hup_handler(int sig __attribute__((unused))) {
-  hup = 1;
+static void hup_handler( int sig __attribute__((unused)))
+{
+    hup = 1;
 }
 
-static void reload_config(void) {
-  hup = 0;
+static void reload_config(void)
+{
+    hup = 0;
 }
 
-static DBusConnection* init_dbus(void) {
+static 	DBusConnection* init_dbus(void) {
 
-  DBusError err;
-  DBusConnection* conn = NULL;
-  // initialise the errors
-  dbus_error_init(&err);
+    DBusError err;
+    DBusConnection* conn = NULL;
+    // initialise the errors
+    dbus_error_init(&err);
 
-  // connect to the bus
-  conn = dbus_bus_get(DBUS_BUS_SYSTEM, &err);
-  if (dbus_error_is_set(&err)){
-    syslog(LOG_ERR, "UDD Connection Error (%s): AVC Will be dropped\n", err.message);
-    dbus_error_free(&err);
-  }
-  return conn;
+    // connect to the bus
+    conn = dbus_bus_get(DBUS_BUS_SYSTEM, &err);
+    if (dbus_error_is_set(&err)) {
+        syslog(LOG_ERR, "Connection Error (%s): AVC Will be dropped\n", err.message);
+        dbus_error_free(&err);
+    }
+    return conn;
 }
 
-int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused))) {
-  syslog(LOG_ERR, "Starting UDDBus");
-  char tmp[MAX_AUDIT_MESSAGE_LENGTH + 1];
-  struct sigaction sa;
+int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)))
+{
+    char tmp[MAX_AUDIT_MESSAGE_LENGTH+1];
+    struct sigaction sa;
+    fd_set rfds;
+    struct timeval tv;
 
-  /* Register sighandlers */
-  sa.sa_flags = 0;
-  sigemptyset(&sa.sa_mask);
-  /* Set handler for the ones we care about */
-  sa.sa_handler = term_handler;
-  sigaction(SIGTERM, &sa, NULL);
-  sa.sa_handler = hup_handler;
-  sigaction(SIGHUP, &sa, NULL);
+    /* Register sighandlers */
+    sa.sa_flags = 0;
+    sigemptyset(&sa.sa_mask);
+    /* Set handler for the ones we care about */
+    sa.sa_handler = term_handler;
+    sigaction(SIGTERM, &sa, NULL);
+    sa.sa_handler = hup_handler;
+    sigaction(SIGHUP, &sa, NULL);
 
-  /* Initialize the auparse library */
-  au = auparse_init(AUSOURCE_FEED, 0);
-  if (au == NULL){
-    syslog(LOG_ERR, "UDDBus is exiting due to auparse init errors");
-    return -1;
-  }
-
-  auparse_add_callback(au, handle_event, NULL, NULL);
-
-  do{
-    /* Load configuration */
-    if (hup){
-      reload_config();
+    /* Initialize the auparse library */
+    au = auparse_init(AUSOURCE_FEED, 0);
+    if (au == NULL) {
+        syslog(LOG_ERR,"UDDBus is exiting due to auparse init errors");
+        return -1;
     }
 
-    /* Now the event loop */
-    while (fgets_unlocked(tmp, MAX_AUDIT_MESSAGE_LENGTH, stdin) && hup == 0
-        && stop == 0){
-      auparse_feed(au, tmp, strnlen(tmp, MAX_AUDIT_MESSAGE_LENGTH));
-    }
-    if (feof(stdin))
-      break;
-  }while (stop == 0);
+    auparse_add_callback(au, handle_event, NULL, NULL);
+#ifdef HAVE_LIBCAP_NG
+    capng_clear(CAPNG_SELECT_BOTH);
+    capng_apply(CAPNG_SELECT_BOTH);
+#endif
+    do {
+        /* Load configuration */
+        if (hup) {
+            reload_config();
+        }
 
-  /* Flush any accumulated events from queue */
-  auparse_flush_feed(au);
-  auparse_destroy(au);
-  if (stop)
-    syslog(LOG_DEBUG, "UDDbus is exiting on stop request\n");
-  else
-    syslog(LOG_ERR, "UDDBus is exiting on stdin EOF\n");
+        /* Now the event loop */
+        while (fgets_unlocked(tmp, MAX_AUDIT_MESSAGE_LENGTH, stdin) &&
+               hup==0 && stop==0) {
+            auparse_feed(au, tmp, strnlen(tmp,
+                                          MAX_AUDIT_MESSAGE_LENGTH));
 
-  return 0;
+            /* Wait for 3 seconds and if nothing has happen expect that the event
+                         * is complete and flush parser's feed
+                         * FIXME: in future, libaudit will provide a better mechanism for aging
+                         * events
+                         */
+            FD_ZERO(&rfds);
+            FD_SET(0, &rfds);
+            tv.tv_sec = 3;
+            tv.tv_usec = 0;
+            if (select(1, &rfds, NULL, NULL, &tv) == 0)
+                /* The timeout occurred, the event is probably complete */
+                auparse_flush_feed(au);
+        }
+        if (feof(stdin))
+            break;
+    } while (stop == 0);
+
+    /* Flush any accumulated events from queue */
+    auparse_flush_feed(au);
+    auparse_destroy(au);
+    if (! stop)
+        syslog(LOG_ERR,"UDDBus is exiting on stdin EOF\n");
+
+    return 0;
 }
 
 static int is_setroubleshoot(const char *context) {
-  int ret = FALSE;
-  if (context){
-    context_t con = context_new(context);
-    const char* type = context_type_get(con);
-    ret = (strcmp(type, "user_data_defence_bus_t") == 0);
-    context_free(con);
-  }
-  return ret;
+    int ret = FALSE;
+    if (context) {
+        context_t con = context_new(context);
+        ret = (strcmp(context_type_get(con), "user_data_defence_bus_t") == 0);
+        context_free(con);
+    }
+    return ret;
 }
 
 /* This function shows how to dump a whole record's text */
-static void dump_whole_record(auparse_state_t *au, void *conn) {
-  char *tmp = NULL;
-  int len = 0;
-  const char *scon = auparse_find_field(au, "scontext");
-  const char *tcon = auparse_find_field(au, "tcontext");
-  if (is_setroubleshoot(scon) || is_setroubleshoot(tcon)){
-    syslog(LOG_ERR, "AVC Message for UDDaemon, dropping message");
-    return;
-  }
-
-  auparse_first_record(au);
-  do{
-    len = asprintf(&tmp, "%s%s\n", tmp, auparse_get_record_text(au));
-    if (len < 0){
-      syslog(LOG_ERR, "UDDBus out of memory\n");
-      free(tmp);
-      return;
+static void dump_whole_record(auparse_state_t *au, void *conn)
+{
+    size_t size = 1;
+    char *tmp = NULL, *end=NULL;
+    int i = 0;
+    const char * rec = NULL;
+    const char *scon = auparse_find_field(au, "scontext");
+    const char *tcon = auparse_find_field(au, "tcontext");
+    if (is_setroubleshoot(scon) ||
+            is_setroubleshoot(tcon)) {
+        syslog(LOG_ERR, "AVC Message for UDDBus, dropping message");
+        return;
     }
-  }while (auparse_next_record(au) > 0);
 
-  if (!dbusconn){
-    dbusconn = init_dbus();
-  }
-  if (dbusconn){
-    uddbus_send_avc(dbusconn, tmp);
-  }
-  else
-    syslog(LOG_ERR, "UDDBus error. Connection not initialized.\n");
+    auparse_first_record(au);
+    do {
+        rec = auparse_get_record_text(au);
+        size += strlen(rec) + 1;
+    } while (auparse_next_record(au) > 0);
+    tmp = calloc(1, size+1);
+    if (!tmp) {
+        syslog(LOG_ERR,"UDDBus out of memory\n");
+        return;
+    }
+    auparse_first_record(au);
+    end=stpcpy(tmp, auparse_get_record_text(au));
+    while (auparse_next_record(au) > 0) {
+        *end++='\n';
+        end=stpcpy(end, auparse_get_record_text(au));
+    }
+    *end='\n';
+    if (! dbusconn) {
+        dbusconn=init_dbus();
+    }
+    if (dbusconn) {
+        uddbus_send_avc(dbusconn, tmp);
+    }
 
-  free(tmp);
+    free(tmp);
 }
+
 
 /* This function receives a single complete event at a time from the auparse
  * library. This is where the main analysis code would be added. */
-static void handle_event(auparse_state_t *au, auparse_cb_event_t cb_event_type,
-    void *user_data) {
-  int type, num = 0;
+static void handle_event(auparse_state_t *au,
+                         auparse_cb_event_t cb_event_type, void *user_data)
+{
+    syslog(LOG_ERR,"UDDBus event\n");
+    int type, num=0;
 
-  DBusConnection* conn = (DBusConnection*)user_data;
+    DBusConnection* conn =
+            (DBusConnection*) user_data;
 
-  if (cb_event_type != AUPARSE_CB_EVENT_READY)
-    return;
+    if (cb_event_type != AUPARSE_CB_EVENT_READY)
+        return;
 
-  /* Loop through the records in the event looking for one to process.
-   We use physical record number because we may search around and
-   move the cursor accidentally skipping a record. */
-  while (auparse_goto_record_num(au, num) > 0){
-    type = auparse_get_type(au);
-    /* Now we can branch based on what record type we find.
-     This is just a few suggestions, but it could be anything. */
-    switch (type){
-    case AUDIT_AVC:
-      dump_whole_record(au, conn);
-      break;
-    case AUDIT_SYSCALL:
-      break;
-    case AUDIT_USER_LOGIN:
-      break;
-    case AUDIT_ANOM_ABEND:
-      break;
-    case AUDIT_MAC_STATUS:
-      break;
-    default:
-      break;
+    /* Loop through the records in the event looking for one to process.
+           We use physical record number because we may search around and
+           move the cursor accidentally skipping a record. */
+    while (auparse_goto_record_num(au, num) > 0) {
+        type = auparse_get_type(au);
+        /* Now we can branch based on what record type we find.
+                   This is just a few suggestions, but it could be anything. */
+        switch (type) {
+        case AUDIT_AVC:
+            dump_whole_record(au, conn);
+            break;
+        case AUDIT_SYSCALL:
+            break;
+        case AUDIT_USER_LOGIN:
+            break;
+        case AUDIT_ANOM_ABEND:
+            break;
+        case AUDIT_MAC_STATUS:
+            break;
+        default:
+            break;
+        }
+        num++;
     }
-    num++;
-  }
 }
 

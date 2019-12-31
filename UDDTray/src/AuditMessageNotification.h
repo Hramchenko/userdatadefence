@@ -47,7 +47,7 @@ public:
   void setPixmap(QPixmap pixmap);
   void loadPixmap(QString file_name);
   QIcon icon();
-  QByteArray pixmapBytes();
+  QImage image();
   QString caption();
   void setCaption(QString caption);
   QString messageFormat();
@@ -66,8 +66,8 @@ protected:
   QString _filterString;
 private:
   QPixmap _pixmap;
+  QImage _image;
   QIcon _icon;
-  QByteArray _pixmapBytes;
   QString _caption;
   QString _messageFormat;
   QString _imagePath;
